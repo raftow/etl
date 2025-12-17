@@ -4782,3 +4782,18 @@ div.simulation_progress.value-100 {
 .hzm-icon-bficon-105070:before {
     content: "\f090";
 }
+
+textarea#settings {
+    background-color: #b1dbff9e;
+    min-height: 400px !important;
+    height: 400px !important;
+    background-image: url(../../lib/images/carres.png);
+    font-family: arial;
+    font-size: 18px;
+    padding-top: 2px !important;
+    line-height: 20px;
+}
+
+div#form-control-div-settings {
+    min-height: 410px;
+}

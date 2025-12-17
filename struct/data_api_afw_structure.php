@@ -79,6 +79,7 @@ class EtlDataApiAfwStructure
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MAXLENGTH' => 3333, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'READONLY'  => false, 'MANDATORY' => true,
+            'COLS' => 80, 'ROWS' => 20,
             'CSS'                                  => 'width_pct_100'],
     
 

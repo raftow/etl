@@ -115,6 +115,24 @@ class EtlObject extends AfwMomkenObject
         return 'active';
     }
 
+    public function resetSettings()
+    {
+        $this->set('settings', '{
+            "bearer_token":"",
+            "timeout_seconds":30,            
+            "batch_size":1000,
+            "max_errors":100,
+            "log_level":"ERROR",
+            "notify_on_error":true,
+            "notify_on_completion":true,
+            "email_recipients":[],
+            "retry_failed_records":false,
+
+        }');
+
+        $this->commit();
+    }
+
     public function getPublicMethodsStandard()
     {
         $pbms = [];
