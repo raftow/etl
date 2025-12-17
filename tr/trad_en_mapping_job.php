@@ -4,6 +4,10 @@ class MappingJobEnTranslator{
     public static function initData()
     {
         $trad = [];
+		$trad["mapping_job"]["step1"] = "Define the mapping job";
+		$trad["mapping_job"]["step2"] = "Implement the mapping job";
+		$trad["mapping_job"]["step3"] = "Advanced settings";
+		$trad["mapping_job"]["step4"] = "Mapping columns";
 
 		$trad["mapping_job"]["mappingjob.single"] = "mapping job";
 		$trad["mapping_job"]["mappingjob.new"] = "new";
@@ -16,6 +20,8 @@ class MappingJobEnTranslator{
 		$trad["mapping_job"]["lookup_code"] = "Lookup code";
 		$trad["mapping_job"]["data_api_id"] = "data api";
 		$trad["mapping_job"]["pk_cols"] = "Primary Key columns";
+		$trad["mapping_job"]["atable_name"] = "Table code";
+		$trad["mapping_job"]["mappingColList"] = "Mapping columns";
         // steps
         return $trad;
     }

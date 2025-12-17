@@ -14,6 +14,8 @@ class EtlEndPointAfwStructure
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;
+            $obj->editByStep = true;
+			$obj->editNbSteps = 3;
             // $obj->after_save_edit = array( 'class'=>'EndPoint', 'attribute'=>'xxxx_id', 'currmod'=>'etl', 'currstep'=>2 );
             $obj->after_save_edit = [ 'mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'EndPoint', 'submit' => true ];
         } else {
@@ -68,7 +70,14 @@ class EtlEndPointAfwStructure
         'TYPE'                                 => 'TEXT', 'READONLY' => false,
         'CSS'                                  => 'width_pct_100' ],
 
-        'dataApiList'        => [ 'STEP' => 2, 'HIDE_IF_NEW' => true,
+
+        'settings'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => true, 'QEDIT'       => false,
+            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 3333, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
+            'TYPE'                                 => 'TEXT', 'READONLY'  => false, 'MANDATORY' => true,
+            'CSS'                                  => 'width_pct_100'],
+
+        'dataApiList'        => [ 'STEP' => 3, 'HIDE_IF_NEW' => true,
             'SHORTNAME' => 'dataApis', 'SHOW' => true, 'FORMAT'          => 'retrieve', 'ICONS' => true, 'DELETE-ICON'             => true, 'BUTTONS'       => true, 'SEARCH' => false, 'QSEARCH' => false, 'AUDIT' => false, 'RETRIEVE' => false,
             'EDIT'                                    => false, 'QEDIT'     => false,
             'SIZE'                                    => 32, 'MAXLENGTH'    => 32, 'MIN-SIZE'          => 1, 'CHAR_TEMPLATE'  => 'ALPHABETIC,SPACE', 'MANDATORY' => false, 'UTF8'         => false,

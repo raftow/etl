@@ -5,11 +5,11 @@ $file_dir_name = dirname(__FILE__);
                 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class DataApi extends AFWObject{
+class DataApi extends EtlObject{
 
         public static $MY_ATABLE_ID=13964; 
   
-        public static $DATABASE		= "tvtc_etl";
+        public static $DATABASE		= "";
         public static $MODULE		        = "etl";        
         public static $TABLE			= "data_api";
 
@@ -70,7 +70,7 @@ class DataApi extends AFWObject{
         protected function getPublicMethods()
         {
             
-            $pbms = array();
+            $pbms = $this->getPublicMethodsStandard();
             
             $color = "green";
             $title_ar = "xxxxxxxxxxxxxxxxxxxx"; 
@@ -82,45 +82,6 @@ class DataApi extends AFWObject{
             return $pbms;
         }
         
-        public function fld_CREATION_USER_ID()
-        {
-                return "created_by";
-        }
-
-        public function fld_CREATION_DATE()
-        {
-                return "created_at";
-        }
-
-        public function fld_UPDATE_USER_ID()
-        {
-        	return "updated_by";
-        }
-
-        public function fld_UPDATE_DATE()
-        {
-        	return "updated_at";
-        }
-        
-        public function fld_VALIDATION_USER_ID()
-        {
-        	return "validated_by";
-        }
-
-        public function fld_VALIDATION_DATE()
-        {
-                return "validated_at";
-        }
-        
-        public function fld_VERSION()
-        {
-        	return "version";
-        }
-
-        public function fld_ACTIVE()
-        {
-        	return  "active";
-        }
         
         /*
         public function isTechField($attribute) {

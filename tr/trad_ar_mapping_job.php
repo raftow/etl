@@ -4,6 +4,10 @@ class MappingJobArTranslator{
     public static function initData()
     {
         $trad = [];
+		$trad["mapping_job"]["step1"] = "تعريف المهمة";
+		$trad["mapping_job"]["step2"] = "برمجة المهمة";
+		$trad["mapping_job"]["step3"] = "الإعدادات المتقدمة";
+		$trad["mapping_job"]["step4"] = "التقابل";
 
 		$trad["mapping_job"]["mappingjob.single"] = "مهمة تقابل";
 		$trad["mapping_job"]["mappingjob.new"] = "جديد(ة)";
@@ -17,6 +21,7 @@ class MappingJobArTranslator{
 		$trad["mapping_job"]["data_api_id"] = "خدمة البيانات";
 		$trad["mapping_job"]["atable_name"] = "رمز الجدول";
 		$trad["mapping_job"]["pk_cols"] = "حقول المفتاح الوحيد";
+		$trad["mapping_job"]["mappingColList"] = "حقول التقابل";
         // steps
         return $trad;
     }
