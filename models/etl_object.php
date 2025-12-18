@@ -136,18 +136,22 @@ class EtlObject extends AfwMomkenObject
     public function getPublicMethodsStandard()
     {
         $pbms = [];
+        $settings_step = $this->stepOfAttribute('settings');
+        if($settings_step>0)
+        {
+            $color    = 'green';
+            $title_ar = 'تصفير الاعدادات';
+            $title_en = 'Reset settings';
+            $methodName = 'resetSettings';
 
-        $color    = 'green';
-        $title_ar = 'تصفير الاعدادات';
-        $title_en = 'Reset settings';
-        $methodName = 'resetSettings';
-
-        $pbms[AfwStringHelper::hzmEncode($methodName)] = ['METHOD' => $methodName, 
-                'COLOR' => $color, 
-                'LABEL_AR' => $title_ar, 
-                'LABEL_EN' => $title_en,
-                'ADMIN-ONLY' => true, 'BF-ID' => '', 
-                'STEP' => $this->stepOfAttribute('settings')];
+            $pbms[AfwStringHelper::hzmEncode($methodName)] = ['METHOD' => $methodName, 
+                    'COLOR' => $color, 
+                    'LABEL_AR' => $title_ar, 
+                    'LABEL_EN' => $title_en,
+                    'ADMIN-ONLY' => true, 'BF-ID' => '', 
+                    'STEP' => $settings_step];
+        }
+        
 
         return $pbms;
     }
