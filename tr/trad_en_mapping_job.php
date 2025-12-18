@@ -4,8 +4,8 @@ class MappingJobEnTranslator{
     public static function initData()
     {
         $trad = [];
-		$trad["mapping_job"]["step1"] = "Define the mapping job";
-		$trad["mapping_job"]["step2"] = "Implement the mapping job";
+		$trad["mapping_job"]["step1"] = "Definition";
+		$trad["mapping_job"]["step2"] = "Implementation";
 		$trad["mapping_job"]["step3"] = "Advanced settings";
 		$trad["mapping_job"]["step4"] = "Mapping columns";
 

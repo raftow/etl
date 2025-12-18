@@ -56,7 +56,14 @@ class MappingCol extends EtlObject{
         
         public function getDisplay($lang="ar")
         {
-               
+               $display = $this->getVal("name_$lang");
+               $mappingColTransformationList = $this->get("mappingColTransformationList"); 
+               if(count($mappingColTransformationList)==0)
+               {
+                    $display .= " (No transformation)";
+               }
+
+               return $display;
         }
         
         
@@ -160,15 +167,16 @@ class MappingCol extends EtlObject{
         	return  "active";
         }
         
-        /*
-        public function isTechField($attribute) {
-            return (($attribute=="created_by") or 
-                    ($attribute=="created_at") or 
-                    ($attribute=="updated_by") or 
-                    ($attribute=="updated_at") or 
-                    // ($attribute=="validated_by") or ($attribute=="validated_at") or 
-                    ($attribute=="version"));  
-        }*/
+        public function beforeMaj($id, $fields_updated)
+        {
+            if(isset($fields_updated['source_field_name']) and ((!$this->getVal("name_ar")) or (!$this->getVal("name_en"))))
+            {
+                $name = $this->getVal("source_field_name")."&rarr;".$this->getVal("destination_field_name");
+                if(!$this->getVal("name_ar")) $this->set("name_ar", $name);
+                if(!$this->getVal("name_en")) $this->set("name_en", $name);
+            }
+            return true;
+        }
         
         
         public function beforeDelete($id,$id_replace) 

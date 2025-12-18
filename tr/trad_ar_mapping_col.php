@@ -4,6 +4,10 @@ class MappingColArTranslator{
     public static function initData()
     {
         $trad = [];
+		$trad["mapping_col"]["step1"] = "التعريف";
+		$trad["mapping_col"]["step2"] = "التحويلات";
+		$trad["mapping_col"]["step3"] = "الوصف";
+
 
 		$trad["mapping_col"]["mappingcol.single"] = "حقل تقابل";
 		$trad["mapping_col"]["mappingcol.new"] = "جديد(ة)";

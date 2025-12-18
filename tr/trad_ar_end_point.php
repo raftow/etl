@@ -5,6 +5,7 @@ class EndPointArTranslator{
     {
         $trad = [];
 
+
 		$trad["end_point"]["endpoint.single"] = "نقطة نهاية";
 		$trad["end_point"]["endpoint.new"] = "جديد(ة)";
 		$trad["end_point"]["end_point"] = "نقاط نهاية";

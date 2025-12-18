@@ -73,6 +73,7 @@ class EtlMappingJobAfwStructure
             'EDIT'                                    => true, 'QEDIT'           => true,
             'SIZE'                                    => 32, 'MAXLENGTH'         => 32, 'MIN-SIZE'          => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
             'TYPE'                                    => 'FK', 'ANSWER'          => 'data_api', 'ANSMODULE' => 'etl',
+			'WHERE' => "end_point_id = §end_point_id§ or test_end_point_id = §end_point_id§",
             'RELATION'                                => 'ManyToOne', 'READONLY' => false, 'DNA'            => true,
             'CSS'                                     => 'width_pct_50'],
 

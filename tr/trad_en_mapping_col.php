@@ -4,6 +4,9 @@ class MappingColEnTranslator{
     public static function initData()
     {
         $trad = [];
+		$trad["mapping_col"]["step1"] = "Definition";
+		$trad["mapping_col"]["step2"] = "Transformations";
+		$trad["mapping_col"]["step3"] = "Description";
 
 		$trad["mapping_col"]["mappingcol.single"] = "mapping column";
 		$trad["mapping_col"]["mappingcol.new"] = "new";
