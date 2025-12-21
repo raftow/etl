@@ -115,6 +115,32 @@ class EtlObject extends AfwMomkenObject
         return 'active';
     }
 
+    public function readSettingValue($setting_name, $default_value = null)
+    {
+        $settings = $this->getVal("settings");
+        // format JSON
+        $settings_array = json_decode($settings, true);
+        $settings_array = is_array($settings_array) ? $settings_array : [];
+        if (array_key_exists($setting_name, $settings_array)) {
+            return $settings_array[$setting_name];
+        }
+        
+        /* format INI
+        $settings_rows = explode("\n", $settings);
+        foreach($settings_rows as $settings_row)
+        {
+            list($param,$value) = explode("=", $settings_row);
+            $value = trim($value);
+            $param = trim($param);
+            if($param == $setting_name)
+            {
+                return $value;
+            }
+        }*/
+
+        return $default_value;
+    }
+
     public function resetSettings()
     {
         $this->set('settings', '{
@@ -139,6 +165,12 @@ class EtlObject extends AfwMomkenObject
         $settings_step = $this->stepOfAttribute('settings');
         if($settings_step>0)
         {
+            $methodConfirmationWarningEn = "This action can not be canceled !";
+            $methodConfirmationWarning = $this->tm($methodConfirmationWarningEn, "ar");
+
+            $methodConfirmationQuestionEn = "Are you sure you want to reset the settings ?";
+            $methodConfirmationQuestion = $this->tm($methodConfirmationQuestionEn, "ar");
+                        
             $color    = 'green';
             $title_ar = 'تصفير الاعدادات';
             $title_en = 'Reset settings';
@@ -149,7 +181,12 @@ class EtlObject extends AfwMomkenObject
                     'LABEL_AR' => $title_ar, 
                     'LABEL_EN' => $title_en,
                     'ADMIN-ONLY' => true, 'BF-ID' => '', 
-                    'STEP' => $settings_step];
+                    'STEP' => $settings_step,
+                    'CONFIRMATION_NEEDED' => true,
+                    'CONFIRMATION_WARNING' => array('ar' => $methodConfirmationWarning, 'en' => $methodConfirmationWarningEn),
+                    'CONFIRMATION_QUESTION' => array('ar' => $methodConfirmationQuestion, 'en' => $methodConfirmationQuestionEn),
+            
+                ];
         }
         
 

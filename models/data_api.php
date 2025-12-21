@@ -60,11 +60,56 @@ class DataApi extends EtlObject
         $pbms = $this->getPublicMethodsStandard();
 
         $color      = "green";
-        $title_ar   = "xxxxxxxxxxxxxxxxxxxx";
-        $methodName = "mmmmmmmmmmmmmmmmmmmmmmm";
-        //$pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy"));
+        $title_ar   = "تنفيذ الخدمة الإلكترونية";
+        $methodName = "runAPI";
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy"));
 
         return $pbms;
+    }
+
+    public function runAPI($lang = "ar", $test=true)
+    {
+        if($test) $epObj = $this->get('test_end_point_id');
+        else $epObj = $this->get('end_point_id');
+        if(!$epObj)
+        {
+            $error_message = $this->tm("No end point defined for this API", $lang);
+            return[$error_message, ""];
+        }
+        $url = trim($epObj->getVal("url"), "/") . "/" . trim($this->getVal('relative_url'), "/");
+        $bearer_token = $this->readSettingValue("bearer_token",null);
+        $proxy = $this->readSettingValue("proxy",null);
+        $data = $this->readSettingValue("data",[]);
+        $verify_host = $this->readSettingValue("verify_host",false);
+        $verify_pear = $this->readSettingValue("verify_pear",false);
+        $return_transfer = $this->readSettingValue("return_transfer",true);
+        if($bearer_token)
+        {
+            $res = AfwApiConsumeHelper::consume_bearer_api(
+                $url,
+                $bearer_token,
+                $proxy,
+                $data,
+                $verify_host,
+                $verify_pear,
+                $return_transfer);
+
+            if($res['success'])
+            {
+                return [null, $res['url'] . " executed successfully with result: " . $res['result']];
+            }
+            else
+            {
+                $error_message = "Error while consuming the API : " . $res['message'];
+                return[$error_message, null];
+            }
+        }
+        else
+        {
+            $error_message = $this->tm("No bearer token defined for this API", $lang);
+            return[$error_message, ""];
+        }
+        
     }
 
     /*

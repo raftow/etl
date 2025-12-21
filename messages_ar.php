@@ -204,5 +204,6 @@
     $messages["disclaim"] = "إخلاء طرف";
     $messages["applicant is already enrolled in the following universities"] = "المتقدم مسجل بالفعل في الجامعات التالية";
     $messages["The upgrade sorting will be executed and you can't rollback"] = "سيتم تنفيذ فرز الترقية ولا يمكنك التراجع بعد ذلك";
+    $messages["Are you sure you want to reset the settings ?"] = "هل أنت متأكد أنك تريد تصفير الإعدادات ؟";
     // $messages[""] = "";
 ?>

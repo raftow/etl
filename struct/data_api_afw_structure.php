@@ -13,7 +13,8 @@ class EtlDataApiAfwStructure
             $obj->ORDER_BY_FIELDS = '';
 
             // $obj->UNIQUE_KEY = array( 'XXX', 'YYY' );
-
+            $obj->editByStep = true;
+			$obj->editNbSteps = 2;
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;
@@ -75,7 +76,7 @@ class EtlDataApiAfwStructure
             'TYPE'                            => 'TEXT', 'READONLY' => false,
             'CSS'                             => 'width_pct_100'],
 
-        'settings'            => ['SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+        'settings'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MAXLENGTH' => 3333, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'READONLY'  => false, 'MANDATORY' => true,

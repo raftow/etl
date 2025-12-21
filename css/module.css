@@ -4611,9 +4611,33 @@ input.fa.wizardbtn.disabled {
     content: "\f1c0";
 }
 
+/* automatic jobs - مهام آلية*/                 
 .hzm-icon-bficon-105038:before {
     content: "\f085";
 }
+
+/* mapping column transformations - تحويلات الحقول*/                 
+.hzm-icon-bficon-105087:before {
+    content: "\f013";
+}
+
+
+/* mapping columns - حقول التقابل*/                 
+.hzm-icon-bficon-105080:before {
+    content: "\f0ec";
+}
+
+
+/* mapping jobs - مهمات التقابل*/                 
+.hzm-icon-bficon-105094:before {
+    content: "\f085";
+}
+
+/* transformations - التحويلات*/                 
+.hzm-icon-bficon-105059:before {
+    content: "\f013";
+}
+
 
 textarea#settings {
     background-color: #b1dbff9e;
