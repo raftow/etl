@@ -4557,8 +4557,14 @@ input.fa.wizardbtn.disabled {
 
 /* data apis - خدمات بيانات - database (database) / database (database)*/
 .hzm-icon-bficon-105052:before {
-    content: "\f1c0";
+    content: "\f1d5";
 }
+
+/* end points - نقاط نهاية */
+.hzm-icon-bficon-105073:before {
+    content: "\f0c1";
+}
+
 
 /* display details of data api - عرض تفاصيل - database (database) / database (database)*/
 .hzm-icon-bficon-105050:before {
@@ -4595,9 +4601,6 @@ input.fa.wizardbtn.disabled {
     content: "\f090";
 }
 
-.hzm-icon-bficon-105087:before {
-    content: "\f013";
-}
 
 .hzm-icon-bficon-105059:before {
     content: "\f013";
@@ -4618,7 +4621,7 @@ input.fa.wizardbtn.disabled {
 
 /* mapping column transformations - تحويلات الحقول*/                 
 .hzm-icon-bficon-105087:before {
-    content: "\f013";
+    content: "\f074";
 }
 
 
@@ -4638,6 +4641,8 @@ input.fa.wizardbtn.disabled {
     content: "\f013";
 }
 
+/**************** PBM special buttons begin ************************/
+/**************** PBM special buttons end ************************/
 
 textarea#settings {
     background-color: #b1dbff9e;

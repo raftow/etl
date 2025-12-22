@@ -59,10 +59,62 @@ class DataApi extends EtlObject
 
         $pbms = $this->getPublicMethodsStandard();
 
-        $color      = "green";
+        $color      = "yellow";
         $title_ar   = "تنفيذ الخدمة الإلكترونية";
+        $title_en   = "Execute Electronic Service";
+        $methodName = "runAPI0";
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
+                "COLOR"=>$color, 
+                "LABEL_AR"=>$title_ar, 
+                "LABEL_EN"=>$title_en, 
+                "ADMIN-ONLY"=>true, 
+                "ICON"=>"execute", 
+                'STEP' =>$this->stepOfAttribute("xxyy"));
+
+        $color      = "black";
+        $title_ar   = "تنفيذ الخدمة الإلكترونية";
+        $title_en   = "Execute Electronic Service";
         $methodName = "runAPI";
-        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy"));
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
+                "COLOR"=>$color, 
+                "LABEL_AR"=>$title_ar, 
+                "LABEL_EN"=>$title_en, 
+                "ADMIN-ONLY"=>true, 
+                "ICON"=>"link", 
+                'STEP' =>$this->stepOfAttribute("xxyy"));           
+
+        $color      = "orange";
+        $title_ar   = "تنفيذ الخدمة الإلكترونية";
+        $methodName = "runAPI2";
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
+                "COLOR"=>$color, 
+                "LABEL_AR"=>$title_ar, 
+                "LABEL_EN"=>$title_en, 
+                "ADMIN-ONLY"=>true, 
+                "ICON"=>"generate", 
+                'STEP' =>$this->stepOfAttribute("xxyy"));       
+                
+        $color      = "blue";
+        $title_ar   = "تنفيذ الخدمة الإلكترونية";
+        $methodName = "runAPI3";
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
+                "COLOR"=>$color, 
+                "LABEL_AR"=>$title_ar,
+                "LABEL_EN"=>$title_en,  
+                "ADMIN-ONLY"=>true, 
+                "ICON"=>"merge", 
+                'STEP' =>$this->stepOfAttribute("xxyy"));   
+
+        $color      = "red";
+        $title_ar   = "تنفيذ الخدمة الإلكترونية تنفيذ الخدمة الإلكترونية تنفيذ الخدمة الإلكترونية";
+        $methodName = "runAPI1";
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
+                "COLOR"=>$color, 
+                "LABEL_AR"=>$title_ar, 
+                "LABEL_EN"=>$title_en, 
+                "ADMIN-ONLY"=>true, 
+                "ICON"=>"clone", 
+                'STEP' =>$this->stepOfAttribute("xxyy"));   
 
         return $pbms;
     }
