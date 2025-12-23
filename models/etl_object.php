@@ -115,16 +115,28 @@ class EtlObject extends AfwMomkenObject
         return 'active';
     }
 
+
+    public function calcErrorInSettings($what="value")
+    {
+        $settings = $this->getVal("settings");
+        // format JSON
+        $settings_array = json_decode($settings, true);  
+        $json_last_error_msg = json_last_error_msg();      
+        $css = is_array($settings_array) ? "ok" : "error";
+        return "<span class='json $css'>$json_last_error_msg</span>";
+    }
+    
+
     public function readSettingValue($setting_name, $default_value = null)
     {
         $settings = $this->getVal("settings");
         // format JSON
-        $settings_array = json_decode($settings, true);
+        $settings_array = json_decode($settings, true);        
         $settings_array = is_array($settings_array) ? $settings_array : [];
         if (array_key_exists($setting_name, $settings_array)) {
             return $settings_array[$setting_name];
         }
-        
+
         /* format INI
         $settings_rows = explode("\n", $settings);
         foreach($settings_rows as $settings_row)

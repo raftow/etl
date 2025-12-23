@@ -82,6 +82,16 @@ class EtlDataApiAfwStructure
             'TYPE'                                 => 'TEXT', 'READONLY'  => false, 'MANDATORY' => true,
             'COLS' => 80, 'ROWS' => 20,
             'CSS'                                  => 'width_pct_100'],
+
+        'errorInSettings'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => true, 'QEDIT'       => false,
+            'SIZE'                                 => 256, 'MAXLENGTH' => 256, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
+            'CATEGORY' => 'FORMULA', 'TYPE' => 'TEXT', 'READONLY'  => true, 'NO-LABEL'           => true,
+            'CSS'                                  => 'width_pct_100'],
+
+
+
+            
     
 
         'created_by'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'],
