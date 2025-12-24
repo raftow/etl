@@ -4,6 +4,9 @@ class DataApiEnTranslator{
     public static function initData()
     {
         $trad = [];
+		$trad["data_api"]["step1"] = "Definition";
+		$trad["data_api"]["step2"] = "Settings";
+		$trad["data_api"]["step3"] = "Run";
 
 		$trad["data_api"]["dataapi.single"] = "data api";
 		$trad["data_api"]["dataapi.new"] = "new";

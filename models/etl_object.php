@@ -119,39 +119,11 @@ class EtlObject extends AfwMomkenObject
     public function calcErrorInSettings($what="value")
     {
         $settings = $this->getVal("settings");
-        // format JSON
-        $settings_array = json_decode($settings, true);  
-        $json_last_error_msg = json_last_error_msg();      
-        $css = is_array($settings_array) ? "ok" : "error";
-        return "<span class='json $css'>$json_last_error_msg</span>";
+        return AfwSettingsHelper::calcErrorInSettings($settings);
     }
     
 
-    public function readSettingValue($setting_name, $default_value = null)
-    {
-        $settings = $this->getVal("settings");
-        // format JSON
-        $settings_array = json_decode($settings, true);        
-        $settings_array = is_array($settings_array) ? $settings_array : [];
-        if (array_key_exists($setting_name, $settings_array)) {
-            return $settings_array[$setting_name];
-        }
-
-        /* format INI
-        $settings_rows = explode("\n", $settings);
-        foreach($settings_rows as $settings_row)
-        {
-            list($param,$value) = explode("=", $settings_row);
-            $value = trim($value);
-            $param = trim($param);
-            if($param == $setting_name)
-            {
-                return $value;
-            }
-        }*/
-
-        return $default_value;
-    }
+    
 
     public function resetSettings()
     {
@@ -165,11 +137,15 @@ class EtlObject extends AfwMomkenObject
             "notify_on_completion":true,
             "email_recipients":[],
             "retry_failed_records":false,
+            "input":[],
+            "output":[],
+
 
         }');
 
         $this->commit();
     }
+
 
     public function getPublicMethodsStandard()
     {

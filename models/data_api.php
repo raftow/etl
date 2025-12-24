@@ -60,29 +60,39 @@ class DataApi extends EtlObject
         $pbms = $this->getPublicMethodsStandard();
 
         $color      = "yellow";
-        $title_ar   = "تنفيذ الخدمة الإلكترونية";
-        $title_en   = "Execute Electronic Service";
-        $methodName = "runAPI0";
+        $title_ar   = "تنفيذ فعلي للخدمة";
+        $title_en   = "Execute API on Production";
+        $help_ar   = "تنفيذ الخدمة الإلكترونية على البيئة الفعلية";
+        $help_en   = "Execute Electronic Service on Production environment";
+        
+        $methodName = "runAPIProd";
         $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
                 "COLOR"=>$color, 
                 "LABEL_AR"=>$title_ar, 
+                "HELP_EN"=>$help_en,
+                "HELP_AR"=>$help_ar, 
                 "LABEL_EN"=>$title_en, 
                 "ADMIN-ONLY"=>true, 
                 "ICON"=>"execute", 
-                'STEP' =>$this->stepOfAttribute("xxyy"));
+                'STEP' =>$this->stepOfAttribute("output"));
 
         $color      = "black";
-        $title_ar   = "تنفيذ الخدمة الإلكترونية";
-        $title_en   = "Execute Electronic Service";
+        $title_ar   = "تنفيذ تجريبي للخدمة";
+        $title_en   = "Execute API as Test";
+        $help_ar   = "تنفيذ الخدمة الإلكترونية على البيئة التجريبية";
+        $help_en   = "Execute Electronic Service on Test environment";
         $methodName = "runAPI";
         $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
                 "COLOR"=>$color, 
                 "LABEL_AR"=>$title_ar, 
                 "LABEL_EN"=>$title_en, 
+                "HELP_EN"=>$help_en,
+                "HELP_AR"=>$help_ar, 
                 "ADMIN-ONLY"=>true, 
                 "ICON"=>"link", 
-                'STEP' =>$this->stepOfAttribute("xxyy"));           
+                'STEP' =>$this->stepOfAttribute("output"));           
 
+        /*        
         $color      = "orange";
         $title_ar   = "تنفيذ الخدمة الإلكترونية";
         $methodName = "runAPI2";
@@ -115,8 +125,13 @@ class DataApi extends EtlObject
                 "ADMIN-ONLY"=>true, 
                 "ICON"=>"clone", 
                 'STEP' =>$this->stepOfAttribute("xxyy"));   
-
+        */
         return $pbms;
+    }
+
+    public function runAPIProd($lang = "ar")
+    {
+        return $this->runAPI($lang, $test=false);
     }
 
     public function runAPI($lang = "ar", $test=true)
@@ -128,13 +143,22 @@ class DataApi extends EtlObject
             $error_message = $this->tm("No end point defined for this API", $lang);
             return[$error_message, ""];
         }
-        $url = trim($epObj->getVal("url"), "/") . "/" . trim($this->getVal('relative_url'), "/");
-        $bearer_token = $this->readSettingValue("bearer_token",null);
-        $proxy = $this->readSettingValue("proxy",null);
-        $data = $this->readSettingValue("data",[]);
-        $verify_host = $this->readSettingValue("verify_host",false);
-        $verify_pear = $this->readSettingValue("verify_pear",false);
-        $return_transfer = $this->readSettingValue("return_transfer",true);
+        $url = rtrim($epObj->getVal("url"), "/") . "/" . ltrim($this->getVal('relative_url'), "/");
+        $bearer_token = AfwSettingsHelper::readSettingValue($this,"bearer_token",null);
+        $proxy = AfwSettingsHelper::readSettingValue($this,"proxy",null);
+        $data = AfwSettingsHelper::readParamsArray($this,"input");
+        $verify_host = AfwSettingsHelper::readSettingValue($this,"verify_host",null);
+        $verify_pear = AfwSettingsHelper::readSettingValue($this,"verify_pear",null);
+        $return_transfer = AfwSettingsHelper::readSettingValue($this,"return_transfer",true);
+        $method = AfwSettingsHelper::readSettingValue($this,"method",'GET');
+        $maxredirs = AfwSettingsHelper::readSettingValue($this,"maxredirs",10);
+        $timeout = AfwSettingsHelper::readSettingValue($this,"timeout",0);
+        $followlocation = AfwSettingsHelper::readSettingValue($this,"followlocation",true);
+        $http_version = AfwSettingsHelper::readSettingValue($this,"http_version",null);
+        $encoding = AfwSettingsHelper::readSettingValue($this,"encoding",'');
+        
+        // $xxxxx = AfwSettingsHelper::readSettingValue($this,"xxxxx",def-xxxxx);
+        $http_header_array = AfwSettingsHelper::readSettingValue($this, "http_header", ['accept: application/json', 'Content-Type: application/json'],"settings",true);
         if($bearer_token)
         {
             $res = AfwApiConsumeHelper::consume_bearer_api(
@@ -144,35 +168,74 @@ class DataApi extends EtlObject
                 $data,
                 $verify_host,
                 $verify_pear,
-                $return_transfer);
-
-            if($res['success'])
-            {
-                return [null, $res['url'] . " executed successfully with result: " . $res['result']];
-            }
-            else
-            {
-                $error_message = "Error while consuming the API : " . $res['message'];
-                return[$error_message, null];
-            }
+                $return_transfer,
+                $encoding,
+                $method,
+                $maxredirs,
+                $timeout,
+                $followlocation,
+                $http_version,
+                $http_header_array);
         }
         else
         {
-            $error_message = $this->tm("No bearer token defined for this API", $lang);
-            return[$error_message, ""];
+            $res = AfwApiConsumeHelper::consume_normal_api($url,
+                $proxy,
+                $data,
+                $verify_host,
+                $verify_pear,
+                $return_transfer,
+                $encoding,
+                $method,
+                $maxredirs,
+                $timeout,
+                $followlocation,
+                $http_version,
+                $http_header_array);
+        }
+
+        if($res['success'])
+        {
+            $success_message = $res['url'] . " executed successfully with result: " . $res['result']."\n";
+            $output = $success_message . "CURL Commands : \n". implode("\n", $res['commands']);
+            $this->set("output", $output);
+            $this->commit();
+            return [null, $success_message];
+        }
+        else
+        {
+            $error_message = "Error while consuming the API : " . $res['message']."\n";
+            $output = $error_message . "CURL Commands : \n". implode("\n", $res['commands']);
+            $this->set("output", $output);
+            $this->commit();
+            return[$error_message, null];
         }
         
     }
 
-    /*
-        public function isTechField($attribute) {
-            return (($attribute=="created_by") or 
-                    ($attribute=="created_at") or 
-                    ($attribute=="updated_by") or 
-                    ($attribute=="updated_at") or 
-                    // ($attribute=="validated_by") or ($attribute=="validated_at") or 
-                    ($attribute=="version"));  
-        }*/
+    public function beforeMaj($id, $fields_updated)
+    {
+        if(isset($fields_updated['source_field_name']) and ((!$this->getVal("name_ar")) or (!$this->getVal("name_en"))))
+        {
+            $name = $this->getVal("source_field_name")."&rarr;".$this->getVal("destination_field_name");
+            if(!$this->getVal("name_ar")) $this->set("name_ar", $name);
+            if(!$this->getVal("name_en")) $this->set("name_en", $name);
+        }
+
+        if($fields_updated['settings'])
+        {
+            $input_arr = AfwSettingsHelper::readParamsArray($this, "input");
+            $input_settings_arr = AfwSettingsHelper::readSettingValue($this,"input");
+            foreach($input_settings_arr as $input_param => $input_param_props_arr)
+            {
+                $input_arr = AfwSettingsHelper::repareParamsArray($input_arr, $input_param, $input_param_props_arr);
+            }
+
+            $this->set("input", AfwSettingsHelper::paramsArrayToString($input_arr));
+        }
+
+        return true;
+    }
 
     public function beforeDelete($id, $id_replace)
     {
