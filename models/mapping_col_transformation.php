@@ -23,7 +23,7 @@ class MappingColTransformation extends EtlObject{
         // مسح  
         public static $BF_DELETE_MAPPING_COL_TRANSFORMATION = 105084; 
   
-        public static $DATABASE		= "tvtc_etl";
+        public static $DATABASE		= "ttc_etl";
         public static $MODULE		        = "etl";        
         public static $TABLE			= "mapping_col_transformation";
 
@@ -98,7 +98,7 @@ class MappingColTransformation extends EtlObject{
         
         public function beforeDelete($id,$id_replace) 
         {
-            $server_db_prefix = AfwSession::config("db_prefix","tvtc_");
+            $server_db_prefix = AfwSession::config("db_prefix","ttc_");
             
             if(!$id)
             {

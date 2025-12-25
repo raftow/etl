@@ -23,7 +23,7 @@ class MappingJob extends EtlObject
     // مهمات التقابل 
     public static $BF_QSEARCH_MAPPING_JOB = 105094;
 
-    public static $DATABASE = "tvtc_etl";
+    public static $DATABASE = "ttc_etl";
     public static $MODULE   = "etl";
     public static $TABLE    = "mapping_job";
 
@@ -95,7 +95,7 @@ class MappingJob extends EtlObject
 
     public function beforeDelete($id, $id_replace)
     {
-        $server_db_prefix = AfwSession::config("db_prefix", "tvtc_");
+        $server_db_prefix = AfwSession::config("db_prefix", "ttc_");
 
         if (! $id) {
             $id    = $this->getId();

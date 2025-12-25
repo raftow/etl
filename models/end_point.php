@@ -30,7 +30,7 @@ class EndPoint extends EtlObject
     // نقاط نهاية
     public static $BF_QSEARCH_END_POINT = 105073;
 
-    public static $DATABASE = 'tvtc_etl';
+    public static $DATABASE = 'ttc_etl';
     public static $MODULE   = 'etl';
 
     public static $TABLE = 'end_point';
@@ -93,7 +93,7 @@ class EndPoint extends EtlObject
     
     public function beforeDelete($id, $id_replace)
     {
-        $server_db_prefix = AfwSession::config("db_prefix", "tvtc_");
+        $server_db_prefix = AfwSession::config("db_prefix", "ttc_");
 
         if (! $id) {
             $id    = $this->getId();
