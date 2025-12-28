@@ -186,6 +186,8 @@ class DataApi extends EtlObject
         $followlocation = AfwSettingsHelper::readSettingValue($this,"followlocation",true);
         $http_version = AfwSettingsHelper::readSettingValue($this,"http_version",null);
         $encoding = AfwSettingsHelper::readSettingValue($this,"encoding",'');
+        $outputPattern = AfwSettingsHelper::readSettingValue($this,"output", ['data'=>["path"=>"data"]]);
+        $outputPatternData = $outputPattern["data"];
         
         // $xxxxx = AfwSettingsHelper::readSettingValue($this,"xxxxx",def-xxxxx);
         $http_header_array = AfwSettingsHelper::readSettingValue($this, "http_header", ['accept: application/json', 'Content-Type: application/json'],"settings",true);
@@ -224,23 +226,63 @@ class DataApi extends EtlObject
                 $http_header_array);
         }
 
+        $log = "CURL Commands : \n". implode("\n", $res['commands']);
+        $this->set("log", $log);
+        $html = "";
         if($res['success'])
         {
-            $success_message = $res['url'] . " executed successfully with result: " . $res['result']."\n";
-            $output = $success_message . "CURL Commands : \n". implode("\n", $res['commands']);
-            $this->set("output", $output);
+            $success_message = $res['url'] . " executed successfully";
+            $output = $success_message . " with response : " . $res['response']."\n";            
+            $this->set("output", $output); 
+            $dataPath = $outputPatternData["path"];
+            $outputPatternExp = var_export($outputPatternData, true);
+            if(is_object($res['result']))
+            {
+                $result_arr = (array) $res['result'];
+            }
+            else {
+                
+                $result_arr = $res['result'];
+            }
+            
+            if(is_array($result_arr))
+            {
+                //die("rafik will do AfwFormatHelper::extractDataFromArray(result_arr, $dataPath, ...) with result_arr = ".var_export($result_arr,true)." ... ");
+                list($header_row,$data_rows, $log) = AfwFormatHelper::extractDataFromArray($result_arr, $dataPath, $outputPatternData["record"]);
+
+            }
+            else throw new AfwRuntimeException("Strange result array from API : ".var_export($res['result'], true));
+            
+
+            if($header_row and $data_rows)
+            {
+                $html = AfwHtmlHelper::tableToHtml($data_rows, null);
+            }
+            else $html = "<b>Json parsed not muching pattern :</b>
+                    <br>$log
+                    <br>dataPath=$dataPath
+                    <br>outputPattern=$outputPatternExp
+                    <br><pre class='code php'>".var_export($res['result'], true)."</pre>";
+            $this->set("html", $html);
             $this->commit();
             return [null, $success_message];
         }
         else
         {
             $error_message = "Error while consuming the API : " . $res['message']."\n";
-            $output = $error_message . "CURL Commands : \n". implode("\n", $res['commands']);
+            $output = $error_message . " with response : " . $res['response']."\n";
             $this->set("output", $output);
+            $this->set("html", $html);
             $this->commit();
             return[$error_message, null];
         }
         
+    }
+
+
+    public function calcShowHtml($what="value")
+    {
+        return $this->getVal("html");
     }
 
     public function beforeMaj($id, $fields_updated)

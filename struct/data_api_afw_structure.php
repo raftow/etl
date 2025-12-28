@@ -80,7 +80,7 @@ class EtlDataApiAfwStructure
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MAXLENGTH' => 3333, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'READONLY'  => false, 'MANDATORY' => true,
-            'COLS' => 80, 'ROWS' => 20,
+            'COLS' => 100, 'ROWS' => 20,
             'CSS'                                  => 'width_pct_100'],
 
         'errorInSettings'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
@@ -97,13 +97,39 @@ class EtlDataApiAfwStructure
             'COLS' => 80, 'ROWS' => 8,
             'CSS'                                  => 'width_pct_100'],
 
+        
+
+
+        'html'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => false, 
+            'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => false, 'QEDIT'       => false,
+            'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
+            'TYPE'                                 => 'TEXT', 'FORMAT' => 'HTML',
+            'CSS'                                  => 'width_pct_100'],
+
+        'showHtml'            => ['STEP' => 3, 'CATEGORY' => 'FORMULA',
+            'SHOW'   => true,  'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => true, 'QEDIT'       => false,
+            'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
+            'TYPE'                                 => 'TEXT', 'READONLY'  => true,  'FORMAT' => 'HTML',
+            'CSS'                                  => 'width_pct_100'],            
+
+
         'output'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'READONLY'  => true, 
-            'COLS' => 80, 'ROWS' => 20, 'PRE' => true,
+            'COLS' => 80, 'ROWS' => 8, 'PRE' => true,
             'CSS'                                  => 'width_pct_100'],
 
+            
+
+        'log'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => true, 'QEDIT'       => false,
+            'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
+            'TYPE'                                 => 'TEXT', 'READONLY'  => true, 
+            'COLS' => 80, 'ROWS' => 8, 'PRE' => true,
+            'CSS'                                  => 'width_pct_100'],
             
     
 

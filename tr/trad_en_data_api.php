@@ -16,6 +16,7 @@ class DataApiEnTranslator{
 		$trad["data_api"]["name_en"] = "English Data api name";
 		$trad["data_api"]["desc_en"] = "English Data api description";
 		$trad["data_api"]["end_point_id"] = "end point";
+		
         // steps
         return $trad;
     }

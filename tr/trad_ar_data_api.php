@@ -18,6 +18,10 @@ class DataApiArTranslator{
 		$trad["data_api"]["end_point_id"] = "نقطة النهاية للبيئة الفعلية";
 		$trad["data_api"]["test_end_point_id"] = "نقطة النهاية للبيئة التجريبية";
 		$trad["data_api"]["relative_url"] = "الرابط النسبى";
+		$trad["data_api"]["html"] = "عرض النتيجة";
+		$trad["data_api"]["log"] = "عرض التفاصيل الفنية";
+		
+		
         // steps
         return $trad;
     }
