@@ -64,13 +64,13 @@ class EtlMappingColAfwStructure {
 		'name_ar' => array('STEP' =>3, 'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
 			'EDIT' => true,  'QEDIT' => true,
 			'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE',  'MANDATORY' => false,  'UTF8' => true,
-			'TYPE' => 'TEXT',  'READONLY' => false,
+			'TYPE' => 'TEXT',  'READONLY' => true,
 			'CSS' => 'width_pct_50', ),
 
         'name_en' => array('STEP' =>3, 'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
 			'EDIT' => true,  'QEDIT' => true,
 			'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => false,  'UTF8' => false,
-			'TYPE' => 'TEXT',  'READONLY' => false,
+			'TYPE' => 'TEXT',  'READONLY' => true,
 			'CSS' => 'width_pct_50', ),	
 
 		'desc_ar' => array('STEP' =>3, 'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,

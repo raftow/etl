@@ -174,57 +174,10 @@ class DataApi extends EtlObject
             return[$error_message, ""];
         }
         $url = rtrim($epObj->getVal("url"), "/") . "/" . ltrim($this->getVal('relative_url'), "/");
-        $bearer_token = AfwSettingsHelper::readSettingValue($this,"bearer_token",null);
-        $proxy = AfwSettingsHelper::readSettingValue($this,"proxy",null);
-        $data = AfwSettingsHelper::readParamsArray($this,"input");
-        $verify_host = AfwSettingsHelper::readSettingValue($this,"verify_host",null);
-        $verify_pear = AfwSettingsHelper::readSettingValue($this,"verify_pear",null);
-        $return_transfer = AfwSettingsHelper::readSettingValue($this,"return_transfer",true);
-        $method = AfwSettingsHelper::readSettingValue($this,"method",'GET');
-        $maxredirs = AfwSettingsHelper::readSettingValue($this,"maxredirs",10);
-        $timeout = AfwSettingsHelper::readSettingValue($this,"timeout",0);
-        $followlocation = AfwSettingsHelper::readSettingValue($this,"followlocation",true);
-        $http_version = AfwSettingsHelper::readSettingValue($this,"http_version",null);
-        $encoding = AfwSettingsHelper::readSettingValue($this,"encoding",'');
+        $res = AfwApiConsumeHelper::runAPI($url, $this, $lang);
+
         $outputPattern = AfwSettingsHelper::readSettingValue($this,"output", ['data'=>["path"=>"data"]]);
         $outputPatternData = $outputPattern["data"];
-        
-        // $xxxxx = AfwSettingsHelper::readSettingValue($this,"xxxxx",def-xxxxx);
-        $http_header_array = AfwSettingsHelper::readSettingValue($this, "http_header", ['accept: application/json', 'Content-Type: application/json'],"settings",true);
-        if($bearer_token)
-        {
-            $res = AfwApiConsumeHelper::consume_bearer_api(
-                $url,
-                $bearer_token,
-                $proxy,
-                $data,
-                $verify_host,
-                $verify_pear,
-                $return_transfer,
-                $encoding,
-                $method,
-                $maxredirs,
-                $timeout,
-                $followlocation,
-                $http_version,
-                $http_header_array);
-        }
-        else
-        {
-            $res = AfwApiConsumeHelper::consume_normal_api($url,
-                $proxy,
-                $data,
-                $verify_host,
-                $verify_pear,
-                $return_transfer,
-                $encoding,
-                $method,
-                $maxredirs,
-                $timeout,
-                $followlocation,
-                $http_version,
-                $http_header_array);
-        }
 
         $log = "CURL Commands : \n". implode("\n", $res['commands']);
         $this->set("log", $log);
@@ -287,12 +240,6 @@ class DataApi extends EtlObject
 
     public function beforeMaj($id, $fields_updated)
     {
-        if(isset($fields_updated['source_field_name']) and ((!$this->getVal("name_ar")) or (!$this->getVal("name_en"))))
-        {
-            $name = $this->getVal("source_field_name")."&rarr;".$this->getVal("destination_field_name");
-            if(!$this->getVal("name_ar")) $this->set("name_ar", $name);
-            if(!$this->getVal("name_en")) $this->set("name_en", $name);
-        }
 
         if($fields_updated['settings'])
         {
