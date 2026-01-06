@@ -87,9 +87,16 @@ class Collection extends AFWObject
         $pbms = array();
 
         $color = "green";
-        $title_ar = "xxxxxxxxxxxxxxxxxxxx";
-        $methodName = "mmmmmmmmmmmmmmmmmmmmmmm";
-        //$pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute( 'xxyy' ) );
+        $title_en = "Import from file";
+        $title_ar = "استيراد من ملف";
+        $methodName = "importFromFile";
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = 
+                    array("METHOD"=>$methodName,"COLOR"=>$color, 
+                        "LABEL_AR"=>$title_ar, 
+                        "LABEL_EN"=>$title_en,
+                        "ADMIN-ONLY"=>true, 
+                        "BF-ID"=>"", 
+                        'STEP' =>$this->stepOfAttribute('mappingJobList') );
 
         return $pbms;
     }
@@ -136,6 +143,48 @@ class Collection extends AFWObject
 
     public function beforeMaj($id, $fields_updated)
     {
+        return true;
+    }
+
+    public function importFromFile($lang='ar')
+    {
+        $collection_id = $this->id;
+        $collection_code = $this->getVal('collection_code');
+        $batch_root_path = "/var/www/hub_batch";        
+        require_once("$batch_root_path/$collection_code/job_api_list_config.php");
+
+        if(!$base_url) throw new AfwRuntimeException("importFromFile: base_url not defined in $batch_root_path/$collection_code/job_api_list_config.php");
+
+        $endPointObj = EndPoint::loadByMainIndex($base_url);
+
+        foreach($job_api_list as $job_api_code => $apiItem)
+        {
+            $relative_url = str_replace($base_url, "", $apiItem['url']);
+            $relative_url = ltrim($relative_url, "/");
+            $dataApiObj = DataApi::loadByMainIndex($endPointObj->id, $relative_url, true);
+            if(!$dataApiObj->getVal('name_ar')) $dataApiObj->set('name_ar', $job_api_code);
+            if(!$dataApiObj->getVal('name_en')) $dataApiObj->set('name_en', $job_api_code);
+            if(!$dataApiObj->getVal("settings")) $dataApiObj->resetSettings();
+            $dataApiObj->commit();
+            $mappingJob = MappingJob::loadByMainIndex($collection_id, $job_api_code, true);
+            if(!$mappingJob)
+            {
+                throw new AfwRuntimeException("importFromFile: cannot create/load mapping job with collection_id=$collection_id code=$job_api_code");
+            }
+            
+            if(!$mappingJob->getVal('name_ar')) $mappingJob->set('name_ar', $job_api_code);
+            if(!$mappingJob->getVal('name_en')) $mappingJob->set('name_en', $job_api_code);
+            
+            $mappingJob->set('end_point_id', $endPointObj->getId());
+            $mappingJob->set('data_api_id', $dataApiObj->getId());
+            $mappingJob->set('atable_name', $apiItem['table_config']['table_name']);
+            $mappingJob->set('pk_cols', implode(",", $apiItem['table_config']['pkey']));
+            $mappingJob->set('collection_id', $this->getId());            
+            if(!$mappingJob->getVal("settings")) $mappingJob->resetSettings($lang, false);
+            $mappingJob->commit();
+        }
+
+
         return true;
     }
 

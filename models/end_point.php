@@ -41,7 +41,6 @@ class EndPoint extends EtlObject
     {
         parent::__construct('end_point', 'id', 'etl');
         EtlEndPointAfwStructure::initInstance($this);
-
     }
 
     public static function loadById($id)
@@ -53,12 +52,75 @@ class EndPoint extends EtlObject
         } else {
             return null;
         }
+    }
+
+    public static function loadByMainIndex($url,$create_obj_if_not_found=false)
+    {
+        if(!$url) throw new AfwRuntimeException("loadByMainIndex : url is mandatory field");
+
+
+        $obj = new EndPoint();
+        $obj->select("url",$url);
+
+        if($obj->load())
+        {
+            if($create_obj_if_not_found) $obj->activate();
+            return $obj;
+        }
+        elseif($create_obj_if_not_found)
+        {
+            $obj->set("url",$url);
+
+            $obj->insertNew();
+            if(!$obj->id) return null; // means beforeInsert rejected insert operation
+            $obj->is_new = true;
+            return $obj;
+        }
+        else return null;
+        
+    }
+
+    public static function loadByName($name_ar, $production, $name_en=null, $create_obj_if_not_found = false)
+    {
+        if (! $name_ar) {
+            throw new AfwRuntimeException('loadByName : name_ar is mandatory field');
+        }
+
+        if (! $production) {
+            throw new AfwRuntimeException('loadByName : production is mandatory field');
+        }
+
+        $obj = new EndPoint();
+        $obj->select('name_ar', $name_ar);
+        $obj->select('production', $production);
+
+        if ($obj->load()) {
+            if ($create_obj_if_not_found) {
+                if($name_en) $obj->set('name_en', $name_en);
+                $obj->activate();
+            }
+
+            return $obj;
+        } elseif ($create_obj_if_not_found) {
+            $obj->set('name_ar', $name_ar);
+            $obj->set('production', $production);
+            $obj->set('name_en', $name_en);
+            $obj->insertNew();
+            if (! $obj->id) {
+                return null;
+            }
+
+            // means beforeInsert rejected insert operation
+            $obj->is_new = true;
+            return $obj;
+        } else {
+            return null;
+        }
 
     }
 
     public function getScenarioItemId($currstep)
     {
-
         return 0;
     }
 
@@ -191,44 +253,7 @@ class EndPoint extends EtlObject
         return $pbms;
     }
 
-    public static function loadByMainIndex($name_ar, $production, $name_en=null, $create_obj_if_not_found = false)
-    {
-        if (! $name_ar) {
-            throw new AfwRuntimeException('loadByMainIndex : name_ar is mandatory field');
-        }
-
-        if (! $production) {
-            throw new AfwRuntimeException('loadByMainIndex : production is mandatory field');
-        }
-
-        $obj = new EndPoint();
-        $obj->select('name_ar', $name_ar);
-        $obj->select('production', $production);
-
-        if ($obj->load()) {
-            if ($create_obj_if_not_found) {
-                if($name_en) $obj->set('name_en', $name_en);
-                $obj->activate();
-            }
-
-            return $obj;
-        } elseif ($create_obj_if_not_found) {
-            $obj->set('name_ar', $name_ar);
-            $obj->set('production', $production);
-            $obj->set('name_en', $name_en);
-            $obj->insertNew();
-            if (! $obj->id) {
-                return null;
-            }
-
-            // means beforeInsert rejected insert operation
-            $obj->is_new = true;
-            return $obj;
-        } else {
-            return null;
-        }
-
-    }
+    
 
 
     public function revertMe($lang = 'ar')
@@ -269,10 +294,10 @@ class EndPoint extends EtlObject
         else $typeEP = 'Test';
 
         if($simulate) {
-            if($new_name_ar and $new_prod) return EndPoint::loadByMainIndex($new_name_ar, $new_prod, $new_name_en, false);
+            if($new_name_ar and $new_prod) return EndPoint::loadByName($new_name_ar, $new_prod, $new_name_en, false);
             return null;
         }
-        $epCloned = EndPoint::loadByMainIndex($new_name_ar, $new_prod, $new_name_en, true);
+        $epCloned = EndPoint::loadByName($new_name_ar, $new_prod, $new_name_en, true);
         if(!$epCloned->is_new) {
             return ['', "No need to clone EP `$name_en` to `$new_name_en`. It already exists with ID : ".$epCloned->id.''];
         }

@@ -12,9 +12,9 @@ class EtlDataApiAfwStructure
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS = '';
 
-            // $obj->UNIQUE_KEY = array( 'XXX', 'YYY' );
+            $obj->UNIQUE_KEY = array( 'end_point_id', 'relative_url' );
             $obj->editByStep = true;
-			$obj->editNbSteps = 4;
+			$obj->editNbSteps = 5;
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;
@@ -28,41 +28,9 @@ class EtlDataApiAfwStructure
 
     public static $DB_STRUCTURE =
     [
-        'id'                 => ['SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'],
+        'id'                 => ['STEP' => 1, 'SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'],
 
-        'name_ar'            => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE-AR'                 => true,
-            'EDIT'                                 => true, 'QEDIT'      => true,
-            'SIZE'                                 => 128, 'MAXLENGTH'   => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => true, 'UTF8' => true,
-            'TYPE'                                 => 'TEXT', 'READONLY' => false,
-            'CSS'                                  => 'width_pct_50'],
-
-        'name_en'            => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE-EN'               => true,
-            'EDIT'                                 => true, 'QEDIT'      => true,
-            'SIZE'                                 => 128, 'MAXLENGTH'   => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY' => false,
-            'CSS'                                  => 'width_pct_50'],
-
-        'desc_ar'            => ['SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 32, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => true,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => false,
-            'CSS'                                  => 'width_pct_50'],
-
-        'desc_en'            => ['SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 32, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => false,
-            'CSS'                                  => 'width_pct_50'],
-
-        'test_end_point_id'  => ['SHORTNAME' => 'point', 'SEARCH'       => true, 'QSEARCH'          => false, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => false,
-            'EDIT'                                    => true, 'QEDIT'           => true,
-            'SIZE'                                    => 32, 'MAXLENGTH'         => 32, 'MIN-SIZE'           => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
-            'TYPE'                                    => 'FK', 'ANSWER'          => 'end_point', 'ANSMODULE' => 'etl',
-            'WHERE'                                   => "production = 'N'",
-            'RELATION'                                => 'OneToMany', 'READONLY' => false, 'DNA'             => true,
-            'CSS'                                     => 'width_pct_50'],
-
-        'end_point_id'       => ['SHORTNAME' => 'point', 'SEARCH'       => true, 'QSEARCH'          => false, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => false,
+        'end_point_id'       => ['STEP' => 1, 'SHORTNAME' => 'point', 'SEARCH'       => true, 'QSEARCH'          => false, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => false,
             'EDIT'                                    => true, 'QEDIT'           => true,
             'SIZE'                                    => 32, 'MAXLENGTH'         => 32, 'MIN-SIZE'           => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
             'TYPE'                                    => 'FK', 'ANSWER'          => 'end_point', 'ANSMODULE' => 'etl',
@@ -70,27 +38,61 @@ class EtlDataApiAfwStructure
             'RELATION'                                => 'OneToMany', 'READONLY' => false, 'DNA'             => true,
             'CSS'                                     => 'width_pct_50'],
 
-        'relative_url'       => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE'               => true,
+        'relative_url'       => ['STEP' => 1, 'SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE'               => true,
             'EDIT'                            => true, 'QEDIT'      => true,
             'SIZE'                            => 128, 'MAXLENGTH'   => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8' => false,
             'TYPE'                            => 'TEXT', 'READONLY' => false,
             'CSS'                             => 'width_pct_100'],
 
-        'settings'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+
+        'name_ar'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE-AR'                 => true,
+            'EDIT'                                 => true, 'QEDIT'      => true,
+            'SIZE'                                 => 128, 'MAXLENGTH'   => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => true, 'UTF8' => true,
+            'TYPE'                                 => 'TEXT', 'READONLY' => false,
+            'CSS'                                  => 'width_pct_50'],
+
+        'name_en'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE-EN'               => true,
+            'EDIT'                                 => true, 'QEDIT'      => true,
+            'SIZE'                                 => 128, 'MAXLENGTH'   => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8' => false,
+            'TYPE'                                 => 'TEXT', 'READONLY' => false,
+            'CSS'                                  => 'width_pct_50'],
+
+        'desc_ar'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => true, 'QEDIT'       => false,
+            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 32, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => true,
+            'TYPE'                                 => 'TEXT', 'READONLY'  => false,
+            'CSS'                                  => 'width_pct_50'],
+
+        'desc_en'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => true, 'QEDIT'       => false,
+            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 32, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
+            'TYPE'                                 => 'TEXT', 'READONLY'  => false,
+            'CSS'                                  => 'width_pct_50'],
+
+        'test_end_point_id'  => ['STEP' => 2, 'SHORTNAME' => 'point', 'SEARCH'       => true, 'QSEARCH'          => false, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => false,
+            'EDIT'                                    => true, 'QEDIT'           => true,
+            'SIZE'                                    => 32, 'MAXLENGTH'         => 32, 'MIN-SIZE'           => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
+            'TYPE'                                    => 'FK', 'ANSWER'          => 'end_point', 'ANSMODULE' => 'etl',
+            'WHERE'                                   => "production = 'N'",
+            'RELATION'                                => 'OneToMany', 'READONLY' => false, 'DNA'             => true,
+            'CSS'                                     => 'width_pct_50'],
+
+
+        'settings'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MAXLENGTH' => 3333, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'READONLY'  => false, 'MANDATORY' => true,
             'COLS' => 100, 'ROWS' => 20,
             'CSS'                                  => 'width_pct_100'],
 
-        'errorInSettings'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+        'errorInSettings'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 256, 'MAXLENGTH' => 256, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'CATEGORY' => 'FORMULA', 'TYPE' => 'TEXT', 'READONLY'  => true, 'NO-LABEL'           => true,
             'CSS'                                  => 'width_pct_100'],
 
 
-        'input'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+        'input'            => ['STEP' => 4, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'READONLY'  => false, 
@@ -100,14 +102,14 @@ class EtlDataApiAfwStructure
         
 
 
-        'html'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => false, 
+        'html'            => ['STEP' => 4, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => false, 
             'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => false, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'FORMAT' => 'HTML',
             'CSS'                                  => 'width_pct_100'],
 
-        'showHtml'            => ['STEP' => 3, 'CATEGORY' => 'FORMULA',
+        'showHtml'            => ['STEP' => 4, 'CATEGORY' => 'FORMULA',
             'SHOW'   => true,  'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
@@ -115,7 +117,7 @@ class EtlDataApiAfwStructure
             'CSS'                                  => 'width_pct_100'],            
 
 
-        'output'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+        'output'            => ['STEP' => 4, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'READONLY'  => true, 
@@ -124,19 +126,19 @@ class EtlDataApiAfwStructure
 
             
 
-        'log'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+        'log'            => ['STEP' => 4, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
             'TYPE'                                 => 'TEXT', 'READONLY'  => true, 
             'COLS' => 80, 'ROWS' => 8, 'PRE' => true,
             'CSS'                                  => 'width_pct_100'],
 
-        'executionLogList' => array('STEP' => 4, 'SHORTNAME' => 'executionLogs',  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
+        'executionLogList' => array('STEP' => 5, 'SHORTNAME' => 'executionLogs',  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => false,  'QEDIT' => false,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'FK',  
 				'CATEGORY' => 'ITEMS',  'ANSWER' => 'execution_log',  'ANSMODULE' => 'etl',  'ITEM' => 'data_api_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
-				'CSS' => 'width_pct_50', ),
+				'CSS' => 'width_pct_100', ),
 
             
     

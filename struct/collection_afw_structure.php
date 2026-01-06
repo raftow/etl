@@ -10,12 +10,11 @@ class EtlCollectionAfwStructure
             $obj->DISPLAY_FIELD_BY_LANG                 = ['ar' => 'name_ar', 'en' => 'name_en'];
 
             $obj->IS_LOOKUP       = true;
+            $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS = '';
 
             $obj->UNIQUE_KEY = ['collection_code'];
 
-            $obj->showQeditErrors      = true;
-            $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;
             $obj->editByStep = true;
 	    $obj->editNbSteps = 2;
@@ -66,7 +65,7 @@ class EtlCollectionAfwStructure
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'FK',  
 				'CATEGORY' => 'ITEMS',  'ANSWER' => 'mapping_job',  'ANSMODULE' => 'etl',  'ITEM' => 'collection_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
-				'CSS' => 'width_pct_50', ),
+				'CSS' => 'width_pct_100', ),
 
         'created_by'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'],
         'created_at'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'],

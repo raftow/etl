@@ -125,7 +125,7 @@ class EtlObject extends AfwMomkenObject
 
     
 
-    public function resetSettings()
+    public function resetSettings($lang='ar', $commit=true)
     {
         $this->set('settings', '{
             "bearer_token":"",
@@ -143,7 +143,7 @@ class EtlObject extends AfwMomkenObject
 
         }');
 
-        $this->commit();
+        if($commit) $this->commit();
     }
 
 

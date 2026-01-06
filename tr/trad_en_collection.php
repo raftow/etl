@@ -5,7 +5,9 @@ class CollectionEnTranslator{
     {
         $trad = [];
 		$trad["collection"]["step1"] = "Define Collection";
-		$trad["collection"]["step2"] = "Tasks";
+		$trad["collection"]["step2"] = "Jobs";
+		
+		$trad["collection"]["mappingJobList"] = "Jobs";
 
 		$trad["collection"]["collection.single"] = "collection";
 		$trad["collection"]["collection.new"] = "new";

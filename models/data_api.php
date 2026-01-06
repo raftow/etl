@@ -33,6 +33,35 @@ class DataApi extends EtlObject
 
     }
 
+    public static function loadByMainIndex($end_point_id, $relative_url,$create_obj_if_not_found=false)
+    {
+        if(!$end_point_id) throw new AfwRuntimeException("loadByMainIndex : end_point_id is mandatory field");
+        if(!$relative_url) throw new AfwRuntimeException("loadByMainIndex : relative_url is mandatory field");
+
+
+        $obj = new DataApi();
+        $obj->select("end_point_id",$end_point_id);
+        $obj->select("relative_url",$relative_url);
+
+        if($obj->load())
+        {
+            if($create_obj_if_not_found) $obj->activate();
+            return $obj;
+        }
+        elseif($create_obj_if_not_found)
+        {
+            $obj->set("end_point_id",$end_point_id);
+            $obj->set("relative_url",$relative_url);
+
+            $obj->insertNew();
+            if(!$obj->id) return null; // means beforeInsert rejected insert operation
+            $obj->is_new = true;
+            return $obj;
+        }
+        else return null;
+        
+    }
+
     public function getScenarioItemId($currstep)
     {
         return 0;

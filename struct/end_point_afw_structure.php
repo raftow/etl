@@ -10,7 +10,7 @@ class EtlEndPointAfwStructure
             $obj->DISPLAY_FIELD_BY_LANG                 = ['ar' => 'name_ar', 'en' => 'name_en'];
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS      = '';
-            $obj->UNIQUE_KEY           = ['name_ar', 'production'];
+            $obj->UNIQUE_KEY           = ['url'];
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;

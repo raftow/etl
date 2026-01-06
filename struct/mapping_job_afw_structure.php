@@ -12,7 +12,7 @@ class EtlMappingJobAfwStructure
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS = '';
             $obj->editByStep      = true;
-            $obj->editNbSteps     = 4;
+            $obj->editNbSteps     = 5;
             $obj->UNIQUE_KEY      = ['collection_id', 'lookup_code'];
 
             $obj->showQeditErrors      = true;
@@ -40,7 +40,7 @@ class EtlMappingJobAfwStructure
 
         'lookup_code'        => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'               => true,
             'EDIT'                                 => true, 'QEDIT'      => true,
-            'SIZE'                                 => 16, 'MAXLENGTH'    => 16, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8' => true,
+            'SIZE'                                 => 64, 'MAXLENGTH'    => 64, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8' => true,
             'TYPE'                                 => 'TEXT', 'READONLY' => false, 'DNA'   => true,
             'CSS'                                  => 'width_pct_50'],
 
@@ -109,6 +109,13 @@ class EtlMappingJobAfwStructure
             'SHOW'                               => true, 'FORMAT'      => 'retrieve', 'EDIT'            => false, 'READONLY'          => true,
             'ICONS'                              => true, 'DELETE-ICON' => true, 'BUTTONS'               => true, 'NO-LABEL'           => false,
             'CSS'                                => 'width_pct_100'],
+
+        'executionLogList' => array('STEP' => 5, 'SHORTNAME' => 'executionLogs',  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
+				'EDIT' => false,  'QEDIT' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
+				'TYPE' => 'FK',  
+				'CATEGORY' => 'ITEMS',  'ANSWER' => 'execution_log',  'ANSMODULE' => 'etl',  'ITEM' => 'mapping_job_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
+				'CSS' => 'width_pct_100', ),
 
         'created_by'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'],
         'created_at'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'],
