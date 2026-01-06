@@ -34,19 +34,23 @@ class EtlMappingColAfwStructure {
 			'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => true,  'UTF8' => false,
 			'TYPE' => 'FK',  'ANSWER' => 'mapping_job',  'ANSMODULE' => 'etl',
 			'RELATION' => 'OneToMany',  'READONLY' => true,  'DNA' => true,
-			'CSS' => 'width_pct_50', ),
+			'CSS' => 'width_pct_25', ),
 
-        'source_field_name' => array( 'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
+        'source_field_name' => array( 'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,
 			'EDIT' => true,  'QEDIT' => true,
 			'SIZE' => 48,  'MAXLENGTH' => 48,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => true,  'UTF8' => false,
 			'TYPE' => 'TEXT',  'READONLY' => false,
 			'CSS' => 'width_pct_25', ),
 
-        'destination_field_name' => array( 'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
+        'destination_field_name' => array( 'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,
 			'EDIT' => true,  'QEDIT' => true,
 			'SIZE' => 48,  'MAXLENGTH' => 48,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => true,  'UTF8' => false,
 			'TYPE' => 'TEXT',  'READONLY' => false,
 			'CSS' => 'width_pct_25', ),
+
+        'active'             => array( 'STEP' =>1, 'HIDE_IF_NEW' => true, 
+          'SHOW' => true, 'RETRIEVE' => true, 'EDIT' => true, 'QEDIT' => true,
+         'DEFAULT' => 'Y', 'TYPE' => 'YN', 'FORMAT' => 'icon' ),
 
         /*'field_name' => array( 'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
 			'EDIT' => true,  'QEDIT' => true,
@@ -91,7 +95,7 @@ class EtlMappingColAfwStructure {
         'updated_at'         => array( 'STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields' ),
         'validated_by'       => array( 'STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields' ),
         'validated_at'       => array( 'STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields' ),
-        'active'             => array( 'STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'EDIT' => false, 'QEDIT' => false, 'DEFAULT' => 'Y', 'TYPE' => 'YN', 'FGROUP' => 'tech_fields' ),
+        
         'version'            => array( 'STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'INT', 'FGROUP' => 'tech_fields' ),
         'draft'             => array( 'STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'EDIT' => false, 'QEDIT' => false, 'DEFAULT' => 'Y', 'TYPE' => 'YN', 'FGROUP' => 'tech_fields' ),
         'update_groups_mfk' => array( 'STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'ANSWER' => 'ugroup', 'ANSMODULE' => 'ums', 'TYPE' => 'MFK', 'FGROUP' => 'tech_fields' ),

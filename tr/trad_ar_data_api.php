@@ -7,6 +7,8 @@ class DataApiArTranslator{
 		$trad["data_api"]["step1"] = "تعريف الخدمة";
 		$trad["data_api"]["step2"] = "الإعدادات";
 		$trad["data_api"]["step3"] = "تنفيذ";
+		$trad["data_api"]["step4"] = "آثار التنفيذ";
+		$trad["data_api"]["executionLogList"] = "سجلات آثار التنفيذ";
 
 		$trad["data_api"]["dataapi.single"] = "خدمة بيانات";
 		$trad["data_api"]["dataapi.new"] = "جديد(ة)";

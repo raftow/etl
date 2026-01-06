@@ -5,6 +5,7 @@ class MappingColTransformationArTranslator{
     {
         $trad = [];
 
+		
 		$trad["mapping_col_transformation"]["mappingcoltransformation.single"] = "تحويل حقل";
 		$trad["mapping_col_transformation"]["mappingcoltransformation.new"] = "جديد(ة)";
 		$trad["mapping_col_transformation"]["mapping_col_transformation"] = "تحويلات الحقول";

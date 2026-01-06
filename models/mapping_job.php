@@ -47,6 +47,36 @@ class MappingJob extends EtlObject
 
     }
 
+    public static function loadByMainIndex($collection_id, $lookup_code,$create_obj_if_not_found=false)
+    {
+        if(!$collection_id) throw new AfwRuntimeException("loadByMainIndex : collection_id is mandatory field");
+        if(!$lookup_code) throw new AfwRuntimeException("loadByMainIndex : lookup_code is mandatory field");
+
+
+        $obj = new MappingJob();
+        $obj->select("collection_id",$collection_id);
+        $obj->select("lookup_code",$lookup_code);
+
+        if($obj->load())
+        {
+            if($create_obj_if_not_found) $obj->activate();
+            return $obj;
+        }
+        elseif($create_obj_if_not_found)
+        {
+            $obj->set("collection_id",$collection_id);
+            $obj->set("lookup_code",$lookup_code);
+
+            $obj->insertNew();
+            if(!$obj->id) return null; // means beforeInsert rejected insert operation
+            $obj->is_new = true;
+            return $obj;
+        }
+        else return null;
+        
+    }
+
+
     public function getScenarioItemId($currstep)
     {
         return 0;

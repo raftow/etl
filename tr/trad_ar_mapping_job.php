@@ -22,6 +22,9 @@ class MappingJobArTranslator{
 		$trad["mapping_job"]["atable_name"] = "رمز الجدول";
 		$trad["mapping_job"]["pk_cols"] = "حقول المفتاح الوحيد";
 		$trad["mapping_job"]["mappingColList"] = "حقول التقابل";
+		$trad["mapping_job"]["collection_id"] = "المجموعة";
+
+	
         // steps
         return $trad;
     }

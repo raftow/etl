@@ -13,7 +13,7 @@ class EtlMappingJobAfwStructure
             $obj->ORDER_BY_FIELDS = '';
             $obj->editByStep      = true;
             $obj->editNbSteps     = 4;
-            $obj->UNIQUE_KEY      = ['lookup_code'];
+            $obj->UNIQUE_KEY      = ['collection_id', 'lookup_code'];
 
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
@@ -29,6 +29,14 @@ class EtlMappingJobAfwStructure
     public static $DB_STRUCTURE =
     [
         'id'                 => ['SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'],
+
+        'collection_id' => array('SHORTNAME' => 'collection',  'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
+				'EDIT' => true,  'QEDIT' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'TYPE' => 'FK',  'ANSWER' => 'collection',  'ANSMODULE' => 'etl',  
+				'RELATION' => 'OneToMany',  'READONLY' => false,  'DNA' => true, 
+				'CSS' => 'width_pct_50', ),
+
 
         'lookup_code'        => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'               => true,
             'EDIT'                                 => true, 'QEDIT'      => true,

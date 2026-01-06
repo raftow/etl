@@ -22,6 +22,7 @@ class MappingJobEnTranslator{
 		$trad["mapping_job"]["pk_cols"] = "Primary Key columns";
 		$trad["mapping_job"]["atable_name"] = "Table code";
 		$trad["mapping_job"]["mappingColList"] = "Mapping columns";
+		$trad["mapping_job"]["collection_id"] = "Collection";
         // steps
         return $trad;
     }
