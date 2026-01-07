@@ -77,6 +77,14 @@ class MappingJob extends EtlObject
     }
 
 
+    public function getDefaultPattern($pattern_type)
+    {
+        $default = ['data'=>["path"=>"data"]];
+        $collectionObj = Collection::loadById($this->get("collection_id"));
+        if($collectionObj) $default = AfwSettingsHelper::readSettingValue($collectionObj,$pattern_type, $default);
+        return AfwSettingsHelper::readSettingValue($this,$pattern_type, $default);
+    }
+
     public function getScenarioItemId($currstep)
     {
         return 0;

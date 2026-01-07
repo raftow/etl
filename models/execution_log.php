@@ -77,7 +77,64 @@ class ExecutionLog extends AFWObject{
            
         }
 
-        
+        public function calcShowHtml($what="value")
+        {
+            $dataApiObj = $this->het("data_api_id");
+            if(!$dataApiObj)
+            {
+                return "Strange data_api_id=".$this->getVal("data_api_id")." in ExecutionLog id=".$this->getId();
+            }
+
+
+            $mappingJobObj = $this->het("mapping_job_id");
+            if(!$mappingJobObj)
+            {
+                return "Strange mapping_job_id=".$this->getVal("mapping_job_id")." in ExecutionLog id=".$this->getId();
+            }
+
+            /**
+             * @var DataApi $dataApiObj
+             * @var MappingJob $mappingJobObj
+             */
+
+            $defaultPattern = $mappingJobObj->getDefaultPattern("output");
+            $outputPattern = AfwSettingsHelper::readSettingValue($dataApiObj,"output", $defaultPattern);
+            $outputPatternData = $outputPattern["data"];
+            $dataPath = $outputPatternData["path"];
+            $outputPatternExp = var_export($outputPatternData, true);
+            
+            $output = $this->getVal("output");
+            $result_json_decoded = json_decode($output);
+
+            if(is_object($result_json_decoded))
+            {
+                $result_arr = (array) $result_json_decoded;
+            }
+            else
+            {
+                $result_arr = $result_json_decoded;
+            }
+            
+
+            if(is_array($result_arr))
+            {
+                //die("rafik will do AfwFormatHelper::extractDataFromArray(result_arr, $dataPath, ...) with result_arr = ".var_export($result_arr,true)." ... ");
+                list($header_row,$data_rows, $log) = AfwFormatHelper::extractDataFromArray($result_arr, $dataPath, $outputPatternData["record"]);
+            }
+            else throw new AfwRuntimeException("Strange output response can't be decoded as array");
+            
+
+            if($header_row and $data_rows)
+            {
+                $html = AfwHtmlHelper::tableToHtml($data_rows, null);
+            }
+            else $html = "<b>Json parsed not muching pattern :</b>
+                    <br>$log
+                    <br>dataPath=$dataPath
+                    <br>outputPattern=$outputPatternExp";
+
+            return $html;
+        }
 
         public function getScenarioItemId($currstep)
         {

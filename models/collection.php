@@ -4,7 +4,7 @@ $file_dir_name = dirname(__FILE__);
 
 // require_once( "$file_dir_name/../afw/afw.php" );
 
-class Collection extends AFWObject
+class Collection extends EtlObject
 {
 
     public static $MY_ATABLE_ID = 13979;

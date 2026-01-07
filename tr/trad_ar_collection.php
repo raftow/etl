@@ -7,6 +7,7 @@ class CollectionArTranslator{
 
 		$trad["collection"]["step1"] = "تعريف المجموعة";
 		$trad["collection"]["step2"] = "المهام";
+		$trad["collection"]["step3"] = "الإعدادات";
 
 		$trad["collection"]["collection.single"] = "مجموعة";
 		$trad["collection"]["collection.new"] = "جديد(ة)";

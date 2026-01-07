@@ -231,7 +231,6 @@ class DataApi extends EtlObject
             {
                 //die("rafik will do AfwFormatHelper::extractDataFromArray(result_arr, $dataPath, ...) with result_arr = ".var_export($result_arr,true)." ... ");
                 list($header_row,$data_rows, $log) = AfwFormatHelper::extractDataFromArray($result_arr, $dataPath, $outputPatternData["record"]);
-
             }
             else throw new AfwRuntimeException("Strange result array from API : ".var_export($res['result'], true));
             

@@ -7,6 +7,8 @@ class ExecutionLogEnTranslator{
 
 		$trad["execution_log"]["step1"] = "Execution";
 		$trad["execution_log"]["step2"] = "Results";
+		$trad["execution_log"]["step3"] = "Show Table";
+		$trad["execution_log"]["showHtml"] = "Show Table";
 
 		$trad["execution_log"]["executionlog.single"] = "API Execution log";
 		$trad["execution_log"]["executionlog.new"] = "new";

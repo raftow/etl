@@ -7,7 +7,8 @@ class ExecutionLogArTranslator{
 
 		$trad["execution_log"]["step1"] = "التنفيذ";
 		$trad["execution_log"]["step2"] = "النتائج";
-
+		$trad["execution_log"]["step3"] = "عرض جدولي";
+		$trad["execution_log"]["showHtml"] = "عرض جدولي";
 
 		$trad["execution_log"]["executionlog.single"] = "أثر تنفيذ خدمة";
 		$trad["execution_log"]["executionlog.new"] = "جديد(ة)";

@@ -17,7 +17,7 @@ class EtlCollectionAfwStructure
 
             $obj->general_check_errors = true;
             $obj->editByStep = true;
-	    $obj->editNbSteps = 2;
+	    $obj->editNbSteps = 3;
             // $obj->after_save_edit = array( 'class'=>'Collection', 'attribute'=>'xxxx_id', 'currmod'=>'etl', 'currstep'=>2 );
             $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'Collection', 'submit' => true];
         } else {
@@ -66,6 +66,20 @@ class EtlCollectionAfwStructure
 				'TYPE' => 'FK',  
 				'CATEGORY' => 'ITEMS',  'ANSWER' => 'mapping_job',  'ANSMODULE' => 'etl',  'ITEM' => 'collection_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
 				'CSS' => 'width_pct_100', ),
+
+        'settings'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => true, 'QEDIT'       => false,
+            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 3333, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
+            'TYPE'                                 => 'TEXT', 'READONLY'  => false, 'MANDATORY' => true,
+            'COLS' => 100, 'ROWS' => 20,
+            'CSS'                                  => 'width_pct_100'],
+
+        'errorInSettings'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+            'EDIT'                                 => true, 'QEDIT'       => false,
+            'SIZE'                                 => 256, 'MAXLENGTH' => 256, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
+            'CATEGORY' => 'FORMULA', 'TYPE' => 'TEXT', 'READONLY'  => true, 'NO-LABEL'           => true,
+            'CSS'                                  => 'width_pct_100'],
+
 
         'created_by'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'],
         'created_at'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'],

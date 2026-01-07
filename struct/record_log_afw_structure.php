@@ -1,28 +1,28 @@
 <?php
 
-class EtlExecutionLogAfwStructure
+class EtlRecordLogAfwStructure
 {
     // token separator = §
     public static function initInstance(&$obj)
     {
-        if ($obj instanceof ExecutionLog) {
+        if ($obj instanceof RecordLog) {
             $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
 
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS = '';
 
-            $obj->UNIQUE_KEY = ['mapping_job_id', 'data_api_id', 'run_date'];
+            $obj->UNIQUE_KEY = ['mapping_job_id', 'data_api_id', 'run_date', 'record_definition'];
 
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;
             $obj->editByStep           = true;
             $obj->editNbSteps          = 3;
-            // $obj->after_save_edit = array( 'class'=>'ExecutionLog', 'attribute'=>'xxxx_id', 'currmod'=>'etl', 'currstep'=>2 );
-            $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'ExecutionLog', 'submit' => true];
+            // $obj->after_save_edit = array( 'class'=>'RecordLog', 'attribute'=>'xxxx_id', 'currmod'=>'etl', 'currstep'=>2 );
+            $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'RecordLog', 'submit' => true];
         } else {
-            ExecutionLogArTranslator::initData();
-            ExecutionLogEnTranslator::initData();
+            RecordLogArTranslator::initData();
+            RecordLogEnTranslator::initData();
         }
     }
 
@@ -50,26 +50,28 @@ class EtlExecutionLogAfwStructure
             'TYPE'                                 => 'DATETIME', 'READONLY' => true,
             'CSS'                                  => 'width_pct_50'],
 
-        'findword'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
-            'EDIT'                                 => true, 'QEDIT'      => true,
-            'SIZE'                                 => 32, 'MAXLENGTH'    => 64, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => false, 'UTF8' => true,
-            'TYPE'                                 => 'TEXT', 'READONLY' => false,
-            'CSS'                                  => 'width_pct_50'],
 
-        'input'              => ['SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
+        'record_definition'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
+            'EDIT'                                 => true, 'QEDIT'      => true,
+            'SIZE'                                 => 255, 'MAXLENGTH'    => 255, 'MIN-SIZE' => 4, // ex 'id:1'
+            'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => false, 'UTF8' => true,
+            'TYPE'                                 => 'TEXT', 'READONLY' => false,
+            'CSS'                                  => 'width_pct_50'],            
+
+        'record_json'              => ['SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
             'EDIT'                                 => true, 'QEDIT'       => false,
             'SIZE'                                 => 'AREA', 'MAXLENGTH' => 32, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => true,
             'TYPE'                                 => 'TEXT', 'READONLY'  => true,
             'CSS'                                  => 'width_pct_100'],
 
 
-        'output_title'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
+        'log_title'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
             'EDIT'                                 => true, 'QEDIT'      => true,
             'SIZE'                                 => 96, 'MAXLENGTH'    => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => true, 'UTF8' => true,
             'TYPE'                                 => 'TEXT', 'READONLY' => true,
             'CSS'                                  => 'width_pct_100'],
 
-        'output'             => ['STEP' => 2, 'SEARCH'         => true, 'QSEARCH' => true, 'SHOW'       => true, 'AUDIT'              => false, 'RETRIEVE' => false,
+        'log_details'             => ['STEP' => 2, 'SEARCH'         => true, 'QSEARCH' => true, 'SHOW'       => true, 'AUDIT'              => false, 'RETRIEVE' => false,
             'EDIT'                               => true, 'QEDIT'       => false,
             'SIZE'                               => 'AREA', 'MAXLENGTH' => 9999999999999, 'MIN-SIZE'  => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => true,
             'TYPE'                               => 'TEXT', 'READONLY'  => true,
