@@ -8,6 +8,9 @@ class MappingColEnTranslator{
 		$trad["mapping_col"]["step2"] = "Transformations";
 		$trad["mapping_col"]["step3"] = "Description";
 
+		$trad["mapping_col"]["mappingColTransformationList"] = "Follwing transformations will be executed by order";
+
+
 		$trad["mapping_col"]["mappingcol.single"] = "mapping column";
 		$trad["mapping_col"]["mappingcol.new"] = "new";
 		$trad["mapping_col"]["mapping_col"] = "mapping columns";

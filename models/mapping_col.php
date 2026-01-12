@@ -72,7 +72,7 @@ class MappingCol extends EtlObject
         $otherLinksArray = $this->getOtherLinksArrayStandard($mode, $genereLog, $step);
         $my_id           = $this->getId();
         $displ           = $this->getDisplay($lang);
-
+/*
         if ($mode == "mode_mappingColTransformationList") {
             unset($link);
             $link              = [];
@@ -82,15 +82,16 @@ class MappingCol extends EtlObject
             $link["TITLE"]     = $title;
             $link["UGROUPS"]   = [];
             $otherLinksArray[] = $link;
-        }
+        }*/
 
         if ($mode == "mode_mappingColTransformationList") {
             unset($link);
             $link              = [];
-            $title             = "إضافة تحويل حقل جديد";
-            $title_detailed    = $title . "لـ : " . $displ;
+            $title_ar             = "إضافة تحويل حقل جديد";
+            $title_en             = "Add new transformation";
+            // $title_detailed    = $title_en . "لـ : " . $displ;
             $link["URL"]       = "main.php?Main_Page=afw_mode_edit.php&cl=MappingColTransformation&currmod=etl&sel_mapping_col_id=$my_id";
-            $link["TITLE"]     = $title;
+            $link["TITLE"]     = $title_en;
             $link["UGROUPS"]   = [];
             $otherLinksArray[] = $link;
         }

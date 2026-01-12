@@ -30,14 +30,14 @@ class EtlRecordLogAfwStructure
     [
         'id'                 => ['SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'],
 
-        'mapping_job_id'     => ['SHORTNAME' => 'job', 'SEARCH'    => true, 'QSEARCH'            => false, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => true,
+        'mapping_job_id'     => ['SHORTNAME' => 'job', 'SEARCH'    => true, 'QSEARCH'            => true, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => true,
             'EDIT'                                    => true, 'QEDIT'      => true,
             'SIZE'                                    => 32, 'MAXLENGTH'    => 32, 'MIN-SIZE'             => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
             'TYPE'                                    => 'FK', 'ANSWER'     => 'mapping_job', 'ANSMODULE' => 'etl',
             'RELATION'                                => 'OneToMany', 'READONLY' => true, 'DNA'               => true,
             'CSS'                                     => 'width_pct_50'],
 
-        'data_api_id'        => ['SHORTNAME' => 'api', 'SEARCH'    => true, 'QSEARCH'         => false, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => true,
+        'data_api_id'        => ['SHORTNAME' => 'api', 'SEARCH'    => true, 'QSEARCH'         => true, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => true,
             'EDIT'                                    => true, 'QEDIT'      => true,
             'SIZE'                                    => 32, 'MAXLENGTH'    => 32, 'MIN-SIZE'          => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
             'TYPE'                                    => 'FK', 'ANSWER'     => 'data_api', 'ANSMODULE' => 'etl',
@@ -65,7 +65,7 @@ class EtlRecordLogAfwStructure
             'CSS'                                  => 'width_pct_100'],
 
 
-        'log_title'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
+        'log_title'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => true,
             'EDIT'                                 => true, 'QEDIT'      => true,
             'SIZE'                                 => 96, 'MAXLENGTH'    => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => true, 'UTF8' => true,
             'TYPE'                                 => 'TEXT', 'READONLY' => true,

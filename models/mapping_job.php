@@ -104,10 +104,12 @@ class MappingJob extends EtlObject
         if ($mode == "mode_mappingColList") {
             unset($link);
             $link              = [];
-            $title             = "إضافة حقل تقابل جديد";
-            $title_detailed    = $title . "لـ : " . $displ;
+            $title_ar             = "إضافة حقل تقابل جديد";
+            $title_en             = "Add new mapped column";
+            // $title_detailed    = $title . "لـ : " . $displ;
             $link["URL"]       = "main.php?Main_Page=afw_mode_edit.php&cl=MappingCol&currmod=etl&sel_mapping_job_id=$my_id";
-            $link["TITLE"]     = $title;
+            $link["TITLE_AR"]     = $title_ar;
+            $link["TITLE"]     = $title_en;
             $link["UGROUPS"]   = [];
             $otherLinksArray[] = $link;
         }

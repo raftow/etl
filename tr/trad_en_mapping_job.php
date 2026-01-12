@@ -8,6 +8,8 @@ class MappingJobEnTranslator{
 		$trad["mapping_job"]["step2"] = "Implementation";
 		$trad["mapping_job"]["step3"] = "Advanced settings";
 		$trad["mapping_job"]["step4"] = "Mapping columns";
+		$trad["mapping_job"]["step5"] = "Execution Log";
+
 
 		$trad["mapping_job"]["mappingjob.single"] = "mapping job";
 		$trad["mapping_job"]["mappingjob.new"] = "new";

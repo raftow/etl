@@ -10,7 +10,7 @@ $config_arr = array(
         'x_module_means_company'=>false,
 
 
-        'application_name' => ['ar' => 'ا-ت-ت', 'en' => 'ETL',],
+        'application_name' => ['ar' => 'ا-ح-ح', 'en' => 'TVTC ETL',],
                                   
         'no_menu_for_login' => true,
 

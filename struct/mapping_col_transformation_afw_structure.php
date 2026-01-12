@@ -35,26 +35,26 @@ class EtlMappingColTransformationAfwStructure
                 'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => true,  'UTF8' => false,
                 'TYPE' => 'FK',  'ANSWER' => 'mapping_col',  'ANSMODULE' => 'etl',
                 'RELATION' => 'OneToMany',  'READONLY' => false,  'DNA' => true,
-                'CSS' => 'width_pct_50', ),
+                'CSS' => 'width_pct_33', ),
 
-        'transformation_order' => array( 'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
+        'transformation_order' => array( 'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,
                 'EDIT' => true,  'QEDIT' => false,
                 'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => true,  'UTF8' => false,
                 'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true,
-                'CSS' => 'width_pct_50', ),
+                'CSS' => 'width_pct_33', ),
 
         'data_transformation_id' => array( 'SHORTNAME' => 'transformation',  'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,
                 'EDIT' => true,  'QEDIT' => true,
                 'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => true,  'UTF8' => false,
                 'TYPE' => 'FK',  'ANSWER' => 'data_transformation',  'ANSMODULE' => 'etl',
                 'RELATION' => 'ManyToOne',  'READONLY' => false,  'DNA' => true,
-                'CSS' => 'width_pct_50', ),
+                'CSS' => 'width_pct_33', ),
 
         
 
         'name_ar' => array('STEP'=>2, 'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
         'EDIT' => true,  'QEDIT' => true,
-        'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE',  'MANDATORY' => true,  'UTF8' => true,
+        'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE',  'MANDATORY' => false,  'UTF8' => true,
         'TYPE' => 'TEXT',  'READONLY' => false,
         'CSS' => 'width_pct_50', ),
 
@@ -66,7 +66,7 @@ class EtlMappingColTransformationAfwStructure
 
         'name_en' => array('STEP'=>2, 'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
         'EDIT' => true,  'QEDIT' => true,
-        'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => true,  'UTF8' => false,
+        'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => false,  'UTF8' => false,
         'TYPE' => 'TEXT',  'READONLY' => false,
         'CSS' => 'width_pct_50', ),
 

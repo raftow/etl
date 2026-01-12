@@ -63,7 +63,7 @@ class EtlExecutionLogAfwStructure
             'CSS'                                  => 'width_pct_100'],
 
 
-        'output_title'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
+        'output_title'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => true,
             'EDIT'                                 => true, 'QEDIT'      => true,
             'SIZE'                                 => 96, 'MAXLENGTH'    => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => true, 'UTF8' => true,
             'TYPE'                                 => 'TEXT', 'READONLY' => true,

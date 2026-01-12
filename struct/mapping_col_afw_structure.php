@@ -63,7 +63,7 @@ class EtlMappingColAfwStructure {
 			'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',  'MANDATORY' => false,  'UTF8' => false,
 			'TYPE' => 'FK',
 			'CATEGORY' => 'ITEMS',  'ANSWER' => 'mapping_col_transformation',  'ANSMODULE' => 'etl',  'ITEM' => 'mapping_col_id',  'READONLY' => true,  'CAN-BE-SETTED' => true,
-			'CSS' => 'width_pct_50', ),
+			'CSS' => 'width_pct_100', ),
 
 		'name_ar' => array('STEP' =>3, 'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,
 			'EDIT' => true,  'QEDIT' => true,
