@@ -20,9 +20,8 @@ class RecordLogArTranslator{
 		$trad["record_log"]["log_details"] = "تفاصيل الأثر";
 		$trad["record_log"]["showHtml"] = "عرض جدولي";
 
-		$trad["record_log"]["mapping_job_id"] = "مهمة التقابل";
-		$trad["record_log"]["data_api_id"] = "خدمة البيانات";
-		$trad["record_log"]["run_date"] = "تاريخ التنفيذ";
+		$trad["record_log"]["api_execution_id"] = "تنفيذ الخدمة";
+		$trad["record_log"]["record_num"] = "رقم السجل";
 		
         // steps
         return $trad;

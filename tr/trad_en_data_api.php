@@ -8,8 +8,8 @@ class DataApiEnTranslator{
 		$trad["data_api"]["step2"] = "Advanced Information";
 		$trad["data_api"]["step3"] = "Settings";
 		$trad["data_api"]["step4"] = "Run";
-		$trad["data_api"]["step5"] = "Logs";
-		$trad["data_api"]["executionLogList"] = "Execution Logs";
+		$trad["data_api"]["step5"] = "Execution Records";
+		$trad["data_api"]["apiExecutionList"] = "Execution Records";
 
 		$trad["data_api"]["dataapi.single"] = "data api";
 		$trad["data_api"]["dataapi.new"] = "new";

@@ -32,35 +32,51 @@ class RecordLog extends AFWObject
     }
 
 
-    public static function loadByMainIndex($mapping_job_id, $data_api_id, $run_date, $record_definition, 
-                $record_json, $log_title, $log_details,
-                $create_obj_if_not_found = false)
-    {
-        if (!$mapping_job_id) throw new AfwRuntimeException("loadByMainIndex : mapping_job_id is mandatory field");
-        if (!$data_api_id) throw new AfwRuntimeException("loadByMainIndex : data_api_id is mandatory field");
-        if (!$run_date) throw new AfwRuntimeException("loadByMainIndex : run_date is mandatory field");
+    public static function loadByMainIndex(
+        $api_execution_id,
+        $record_num,
+        $page_num = 0,
+        $status = '',
+        $record_definition = '',
+        $record_json = '',
+        $log_title = '',
+        $log_details = '',
+        $create_obj_if_not_found = false
+    ) {
+        if (!$api_execution_id) throw new AfwRuntimeException("loadByMainIndex : api_execution_id is mandatory field");
+        if (!$record_num) throw new AfwRuntimeException("loadByMainIndex : record_num is mandatory field");
+        if ($create_obj_if_not_found) {
+            if (!$page_num) throw new AfwRuntimeException("loadByMainIndex : page_num is mandatory field");
+            if (!$status) throw new AfwRuntimeException("loadByMainIndex : status is mandatory field");
+            if (!$record_definition) throw new AfwRuntimeException("loadByMainIndex : record_definition is mandatory field");
+            if (!$record_json) throw new AfwRuntimeException("loadByMainIndex : record_json is mandatory field");
+            if (!$log_title) throw new AfwRuntimeException("loadByMainIndex : log_title is mandatory field");
+            if (!$log_details) throw new AfwRuntimeException("loadByMainIndex : log_details is mandatory field");
+        }
 
 
         $obj = new RecordLog();
-        $obj->select("mapping_job_id", $mapping_job_id);
-        $obj->select("data_api_id", $data_api_id);
-        $obj->select("run_date", $run_date);
-        $obj->select("record_definition", $record_definition);
+        $obj->select("api_execution_id", $api_execution_id);
+        $obj->select("record_num", $record_num);
 
         if ($obj->load()) {
-            if ($create_obj_if_not_found) { 
-                $obj->set("record_json", $record_json);  
+            if ($create_obj_if_not_found) {
+                $obj->set("page_num", $page_num);
+                $obj->set("status", $status);
+                $obj->set("record_definition", $record_definition);
+                $obj->set("record_json", $record_json);
                 $obj->set("log_title", $log_title);
                 $obj->set("log_details", $log_details);
                 $obj->activate();
             }
             return $obj;
         } elseif ($create_obj_if_not_found) {
-            $obj->set("mapping_job_id", $mapping_job_id);
-            $obj->set("data_api_id", $data_api_id);
-            $obj->set("run_date", $run_date);
+            $obj->set("api_execution_id", $api_execution_id);
+            $obj->set("record_num", $record_num);
+            $obj->set("page_num", $page_num);
+            $obj->set("status", $status);
             $obj->set("record_definition", $record_definition);
-            $obj->set("record_json", $record_json);  
+            $obj->set("record_json", $record_json);
             $obj->set("log_title", $log_title);
             $obj->set("log_details", $log_details);
 
@@ -72,9 +88,11 @@ class RecordLog extends AFWObject
     }
 
 
+   
 
 
-    
+
+
 
     public function calcShowHtml($what = "value")
     {

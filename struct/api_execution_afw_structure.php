@@ -1,28 +1,28 @@
 <?php
 
-class EtlExecutionLogAfwStructure
+class EtlApiExecutionAfwStructure
 {
     // token separator = §
     public static function initInstance(&$obj)
     {
-        if ($obj instanceof ExecutionLog) {
+        if ($obj instanceof ApiExecution) {
             $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
-
+            $obj->DISPLAY_FIELD = 'id';
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS = '';
 
-            $obj->UNIQUE_KEY = ['api_execution_id', 'page'];
+            $obj->UNIQUE_KEY = ['mapping_job_id', 'data_api_id', 'run_date'];
 
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;
             $obj->editByStep           = true;
-            $obj->editNbSteps          = 3;
-            // $obj->after_save_edit = array( 'class'=>'ExecutionLog', 'attribute'=>'xxxx_id', 'currmod'=>'etl', 'currstep'=>2 );
-            $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'ExecutionLog', 'submit' => true];
+            $obj->editNbSteps          = 5;
+            // $obj->after_save_edit = array( 'class'=>'ApiExecution', 'attribute'=>'xxxx_id', 'currmod'=>'etl', 'currstep'=>2 );
+            $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'ApiExecution', 'submit' => true];
         } else {
-            ExecutionLogArTranslator::initData();
-            ExecutionLogEnTranslator::initData();
+            ApiExecutionArTranslator::initData();
+            ApiExecutionEnTranslator::initData();
         }
     }
 
@@ -30,7 +30,8 @@ class EtlExecutionLogAfwStructure
     [
         'id'                 => ['SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'],
 
-        'api_execution_id'     => [
+        'mapping_job_id'     => [
+            'SHORTNAME' => 'job',
             'SEARCH'    => true,
             'QSEARCH'            => true,
             'SHOW'      => true,
@@ -45,7 +46,7 @@ class EtlExecutionLogAfwStructure
             'MANDATORY' => true,
             'UTF8'      => false,
             'TYPE'                                    => 'FK',
-            'ANSWER'     => 'api_execution',
+            'ANSWER'     => 'mapping_job',
             'ANSMODULE' => 'etl',
             'RELATION'                                => 'OneToMany',
             'READONLY' => true,
@@ -53,25 +54,48 @@ class EtlExecutionLogAfwStructure
             'CSS'                                     => 'width_pct_50'
         ],
 
-        'page' => array(
-            'IMPORTANT' => 'IN',
-            'SHOW' => true,
+        'data_api_id'        => [
+            'SHORTNAME' => 'api',
+            'SEARCH'    => true,
+            'QSEARCH'         => true,
+            'SHOW'      => true,
+            'AUDIT'                   => false,
             'RETRIEVE' => true,
-            'EXCEL' => false,
-            'EDIT' => true,
-            'QEDIT' => true,
-            'EDIT_FGROUP' => true,
-            'TYPE' => 'INT',
+            'EDIT'                                    => true,
+            'QEDIT'      => true,
+            'SIZE'                                    => 32,
+            'MAXLENGTH'    => 32,
+            'MIN-SIZE'          => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
             'MANDATORY' => true,
-            'STEP' => 1,
-            'SEARCH-BY-ONE' => '',
-            'DISPLAY' => true,
-            'DISPLAY-UGROUPS' => '',
-            'EDIT-UGROUPS' => '',
+            'UTF8'      => false,
+            'TYPE'                                    => 'FK',
+            'ANSWER'     => 'data_api',
+            'ANSMODULE' => 'etl',
+            'RELATION'                                => 'OneToMany',
             'READONLY' => true,
-            'ERROR-CHECK' => true,
-            'CSS' => 'width_pct_50',
-        ),
+            'DNA'            => true,
+            'CSS'                                     => 'width_pct_50'
+        ],
+
+        'run_date'           => [
+            'SEARCH' => true,
+            'QSEARCH'        => false,
+            'SHOW'  => true,
+            'AUDIT'      => false,
+            'RETRIEVE'               => true,
+            'EDIT'                                 => true,
+            'QEDIT'          => true,
+            'SIZE'                                 => 10,
+            'MAXLENGTH'        => 10,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8' => false,
+            'TYPE'                                 => 'DATETIME',
+            'READONLY' => true,
+            'CSS'                                  => 'width_pct_50'
+        ],
 
         'findword'           => [
             'SEARCH' => true,
@@ -110,7 +134,6 @@ class EtlExecutionLogAfwStructure
             'CSS'                                  => 'width_pct_100'
         ],
 
-
         'output_title'           => [
             'SEARCH' => true,
             'QSEARCH'    => true,
@@ -131,7 +154,7 @@ class EtlExecutionLogAfwStructure
         ],
 
         'output'             => [
-            'STEP' => 2,
+            'STEP' => 1,
             'SEARCH'         => true,
             'QSEARCH' => true,
             'SHOW'       => true,
@@ -146,13 +169,12 @@ class EtlExecutionLogAfwStructure
             'UTF8' => true,
             'TYPE'                               => 'TEXT',
             'READONLY'  => true,
-            'ROWS'                               => 20,
+            'ROWS'                               => 5,
             'CSS'                                => 'width_pct_100'
         ],
 
-
         'showHtml'            => [
-            'STEP' => 3,
+            'STEP' => 2,
             'CATEGORY' => 'FORMULA',
             'SHOW'   => true,
             'AUDIT'      => false,
@@ -168,6 +190,58 @@ class EtlExecutionLogAfwStructure
             'FORMAT' => 'HTML',
             'CSS'                                  => 'width_pct_100'
         ],
+
+        'executionLogList' => array(
+            'STEP' => 3,
+            'SHOW' => true,
+            'FORMAT' => 'retrieve',
+            'ICONS' => true,
+            'DELETE-ICON' => true,
+            'BUTTONS' => true,
+            'SEARCH' => false,
+            'QSEARCH' => false,
+            'AUDIT' => false,
+            'RETRIEVE' => false,
+            'EDIT' => false,
+            'QEDIT' => false,
+            'SIZE' => 32,
+            'MAXLENGTH' => 32,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => false,
+            'UTF8' => false,
+            'TYPE' => 'FK',
+            'CATEGORY' => 'ITEMS',
+            'ANSWER' => 'execution_log',
+            'ANSMODULE' => 'etl',
+            'ITEM' => 'api_execution_id',
+            'READONLY' => true,
+            'CAN-BE-SETTED' => true,
+            'CSS' => 'width_pct_100',
+        ),
+
+        'erronedRecordLogList' => array('STEP' => 4,  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
+				'EDIT' => false,  'QEDIT' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
+				'TYPE' => 'FK', 'CATEGORY' => 'ITEMS',  'ANSWER' => 'record_log',  'ANSMODULE' => 'etl',  
+                'ITEM' => 'api_execution_id',  'WHERE' => "status='error'", 'LIMIT' => 50,
+                'READONLY' => true,  
+				'CSS' => 'width_pct_100', ),
+
+        'ignoredRecordLogList' => array('STEP' => 4,  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
+				'EDIT' => false,  'QEDIT' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
+				'TYPE' => 'FK', 'CATEGORY' => 'ITEMS',  'ANSWER' => 'record_log',  'ANSMODULE' => 'etl',  
+                'ITEM' => 'api_execution_id',  'WHERE' => "status='ignore' and (§findword§='' or record_definition=§findword§)", 'LIMIT' => 50,
+                'READONLY' => true,  
+				'CSS' => 'width_pct_100', ),
+
+        'recordLogList' => array('STEP' => 99,  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
+				'EDIT' => false,  'QEDIT' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
+				'TYPE' => 'FK',  
+				'CATEGORY' => 'ITEMS',  'ANSWER' => 'record_log',  'ANSMODULE' => 'etl',  'ITEM' => 'api_execution_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
+				'CSS' => 'width_pct_100', ),
 
         'created_by'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'],
         'created_at'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'],

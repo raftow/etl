@@ -19,9 +19,9 @@ class RecordLogEnTranslator{
 		$trad["record_log"]["showHtml"] = "Show Table";
 		
 
-		$trad["record_log"]["mapping_job_id"] = "mapping job";
-		$trad["record_log"]["data_api_id"] = "Data api";
-		$trad["record_log"]["run_date"] = "Run Date";
+		$trad["record_log"]["api_execution_id"] = "Api Execution";
+		$trad["record_log"]["record_num"] = "Record Number";
+
 		
         // steps
         return $trad;

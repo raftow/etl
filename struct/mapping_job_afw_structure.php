@@ -110,12 +110,13 @@ class EtlMappingJobAfwStructure
             'ICONS'                              => true, 'DELETE-ICON' => true, 'BUTTONS'               => true, 'NO-LABEL'           => false,
             'CSS'                                => 'width_pct_100'],
 
-        'executionLogList' => array('STEP' => 5, 'SHORTNAME' => 'executionLogs',  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
+        'apiExecutionList' => array('STEP' => 5, 'SHORTNAME' => 'executionLogs',  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => false,  'QEDIT' => false,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'FK',  
-				'CATEGORY' => 'ITEMS',  'ANSWER' => 'execution_log',  'ANSMODULE' => 'etl',  'ITEM' => 'mapping_job_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
+				'CATEGORY' => 'ITEMS',  'ANSWER' => 'api_execution',  'ANSMODULE' => 'etl',  'ITEM' => 'mapping_job_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
 				'CSS' => 'width_pct_100', ),
+
 
         'created_by'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'],
         'created_at'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'],

@@ -4658,3 +4658,24 @@ textarea#settings {
 div#form-control-div-settings {
     min-height: 410px;
 }
+
+
+p.warning {
+    border-radius: 0;
+    padding: 8px;
+    margin-bottom: 10px !important;
+    background-color: orange;
+    color: white;
+    font-weight: normal !important;
+}
+
+p.log {
+    font-size: 90%;
+    line-height: 14px !important;
+    padding: 5px 8px !important;
+    width: 100%;
+}
+
+p.log.alt {
+    background-color: #efeded;
+}

@@ -133,11 +133,11 @@ class EtlDataApiAfwStructure
             'COLS' => 80, 'ROWS' => 8, 'PRE' => true,
             'CSS'                                  => 'width_pct_100'],
 
-        'executionLogList' => array('STEP' => 5, 'SHORTNAME' => 'executionLogs',  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
+        'apiExecutionList' => array('STEP' => 5, 'SHORTNAME' => 'executionLogs',  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => false,  'QEDIT' => false,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'FK',  
-				'CATEGORY' => 'ITEMS',  'ANSWER' => 'execution_log',  'ANSMODULE' => 'etl',  'ITEM' => 'data_api_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
+				'CATEGORY' => 'ITEMS',  'ANSWER' => 'api_execution',  'ANSMODULE' => 'etl',  'ITEM' => 'data_api_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
 				'CSS' => 'width_pct_100', ),
 
             

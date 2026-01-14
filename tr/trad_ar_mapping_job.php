@@ -8,7 +8,8 @@ class MappingJobArTranslator{
 		$trad["mapping_job"]["step2"] = "برمجة المهمة";
 		$trad["mapping_job"]["step3"] = "الإعدادات المتقدمة";
 		$trad["mapping_job"]["step4"] = "التقابل";
-		$trad["mapping_job"]["step5"] = "آثار التنفيذ";
+		$trad["mapping_job"]["step5"] = "سجلات التنفيذ";
+		$trad["mapping_job"]["apiExecutionList"] = "سجلات التنفيذ";
 
 		$trad["mapping_job"]["mappingjob.single"] = "مهمة تقابل";
 		$trad["mapping_job"]["mappingjob.new"] = "جديد(ة)";

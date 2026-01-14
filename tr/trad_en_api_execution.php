@@ -1,0 +1,37 @@
+<?php
+
+class ApiExecutionEnTranslator{
+    public static function initData()
+    {
+        $trad = [];
+
+		$trad["api_execution"]["step1"] = "Execution";
+		$trad["api_execution"]["step99"] = "Results";
+		$trad["api_execution"]["step2"] = "Show Table";
+		$trad["api_execution"]["showHtml"] = "Show Table";
+		$trad["api_execution"]["step3"] = "Execution Log";
+		$trad["api_execution"]["executionLogList"] = "Execution Log";
+		$trad["api_execution"]["step4"] = "Execution Records";
+		$trad["api_execution"]["apiExecutionList"] = "Execution Records";
+
+		$trad["api_execution"]["apiexecution.single"] = "API Execution";
+		$trad["api_execution"]["apiexecution.new"] = "new";
+		$trad["api_execution"]["api_execution"] = "API Execution";
+		$trad["api_execution"]["findword"] = "Filter";
+		$trad["api_execution"]["input"] = "Input";
+		$trad["api_execution"]["output"] = "Output";
+
+		$trad["api_execution"]["mapping_job_id"] = "mapping job";
+		$trad["api_execution"]["data_api_id"] = "Data api";
+		$trad["api_execution"]["run_date"] = "Run Date";
+		$trad["api_execution"]["output_title"] = "Output Title";
+        // steps
+        return $trad;
+    }
+
+    public static function getInstance()
+	{
+        if(false) return new ApiExecutionArTranslator();
+		return new ApiExecution();
+	}
+}

@@ -11,15 +11,15 @@ class EtlRecordLogAfwStructure
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS = '';
 
-            $obj->UNIQUE_KEY = ['mapping_job_id', 'data_api_id', 'run_date', 'record_definition'];
+            $obj->UNIQUE_KEY = ['api_execution_id', 'record_num'];
 
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;
             $obj->editByStep           = true;
             $obj->editNbSteps          = 3;
-            // $obj->after_save_edit = array( 'class'=>'RecordLog', 'attribute'=>'xxxx_id', 'currmod'=>'etl', 'currstep'=>2 );
-            $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'RecordLog', 'submit' => true];
+            $obj->after_save_edit = array( 'class'=>'ApiExecution', 'attribute'=>'api_execution_id', 'currmod'=>'etl', 'currstep'=>5 );
+            // $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'RecordLog', 'submit' => true];
         } else {
             RecordLogArTranslator::initData();
             RecordLogEnTranslator::initData();
@@ -30,32 +30,84 @@ class EtlRecordLogAfwStructure
     [
         'id'                 => ['SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'],
 
-        'mapping_job_id'     => ['SHORTNAME' => 'job', 'SEARCH'    => true, 'QSEARCH'            => true, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => true,
-            'EDIT'                                    => true, 'QEDIT'      => true,
-            'SIZE'                                    => 32, 'MAXLENGTH'    => 32, 'MIN-SIZE'             => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
-            'TYPE'                                    => 'FK', 'ANSWER'     => 'mapping_job', 'ANSMODULE' => 'etl',
-            'RELATION'                                => 'OneToMany', 'READONLY' => true, 'DNA'               => true,
-            'CSS'                                     => 'width_pct_50'],
+         'api_execution_id'     => [
+            'SEARCH'    => true,
+            'QSEARCH'            => true,
+            'SHOW'      => true,
+            'AUDIT'                   => false,
+            'RETRIEVE' => true,
+            'EDIT'                                    => true,
+            'QEDIT'      => true,
+            'SIZE'                                    => 32,
+            'MAXLENGTH'    => 32,
+            'MIN-SIZE'             => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8'      => false,
+            'TYPE'                                    => 'FK',
+            'ANSWER'     => 'api_execution',
+            'ANSMODULE' => 'etl',
+            'RELATION'                                => 'OneToMany',
+            'READONLY' => true,
+            'DNA'               => true,
+            'CSS'                                     => 'width_pct_50'
+        ],
 
-        'data_api_id'        => ['SHORTNAME' => 'api', 'SEARCH'    => true, 'QSEARCH'         => true, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => true,
-            'EDIT'                                    => true, 'QEDIT'      => true,
-            'SIZE'                                    => 32, 'MAXLENGTH'    => 32, 'MIN-SIZE'          => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
-            'TYPE'                                    => 'FK', 'ANSWER'     => 'data_api', 'ANSMODULE' => 'etl',
-            'RELATION'                                => 'OneToMany', 'READONLY' => true, 'DNA'            => true,
-            'CSS'                                     => 'width_pct_50'],
+        'record_num' => array(
+            'IMPORTANT' => 'IN',
+            'SHOW' => true,
+            'RETRIEVE' => true,
+            'EXCEL' => false,
+            'EDIT' => true,
+            'QEDIT' => true,
+            'EDIT_FGROUP' => true,
+            'TYPE' => 'INT',
+            'MANDATORY' => true,
+            'STEP' => 1,
+            'SEARCH-BY-ONE' => '',
+            'DISPLAY' => true,
+            'DISPLAY-UGROUPS' => '',
+            'EDIT-UGROUPS' => '',
+            'READONLY' => true,
+            'ERROR-CHECK' => true,
+            'CSS' => 'width_pct_50',
+        ),
 
-        'run_date'           => ['SEARCH' => true, 'QSEARCH'        => false, 'SHOW'  => true, 'AUDIT'      => false, 'RETRIEVE'               => true,
-            'EDIT'                                 => true, 'QEDIT'          => true,
-            'SIZE'                                 => 10, 'MAXLENGTH'        => 10, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8' => false,
-            'TYPE'                                 => 'DATETIME', 'READONLY' => true,
-            'CSS'                                  => 'width_pct_50'],
+        
+        'page_num' => array(
+            'IMPORTANT' => 'IN',
+            'SHOW' => true,
+            'RETRIEVE' => true,
+            'EXCEL' => false,
+            'EDIT' => true,
+            'QEDIT' => true,
+            'EDIT_FGROUP' => true,
+            'TYPE' => 'INT',
+            'MANDATORY' => true,
+            'STEP' => 1,
+            'SEARCH-BY-ONE' => '',
+            'DISPLAY' => true,
+            'DISPLAY-UGROUPS' => '',
+            'EDIT-UGROUPS' => '',
+            'READONLY' => true,
+            'ERROR-CHECK' => true,
+            'CSS' => 'width_pct_50',
+        ),
+
+        'status'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
+            'EDIT'                                 => true, 'QEDIT'      => true,
+            'SIZE'                                 => 64, 'MAXLENGTH'    => 64, 'MIN-SIZE' => 4, // ex 'id:1'
+            'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => false, 'UTF8' => false,
+            'TYPE'                                 => 'TEXT', 'READONLY' => true,
+            'CSS'                                  => 'width_pct_50'],            
+
 
 
         'record_definition'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
             'EDIT'                                 => true, 'QEDIT'      => true,
             'SIZE'                                 => 255, 'MAXLENGTH'    => 255, 'MIN-SIZE' => 4, // ex 'id:1'
             'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => false, 'UTF8' => true,
-            'TYPE'                                 => 'TEXT', 'READONLY' => false,
+            'TYPE'                                 => 'TEXT', 'READONLY' => true,
             'CSS'                                  => 'width_pct_50'],            
 
         'record_json'              => ['SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
@@ -71,7 +123,7 @@ class EtlRecordLogAfwStructure
             'TYPE'                                 => 'TEXT', 'READONLY' => true,
             'CSS'                                  => 'width_pct_100'],
 
-        'log_details'             => ['STEP' => 2, 'SEARCH'         => true, 'QSEARCH' => true, 'SHOW'       => true, 'AUDIT'              => false, 'RETRIEVE' => false,
+        'log_details'             => ['STEP' => 1, 'SEARCH'         => true, 'QSEARCH' => true, 'SHOW'       => true, 'AUDIT'              => false, 'RETRIEVE' => false,
             'EDIT'                               => true, 'QEDIT'       => false,
             'SIZE'                               => 'AREA', 'MAXLENGTH' => 9999999999999, 'MIN-SIZE'  => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => true,
             'TYPE'                               => 'TEXT', 'READONLY'  => true,

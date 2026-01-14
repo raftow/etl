@@ -31,23 +31,21 @@ class ExecutionLog extends AFWObject{
            else return null;
         }
         
-        public static function loadByMainIndex($mapping_job_id, $data_api_id, $run_date,
-        $input, $output, $title_output,
-        $create_obj_if_not_found=false)
+        public static function loadByMainIndex($api_execution_id, $page,
+                                                $input, $output, $title_output,
+                                                $create_obj_if_not_found=false)
         {
-           if(!$mapping_job_id) throw new AfwRuntimeException("loadByMainIndex : mapping_job_id is mandatory field");
-           if(!$data_api_id) throw new AfwRuntimeException("loadByMainIndex : data_api_id is mandatory field");
-           if(!$run_date) throw new AfwRuntimeException("loadByMainIndex : run_date is mandatory field");
-           if($create_obj_if_not_found) 
+           if(!$api_execution_id) throw new AfwRuntimeException("loadByMainIndex : api_execution_id is mandatory field");
+           if(!$page) throw new AfwRuntimeException("loadByMainIndex : page is mandatory field");
+            if($create_obj_if_not_found) 
            {
                 if(!$input) throw new AfwRuntimeException("loadByMainIndex : input is mandatory field when create_obj_if_not_found is true");
                 if(!$output) throw new AfwRuntimeException("loadByMainIndex : output is mandatory field when create_obj_if_not_found is true");
            }
 
            $obj = new ExecutionLog();
-           $obj->select("mapping_job_id",$mapping_job_id);
-           $obj->select("data_api_id",$data_api_id);
-           $obj->select("run_date",$run_date);
+           $obj->select("api_execution_id",$api_execution_id);
+           $obj->select("page",$page);
 
            if($obj->load())
            {
@@ -62,12 +60,12 @@ class ExecutionLog extends AFWObject{
            }
            elseif($create_obj_if_not_found)
            {
-                $obj->set("mapping_job_id",$mapping_job_id);
-                $obj->set("data_api_id",$data_api_id);
-                $obj->set("run_date",$run_date);
+                $obj->set("api_execution_id",$api_execution_id);
+                $obj->set("page",$page);
                 $obj->set("input",$input);
                 $obj->set("output",$output);
                 $obj->set("output_title",$title_output);
+                
                 $obj->insertNew();
                 if(!$obj->id) return null; // means beforeInsert rejected insert operation
                 $obj->is_new = true;
@@ -76,6 +74,8 @@ class ExecutionLog extends AFWObject{
            else return null;
            
         }
+
+
 
         public function calcShowHtml($what="value")
         {
