@@ -23,7 +23,7 @@ class AutoJob extends AFWObject{
         // مهام آلية 
         public static $BF_QSEARCH_AUTO_JOB = 105038; 
   
-        public static $DATABASE		= "tvtc_etl";
+        public static $DATABASE		= "";
         public static $MODULE		        = "etl";        
         public static $TABLE			= "auto_job";
 

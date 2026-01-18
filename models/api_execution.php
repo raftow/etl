@@ -44,8 +44,8 @@ class ApiExecution extends AFWObject
         if (!$data_api_id) throw new AfwRuntimeException("loadByMainIndex : data_api_id is mandatory field");
         if (!$run_date) throw new AfwRuntimeException("loadByMainIndex : run_date is mandatory field");
         if ($create_obj_if_not_found) {
-            if (!$input) throw new AfwRuntimeException("loadByMainIndex : input is mandatory field when create_obj_if_not_found is true");
-            if (!$output) throw new AfwRuntimeException("loadByMainIndex : output is mandatory field when create_obj_if_not_found is true");
+            if ((!$input) or (strlen($input)<11)) throw new AfwRuntimeException("loadByMainIndex : bad value for input and create_obj_if_not_found is true");
+            if ((!$output) or (strlen($output)<11)) throw new AfwRuntimeException("loadByMainIndex : bad value for output and create_obj_if_not_found is true");
         }
 
         $obj = new ApiExecution();
@@ -73,6 +73,25 @@ class ApiExecution extends AFWObject
             $obj->is_new = true;
             return $obj;
         } else return null;
+    }
+
+
+    public function calcInputOutputHtml($what = "value")
+    {
+        $input = AfwSettingsHelper::paramsArrayToString(json_decode($this->getVal("input")));
+        $output = $this->getVal("output");
+        $output_title = $this->getVal("output_title");
+        return "<div class='ioae'>
+            <div class='aeinput'><pre class='json'>$input</pre></div>
+            <div class='aeoutput'>
+                        <div class='aeoutputtitle'>
+                            $output_title
+                        </div>
+                        <div class='aeoutputbody'>
+                            <pre class='json'>$output</pre>
+                        </div>
+            </div>
+        </div>";   
     }
 
     public function calcShowHtml($what = "value")
@@ -146,6 +165,7 @@ class ApiExecution extends AFWObject
                 if ($count_data < $MAX_SHOW) {
                     $data_rows[] = $row;
                     $count_data++;
+                    $notes .= "<p class='info'>record_json:$record_json</p><br>";
                 } else {
                     $notes .= "<p class='warning'>Too much records to show please use the filter</p><br>";
                     break;

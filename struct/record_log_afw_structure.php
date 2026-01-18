@@ -9,7 +9,7 @@ class EtlRecordLogAfwStructure
             $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
 
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
-            $obj->ORDER_BY_FIELDS = '';
+            $obj->ORDER_BY_FIELDS = 'api_execution_id, record_num';
 
             $obj->UNIQUE_KEY = ['api_execution_id', 'record_num'];
 
@@ -53,6 +53,28 @@ class EtlRecordLogAfwStructure
             'CSS'                                     => 'width_pct_50'
         ],
 
+        'page_num' => array(
+            'IMPORTANT' => 'IN',
+            'SHOW' => true,
+            'RETRIEVE' => true,
+            'EXCEL' => false,
+            'EDIT' => true,
+            'QEDIT' => true,
+            'EDIT_FGROUP' => true,
+            'TYPE' => 'INT',
+            'MANDATORY' => true,
+            'STEP' => 1,
+            'SEARCH-BY-ONE' => '',
+            'DISPLAY' => true,
+            'DISPLAY-UGROUPS' => '',
+            'EDIT-UGROUPS' => '',
+            'READONLY' => true,
+            'ERROR-CHECK' => true,
+            'CSS' => 'width_pct_50',
+        ),
+
+
+
         'record_num' => array(
             'IMPORTANT' => 'IN',
             'SHOW' => true,
@@ -74,26 +96,6 @@ class EtlRecordLogAfwStructure
         ),
 
         
-        'page_num' => array(
-            'IMPORTANT' => 'IN',
-            'SHOW' => true,
-            'RETRIEVE' => true,
-            'EXCEL' => false,
-            'EDIT' => true,
-            'QEDIT' => true,
-            'EDIT_FGROUP' => true,
-            'TYPE' => 'INT',
-            'MANDATORY' => true,
-            'STEP' => 1,
-            'SEARCH-BY-ONE' => '',
-            'DISPLAY' => true,
-            'DISPLAY-UGROUPS' => '',
-            'EDIT-UGROUPS' => '',
-            'READONLY' => true,
-            'ERROR-CHECK' => true,
-            'CSS' => 'width_pct_50',
-        ),
-
         'status'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
             'EDIT'                                 => true, 'QEDIT'      => true,
             'SIZE'                                 => 64, 'MAXLENGTH'    => 64, 'MIN-SIZE' => 4, // ex 'id:1'
@@ -103,7 +105,8 @@ class EtlRecordLogAfwStructure
 
 
 
-        'record_definition'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'                 => false,
+        'record_definition'           => ['SEARCH' => true, 'QSEARCH'    => true, 'SHOW'   => true, 'AUDIT'      => false, 
+            'RETRIEVE'                 => true, // retrieve mode needed to see for example the duplicated rows
             'EDIT'                                 => true, 'QEDIT'      => true,
             'SIZE'                                 => 255, 'MAXLENGTH'    => 255, 'MIN-SIZE' => 4, // ex 'id:1'
             'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => false, 'UTF8' => true,

@@ -18,8 +18,8 @@ class EtlApiExecutionAfwStructure
             $obj->general_check_errors = true;
             $obj->editByStep           = true;
             $obj->editNbSteps          = 5;
-            // $obj->after_save_edit = array( 'class'=>'ApiExecution', 'attribute'=>'xxxx_id', 'currmod'=>'etl', 'currstep'=>2 );
-            $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'ApiExecution', 'submit' => true];
+            $obj->after_save_edit = array( 'class'=>'MappingJob', 'attribute'=>'mapping_job_id', 'currmod'=>'etl', 'currstep'=>5 );
+            // $obj->after_save_edit = ['mode' => 'qsearch', 'currmod' => 'etl', 'class' => 'ApiExecution', 'submit' => true];
         } else {
             ApiExecutionArTranslator::initData();
             ApiExecutionEnTranslator::initData();
@@ -117,6 +117,7 @@ class EtlApiExecutionAfwStructure
         ],
 
         'input'              => [
+            'STEP' => 99,
             'SEARCH' => true,
             'QSEARCH'     => true,
             'SHOW'   => true,
@@ -135,6 +136,7 @@ class EtlApiExecutionAfwStructure
         ],
 
         'output_title'           => [
+            'STEP' => 99,
             'SEARCH' => true,
             'QSEARCH'    => true,
             'SHOW'   => true,
@@ -154,7 +156,7 @@ class EtlApiExecutionAfwStructure
         ],
 
         'output'             => [
-            'STEP' => 1,
+            'STEP' => 99,
             'SEARCH'         => true,
             'QSEARCH' => true,
             'SHOW'       => true,
@@ -171,6 +173,24 @@ class EtlApiExecutionAfwStructure
             'READONLY'  => true,
             'ROWS'                               => 5,
             'CSS'                                => 'width_pct_100'
+        ],
+
+        'inputOutputHtml'            => [
+            'STEP' => 1,
+            'CATEGORY' => 'FORMULA',
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => true,
+            'FORMAT' => 'HTML',
+            'CSS'                                  => 'width_pct_100'
         ],
 
         'showHtml'            => [

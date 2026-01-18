@@ -21,6 +21,7 @@ class RecordLogEnTranslator{
 
 		$trad["record_log"]["api_execution_id"] = "Api Execution";
 		$trad["record_log"]["record_num"] = "Record Number";
+		$trad["record_log"]["page_num"] = "Page";
 
 		
         // steps

@@ -4679,3 +4679,40 @@ p.log {
 p.log.alt {
     background-color: #efeded;
 }
+
+.ioae {
+    background-image: url(../../lib/images/carres.png);
+    padding: 19px;
+    min-height: 498px;
+    float: left;
+    width: 100%;
+}
+
+.ioae pre {
+   background-color: transparent !important; 
+   border: none !important;
+}
+
+
+.aeinput {
+    float: left;
+    width: 24%;
+    height: min-content;
+    margin-right: 1%;
+    background-color: #2ec29c6b;
+    min-height: 460px;
+    padding: 10px;
+}
+
+.aeoutput {
+    float: left;
+    width: 75%;
+    height: min-content;
+    min-height: 460px;
+    background-color: #2eb7e7a3;
+    padding: 10px;
+}
+
+.aeoutputtitle {
+    font-weight: bold;
+}

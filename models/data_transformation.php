@@ -21,7 +21,7 @@ class DataTransformation extends AFWObject{
         // مسح  
         public static $BF_DELETE_DATA_TRANSFORMATION = 105056; 
   
-        public static $DATABASE		= "tvtc_etl";
+        public static $DATABASE		= "";
         public static $MODULE		        = "etl";        
         public static $TABLE			= "data_transformation";
 

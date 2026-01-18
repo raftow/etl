@@ -9,7 +9,7 @@ class ExecutionLog extends AFWObject{
 
         public static $MY_ATABLE_ID=13978; 
   
-        public static $DATABASE		= "tvtc_etl";
+        public static $DATABASE		= "";
         public static $MODULE		        = "etl";        
         public static $TABLE			= "execution_log";
 

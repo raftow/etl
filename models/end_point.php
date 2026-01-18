@@ -30,7 +30,7 @@ class EndPoint extends EtlObject
     // نقاط نهاية
     public static $BF_QSEARCH_END_POINT = 105073;
 
-    public static $DATABASE = 'ttc_etl';
+    public static $DATABASE = '';
     public static $MODULE   = 'etl';
 
     public static $TABLE = 'end_point';
