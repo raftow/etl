@@ -11,7 +11,10 @@ class ApiExecutionArTranslator{
 		$trad["api_execution"]["showHtml"] = "عرض جدولي";
 		$trad["api_execution"]["step3"] = "آثار التنفيذ";
 		$trad["api_execution"]["executionLogList"] = "آثار التنفيذ";
-		$trad["api_execution"]["step4"] = "سجلات التنفيذ";
+		$trad["api_execution"]["step4"] = "الأخطاء";
+		$trad["api_execution"]["erronedRecordLogList"] = "الأخطاء";
+		$trad["api_execution"]["step5"] = "التنبيهات";
+		$trad["api_execution"]["erronedRecordLogList"] = "التنبيهات"; 
 		$trad["api_execution"]["apiExecutionList"] = "سجلات التنفيذ";
 		
 

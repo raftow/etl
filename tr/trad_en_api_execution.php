@@ -11,7 +11,11 @@ class ApiExecutionEnTranslator{
 		$trad["api_execution"]["showHtml"] = "Show Table";
 		$trad["api_execution"]["step3"] = "Execution Log";
 		$trad["api_execution"]["executionLogList"] = "Execution Log";
-		$trad["api_execution"]["step4"] = "Execution Records";
+		$trad["api_execution"]["step5"] = "Errors";
+		$trad["api_execution"]["erronedRecordLogList"] = "Errors";
+		$trad["api_execution"]["step4"] = "Warnings";
+		$trad["api_execution"]["ignoredRecordLogList"] = "Warnings"; 
+
 		$trad["api_execution"]["apiExecutionList"] = "Execution Records";
 
 		$trad["api_execution"]["apiexecution.single"] = "API Execution";

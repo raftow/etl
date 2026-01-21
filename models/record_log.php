@@ -276,7 +276,19 @@ class RecordLog extends AFWObject
     public function shouldBeCalculatedField($attribute){
         if($attribute=="mapping_job_id") return true;
         if($attribute=="showHtml") return true;
+        if($attribute=="statusHtml") return true;
         return false;
+    }
+
+
+    public function calcStatusHtml($what="value") {
+        $aeid =  $this->getVal("api_execution_id");
+        //$apiExecutionObj = $this->het("api_execution_id");
+        $nb = "&rarr;";
+        $link = "main.php?Main_Page=afw_mode_edit.php&cl=ApiExecution&id=$aeid&currmod=etl&currstep=2&force_findword=".$this->getVal("record_definition");
+        $status = "yellow";
+
+        return "<div class='link run-status $status'><a href='$link'>$nb</a></div>";
     }
 }
 

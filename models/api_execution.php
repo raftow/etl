@@ -330,7 +330,15 @@ class ApiExecution extends AFWObject
         if ($attribute == "showHtml") {
             
             $filter_by = $this->getVal("findword");
-            if($filter_by) $return .= " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <p class='filter'>Filterd by ($filter_by)</p>";
+            if($filter_by) {
+                $aeid =  $this->id;
+                $nb = "x";
+                $link = "main.php?Main_Page=afw_mode_edit.php&cl=ApiExecution&id=$aeid&currmod=etl&currstep=2&force_findword=";
+                $status = "red";
+                $cancel_filter_link =  "<div class='link run-status $status'><a href='$link'>$nb</a></div>";
+                
+                $return .= " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <p class='filter'>Filterd by ($filter_by)</p> $cancel_filter_link";
+            }
         }
         
         return $return;
