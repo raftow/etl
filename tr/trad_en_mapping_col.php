@@ -13,7 +13,7 @@ class MappingColEnTranslator{
 
 		$trad["mapping_col"]["mappingcol.single"] = "mapping column";
 		$trad["mapping_col"]["mappingcol.new"] = "new";
-		$trad["mapping_col"]["mapping_col"] = "mapping columns";
+		$trad["mapping_col"]["mapping_col"] = "columns mapping";
 		$trad["mapping_col"]["name_ar"] = "Arabic Mapping row name";
 		$trad["mapping_col"]["desc_ar"] = "Arabic Mapping row description";
 		$trad["mapping_col"]["name_en"] = "English Mapping row name";

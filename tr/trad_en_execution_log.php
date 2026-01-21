@@ -16,6 +16,7 @@ class ExecutionLogEnTranslator{
 		$trad["execution_log"]["findword"] = "Filter";
 		$trad["execution_log"]["input"] = "Input";
 		$trad["execution_log"]["output"] = "Output";
+		$trad["execution_log"]["inputOutputHtml"] = "Input & Output";
 
 		$trad["execution_log"]["mapping_job_id"] = "mapping job";
 		$trad["execution_log"]["data_api_id"] = "Data api";

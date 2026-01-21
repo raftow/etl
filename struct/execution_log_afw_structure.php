@@ -93,6 +93,7 @@ class EtlExecutionLogAfwStructure
         ],
 
         'input'              => [
+            'STEP' => 99,
             'SEARCH' => true,
             'QSEARCH'     => true,
             'SHOW'   => true,
@@ -101,6 +102,7 @@ class EtlExecutionLogAfwStructure
             'EDIT'                                 => true,
             'QEDIT'       => false,
             'SIZE'                                 => 'AREA',
+            'INPUT-FORMATTING' => 'addslashes',
             'MAXLENGTH' => 32,
             'MIN-SIZE' => 1,
             'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
@@ -112,6 +114,7 @@ class EtlExecutionLogAfwStructure
 
 
         'output_title'           => [
+            'STEP' => 99,
             'SEARCH' => true,
             'QSEARCH'    => true,
             'SHOW'   => true,
@@ -131,7 +134,7 @@ class EtlExecutionLogAfwStructure
         ],
 
         'output'             => [
-            'STEP' => 2,
+            'STEP' => 99,
             'SEARCH'         => true,
             'QSEARCH' => true,
             'SHOW'       => true,
@@ -140,6 +143,7 @@ class EtlExecutionLogAfwStructure
             'EDIT'                               => true,
             'QEDIT'       => false,
             'SIZE'                               => 'AREA',
+            'INPUT-FORMATTING' => 'addslashes',
             'MAXLENGTH' => 9999999999999,
             'MIN-SIZE'  => 1,
             'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
@@ -148,6 +152,25 @@ class EtlExecutionLogAfwStructure
             'READONLY'  => true,
             'ROWS'                               => 20,
             'CSS'                                => 'width_pct_100'
+        ],
+
+
+        'inputOutputHtml'            => [
+            'STEP' => 2,
+            'CATEGORY' => 'FORMULA',
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => true,
+            'FORMAT' => 'HTML',
+            'CSS'                                  => 'width_pct_100'
         ],
 
 

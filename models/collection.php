@@ -70,7 +70,7 @@ class Collection extends EtlObject
         {
             unset($link);
             $link = array();
-            $title = "إضافة مهمة تقابل جديد";
+            $title = "إضافة مهمة ترحيل جديد";
             $title_detailed = $title ."لـ : ". $displ;
             $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=MappingJob&currmod=etl&sel_collection_id=$my_id";
             $link["TITLE"] = $title;

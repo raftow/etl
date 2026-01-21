@@ -4485,7 +4485,7 @@ input.fa.wizardbtn.disabled {
     content: "\f201";
 }
 
-/* mapping columns statistics - إحصائيات حقول التقابل - stat statistics (statistics) / report (report) / stat statistics (statistics) / report (report) / stat statistics (statistic) / report (report)*/
+/* columns mapping statistics - إحصائيات تقابل الحقول - stat statistics (statistics) / report (report) / stat statistics (statistics) / report (report) / stat statistics (statistic) / report (report)*/
 .hzm-icon-bficon-105081:before {
     content: "\f201";
 }
@@ -4510,7 +4510,7 @@ input.fa.wizardbtn.disabled {
     content: "\f201";
 }
 
-/* mapping jobs statistics - إحصائيات مهمات التقابل - stat statistics (statistics) / report (report) / stat statistics (statistics) / report (report) / stat statistics (statistic) / report (report)*/
+/* mapping jobs statistics - إحصائيات مهمات الترحيل - stat statistics (statistics) / report (report) / stat statistics (statistics) / report (report) / stat statistics (statistic) / report (report)*/
 .hzm-icon-bficon-105095:before {
     content: "\f201";
 }
@@ -4625,13 +4625,13 @@ input.fa.wizardbtn.disabled {
 }
 
 
-/* mapping columns - حقول التقابل*/                 
+/* columns mapping - تقابل الحقول*/                 
 .hzm-icon-bficon-105080:before {
     content: "\f0ec";
 }
 
 
-/* mapping jobs - مهمات التقابل*/                 
+/* mapping jobs - مهمات الترحيل*/                 
 .hzm-icon-bficon-105094:before {
     content: "\f085";
 }

@@ -53,6 +53,26 @@ class EtlRecordLogAfwStructure
             'CSS'                                     => 'width_pct_50'
         ],
 
+        'mapping_job_id'     => [
+            'SHORTCUT' => 'api_execution_id.mapping_job_id',
+            'CATEGORY'    => 'SHORTCUT',
+            'SHOW'      => true,
+            'EDIT'                                    => true,
+            'SIZE'                                    => 32,
+            'MAXLENGTH'    => 32,
+            'MIN-SIZE'             => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8'      => false,
+            'TYPE'                                    => 'FK',
+            'ANSWER'     => 'mapping_job',
+            'ANSMODULE' => 'etl',
+            'RELATION'                                => 'OneToMany',
+            'READONLY' => true,
+            'DNA'               => true,
+            'CSS'                                     => 'width_pct_50'
+        ],
+
         'page_num' => array(
             'IMPORTANT' => 'IN',
             'SHOW' => true,

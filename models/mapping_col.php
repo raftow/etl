@@ -8,15 +8,15 @@ class MappingCol extends EtlObject
 {
 
     public static $MY_ATABLE_ID = 13968;
-    // إحصائيات حقول التقابل 
+    // إحصائيات تقابل الحقول 
     public static $BF_STATS_MAPPING_COL = 105081;
-    // إدارة حقول التقابل 
+    // إدارة تقابل الحقول 
     public static $BF_QEDIT_MAPPING_COL = 105076;
     // إنشاء mapping column 
     public static $BF_EDIT_MAPPING_COL = 105075;
-    // البحث في حقول التقابل 
+    // البحث في تقابل الحقول 
     public static $BF_SEARCH_MAPPING_COL = 105079;
-    // حقول التقابل 
+    // تقابل الحقول 
     public static $BF_QSEARCH_MAPPING_COL = 105080;
     // عرض تفاصيل mapping column 
     public static $BF_DISPLAY_MAPPING_COL = 105078;

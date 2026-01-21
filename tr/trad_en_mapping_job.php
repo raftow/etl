@@ -7,7 +7,7 @@ class MappingJobEnTranslator{
 		$trad["mapping_job"]["step1"] = "Definition";
 		$trad["mapping_job"]["step2"] = "Implementation";
 		$trad["mapping_job"]["step3"] = "Advanced settings";
-		$trad["mapping_job"]["step4"] = "Mapping columns";
+		$trad["mapping_job"]["step4"] = "columns mapping";
 		$trad["mapping_job"]["step5"] = "Execution Records";
 		$trad["mapping_job"]["apiExecutionList"] = "Execution Records";
 
@@ -24,8 +24,9 @@ class MappingJobEnTranslator{
 		$trad["mapping_job"]["data_api_id"] = "data api";
 		$trad["mapping_job"]["pk_cols"] = "Primary Key columns";
 		$trad["mapping_job"]["atable_name"] = "Table code";
-		$trad["mapping_job"]["mappingColList"] = "Mapping columns";
+		$trad["mapping_job"]["mappingColList"] = "columns mapping";
 		$trad["mapping_job"]["collection_id"] = "Collection";
+		$trad["mapping_job"]["statusHtml"] = "status";
         // steps
         return $trad;
     }

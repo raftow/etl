@@ -7,9 +7,9 @@ class EtlApiExecutionAfwStructure
     {
         if ($obj instanceof ApiExecution) {
             $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
-            $obj->DISPLAY_FIELD = 'id';
+            $obj->FORMULA_DISPLAY_FIELD = "concat('api-exec-', data_api_id, '-at-',run_date)";
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
-            $obj->ORDER_BY_FIELDS = '';
+            $obj->ORDER_BY_FIELDS = 'mapping_job_id, data_api_id, run_date desc';
 
             $obj->UNIQUE_KEY = ['mapping_job_id', 'data_api_id', 'run_date'];
 
@@ -255,6 +255,39 @@ class EtlApiExecutionAfwStructure
                 'ITEM' => 'api_execution_id',  'WHERE' => "status='ignore' and (§findword§='' or record_definition=§findword§)", 'LIMIT' => 50,
                 'READONLY' => true,  
 				'CSS' => 'width_pct_100', ),
+
+        'erroned_count' => array(
+			'SHOW' => true,
+			'CSS' => 'width_pct_25',
+			'CATEGORY' => 'FORMULA',
+            'PHP_FORMULA'=>'countItems.erronedRecordLogList',
+			'TYPE' => 'INT',
+			'EDIT' => true,
+			'READONLY' => true,
+			'RETRIEVE' => true,
+			'SEARCH-BY-ONE' => '',
+			'DISPLAY' => true,
+			'STEP' => 1,
+			'DISPLAY-UGROUPS' => '',
+			'EDIT-UGROUPS' => '',
+		),
+
+        'ignored_count' => array(
+			'SHOW' => true,
+			'CSS' => 'width_pct_25',
+			'CATEGORY' => 'FORMULA',
+            'PHP_FORMULA'=>'countItems.ignoredRecordLogList',
+			'TYPE' => 'INT',
+			'EDIT' => true,
+			'READONLY' => true,
+			'RETRIEVE' => true,
+			'SEARCH-BY-ONE' => '',
+			'DISPLAY' => true,
+			'STEP' => 1,
+			'DISPLAY-UGROUPS' => '',
+			'EDIT-UGROUPS' => '',
+		),
+
 
         'recordLogList' => array('STEP' => 99,  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => false,  'QEDIT' => false,  

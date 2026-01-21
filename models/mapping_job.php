@@ -8,19 +8,19 @@ class MappingJob extends EtlObject
 {
 
     public static $MY_ATABLE_ID = 13967;
-    // إحصائيات مهمات التقابل 
+    // إحصائيات مهمات الترحيل 
     public static $BF_STATS_MAPPING_JOB = 105095;
-    // إدارة مهمات التقابل 
+    // إدارة مهمات الترحيل 
     public static $BF_QEDIT_MAPPING_JOB = 105090;
     // إنشاء  
     public static $BF_EDIT_MAPPING_JOB = 105089;
-    // البحث في مهمات التقابل 
+    // البحث في مهمات الترحيل 
     public static $BF_SEARCH_MAPPING_JOB = 105093;
     // عرض تفاصيل  
     public static $BF_DISPLAY_MAPPING_JOB = 105092;
     // مسح  
     public static $BF_DELETE_MAPPING_JOB = 105091;
-    // مهمات التقابل 
+    // مهمات الترحيل 
     public static $BF_QSEARCH_MAPPING_JOB = 105094;
 
     public static $DATABASE = "ttc_etl";
@@ -147,14 +147,14 @@ class MappingJob extends EtlObject
         if ($id) {
             if ($id_replace == 0) {
                 // FK part of me - not deletable 
-                // etl.mapping_col-مهمة التقابل	mapping_job_id  أنا تفاصيل لها (required field)
+                // etl.mapping_col-مهمة الترحيل	mapping_job_id  أنا تفاصيل لها (required field)
                 // require_once "../etl/mapping_col.php";
                 $obj = new MappingCol();
                 $obj->where("mapping_job_id = '$id' and active='Y' ");
                 $nbRecords = $obj->count();
                 // check if there's no record that block the delete operation
                 if ($nbRecords > 0) {
-                    $this->deleteNotAllowedReason = "Used in some mapping columns(s) as mapping job";
+                    $this->deleteNotAllowedReason = "Used in some columns mapping(s) as mapping job";
                     return false;
                 }
                 // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
@@ -171,7 +171,7 @@ class MappingJob extends EtlObject
             } else {
                 // FK on me 
 
-                // etl.mapping_col-مهمة التقابل	mapping_job_id  أنا تفاصيل لها (required field)
+                // etl.mapping_col-مهمة الترحيل	mapping_job_id  أنا تفاصيل لها (required field)
                 if (! $simul) {
                     // require_once "../etl/mapping_col.php";
                     MappingCol::updateWhere(['mapping_job_id' => $id_replace], "mapping_job_id='$id'");
@@ -184,6 +184,33 @@ class MappingJob extends EtlObject
             }
             return true;
         }
+    }
+
+
+    public function calcStatusHtml($what="value") {
+        list($apiExecutionObj,) = $this->getRelation("apiExecutionList")->getFirst();
+        $nb = "...";
+        $link = "#";
+        if(!$apiExecutionObj) $status = "off";
+        else {
+            if($apiExecutionObj->calc("erroned_count")>0) {
+                $aeid = $apiExecutionObj->id;
+                $nb = $apiExecutionObj->calc("erroned_count");
+                $status = "red";
+                $link = "main.php?Main_Page=afw_mode_edit.php&cl=ApiExecution&id=$aeid&currmod=etl&currstep=4";
+            } 
+            elseif($apiExecutionObj->calc("ignored_count")>0) {
+                $aeid = $apiExecutionObj->id;
+                $nb = $apiExecutionObj->calc("ignored_count");
+                $status = "yellow";
+                $link = "main.php?Main_Page=afw_mode_edit.php&cl=ApiExecution&id=$aeid&currmod=etl&currstep=4";
+            }
+            else  {                
+                $status = "green";
+            }
+        }
+
+        return "<div class='run-status $status'><a href='$link'>$nb</a></div>";
     }
 
 }

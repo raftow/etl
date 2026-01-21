@@ -16,6 +16,8 @@ class ExecutionLogArTranslator{
 		$trad["execution_log"]["findword"] = "فلترة";
 		$trad["execution_log"]["input"] = "مدخلات الخدمة";
 		$trad["execution_log"]["output"] = "مخرجات الخدمة";
+		$trad["execution_log"]["inputOutputHtml"] = "مدخلات ومخرجات الخدمة";
+		
 		$trad["execution_log"]["api_execution_id"] = "تنفيذ الخدمة";
 		$trad["execution_log"]["page"] = "الصفحة";
 		$trad["execution_log"]["output_title"] = "عنوان المخرجات";

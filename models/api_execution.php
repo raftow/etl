@@ -112,7 +112,7 @@ class ApiExecution extends AFWObject
          * @var MappingJob $mappingJobObj
          */
 
-        list($findword, $findword2, $findword3) = explode("|", $this->getVal("findword"));
+        list($findword, $findword2, $findword3, $showLog) = explode("|", $this->getVal("findword"));
 
         $MAX_SHOW = 50;
 
@@ -190,7 +190,7 @@ class ApiExecution extends AFWObject
         $html = "";
 
         if(is_array($data_rows)) $html .= AfwHtmlHelper::tableToHtml($data_rows, null); 
-        $html .= "<br>$notes";
+        if($showLog) $html .= "<br>$notes";
 
         return $html;
     }
@@ -322,6 +322,18 @@ class ApiExecution extends AFWObject
             }
             return true;
         }
+    }
+
+    public function getAttributeLabel($attribute, $lang = 'ar', $short = false)
+    {
+        $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short);
+        if ($attribute == "showHtml") {
+            
+            $filter_by = $this->getVal("findword");
+            if($filter_by) $return .= " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <p class='filter'>Filterd by ($filter_by)</p>";
+        }
+        
+        return $return;
     }
 }
 

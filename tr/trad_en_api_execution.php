@@ -25,6 +25,7 @@ class ApiExecutionEnTranslator{
 		$trad["api_execution"]["data_api_id"] = "Data api";
 		$trad["api_execution"]["run_date"] = "Run Date";
 		$trad["api_execution"]["output_title"] = "Output Title";
+		$trad["api_execution"]["inputOutputHtml"] = "Input & Output";
         // steps
         return $trad;
     }

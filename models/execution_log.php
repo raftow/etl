@@ -76,20 +76,44 @@ class ExecutionLog extends AFWObject{
         }
 
 
+        public function calcInputOutputHtml($what = "value")
+        {
+            $input = AfwSettingsHelper::paramsArrayToString(json_decode($this->getVal("input")));
+            $output = $this->getVal("output");
+            $output_title = $this->getVal("output_title");
+            return "<div class='ioae'>
+                <div class='aeinput'><pre class='json'>$input</pre></div>
+                <div class='aeoutput'>
+                            <div class='aeoutputtitle'>
+                                $output_title
+                            </div>
+                            <div class='aeoutputbody'>
+                                <pre class='json'>$output</pre>
+                            </div>
+                </div>
+            </div>";   
+        }
+
+
 
         public function calcShowHtml($what="value")
         {
-            $dataApiObj = $this->het("data_api_id");
+            $apiExecObj = $this->het("api_execution_id");
+            if (!$apiExecObj) {
+                return "Strange api_execution_id=" . $this->getVal("api_execution_id") . " in RecordLog id=" . $this->getId();
+            }
+            
+            $dataApiObj = $apiExecObj->het("data_api_id");
             if(!$dataApiObj)
             {
-                return "Strange data_api_id=".$this->getVal("data_api_id")." in ExecutionLog id=".$this->getId();
+                return "Strange data_api_id=".$apiExecObj->getVal("data_api_id")." in APIExecution id=".$apiExecObj->getId();
             }
 
 
-            $mappingJobObj = $this->het("mapping_job_id");
+            $mappingJobObj = $apiExecObj->het("mapping_job_id");
             if(!$mappingJobObj)
             {
-                return "Strange mapping_job_id=".$this->getVal("mapping_job_id")." in ExecutionLog id=".$this->getId();
+                return "Strange mapping_job_id=".$apiExecObj->getVal("mapping_job_id")." in APIExecution id=".$apiExecObj->getId();
             }
 
             /**

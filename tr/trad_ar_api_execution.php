@@ -21,10 +21,11 @@ class ApiExecutionArTranslator{
 		$trad["api_execution"]["findword"] = "فلترة";
 		$trad["api_execution"]["input"] = "مدخلات الخدمة";
 		$trad["api_execution"]["output"] = "مخرجات الخدمة";
-		$trad["api_execution"]["mapping_job_id"] = "مهمة التقابل";
+		$trad["api_execution"]["mapping_job_id"] = "مهمة الترحيل";
 		$trad["api_execution"]["data_api_id"] = "خدمة البيانات";
 		$trad["api_execution"]["run_date"] = "تاريخ التنفيذ";
 		$trad["api_execution"]["output_title"] = "عنوان المخرجات";
+		$trad["api_execution"]["inputOutputHtml"] = "مدخلات ومخرجات الخدمة";
         // steps
         return $trad;
     }

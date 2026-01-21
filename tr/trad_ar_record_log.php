@@ -21,6 +21,7 @@ class RecordLogArTranslator{
 		$trad["record_log"]["showHtml"] = "عرض جدولي";
 
 		$trad["record_log"]["api_execution_id"] = "تنفيذ الخدمة";
+		$trad["record_log"]["mapping_job_id"] = "مهمة الترحيل";
 		$trad["record_log"]["record_num"] = "رقم السجل";
 		$trad["record_log"]["page_num"] = "الصفحة";
 		

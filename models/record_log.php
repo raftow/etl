@@ -96,13 +96,19 @@ class RecordLog extends AFWObject
 
     public function calcShowHtml($what = "value")
     {
-        $dataApiObj = $this->het("data_api_id");
+        $apiExecObj = $this->het("api_execution_id");
+        if (!$apiExecObj) {
+            return "Strange api_execution_id=" . $this->getVal("api_execution_id") . " in RecordLog id=" . $this->getId();
+        }
+
+        /*
+        $dataApiObj = $apiExecObj->het("data_api_id");
         if (!$dataApiObj) {
             return "Strange data_api_id=" . $this->getVal("data_api_id") . " in RecordLog id=" . $this->getId();
         }
 
 
-        $mappingJobObj = $this->het("mapping_job_id");
+        $mappingJobObj = $apiExecObj->het("mapping_job_id");
         if (!$mappingJobObj) {
             return "Strange mapping_job_id=" . $this->getVal("mapping_job_id") . " in RecordLog id=" . $this->getId();
         }
@@ -111,35 +117,30 @@ class RecordLog extends AFWObject
          * @var DataApi $dataApiObj
          * @var MappingJob $mappingJobObj
          */
-
+        /*
         $defaultPattern = $mappingJobObj->getDefaultPattern("output");
         $outputPattern = AfwSettingsHelper::readSettingValue($dataApiObj, "output", $defaultPattern);
         $outputPatternData = $outputPattern["data"];
         $dataPath = $outputPatternData["path"];
         $outputPatternExp = var_export($outputPatternData, true);
-
+        */
         $record_json = $this->getVal("record_json");
         $result_json_decoded = json_decode($record_json);
 
         if (is_object($result_json_decoded)) {
-            $result_arr = (array) $result_json_decoded;
+            $row = (array) $result_json_decoded;
         } else {
-            $result_arr = $result_json_decoded;
+            $row = $result_json_decoded;
         }
 
+        $data_rows = [];
+        $data_rows[] = $row;
 
-        if (is_array($result_arr)) {
-            //die("rafik will do AfwFormatHelper::extractDataFromArray(result_arr, $dataPath, ...) with result_arr = ".var_export($result_arr,true)." ... ");
-            list($header_row, $data_rows, $log) = AfwFormatHelper::extractDataFromArray($result_arr, $dataPath, $outputPatternData["record"]);
-        } else throw new AfwRuntimeException("Strange output response can't be decoded as array");
-
-
-        if ($header_row and $data_rows) {
+        if ($data_rows) {
             $html = AfwHtmlHelper::tableToHtml($data_rows, null);
-        } else $html = "<b>Json record parsed not muching pattern :</b>
-                    <br>$log
-                    <br>dataPath=$dataPath
-                    <br>outputPattern=$outputPatternExp";
+        } else $html = "<b>Bad Json code :</b>
+                    <br>$record_json
+                    ";
 
         return $html;
     }
@@ -270,6 +271,12 @@ class RecordLog extends AFWObject
             }
             return true;
         }
+    }
+
+    public function shouldBeCalculatedField($attribute){
+        if($attribute=="mapping_job_id") return true;
+        if($attribute=="showHtml") return true;
+        return false;
     }
 }
 
