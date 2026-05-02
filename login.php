@@ -4,6 +4,6 @@
       include_once ("$file_dir_name/module_config.php"); 
       $direct_page = "login_ums.php";
       $direct_page_path = "$file_dir_name/../ums";
-      require("$file_dir_name/../lib/afw/afw_main_page.php"); 
-      AfwMainPage::echoDirectPage($MODULE, $direct_page, $direct_page_path);
+      // require("$file_dir_name/../lib/afw/cms/cms_main_page.php"); 
+      CmsMainPage::echoDirectPage($MODULE, $direct_page, $direct_page_path);
 ?>
