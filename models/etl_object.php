@@ -6,10 +6,7 @@ class EtlObject extends AfwMomkenObject
 
     public static function executeIndicator($object, $indicator, $normal_class, $arrObjectsRelated, $sens = 'asc', $default_red_pct = 0, $default_orange_pct = 0)
     {
-        global $MODE_SQL_PROCESS_LOURD, $nb_queries_executed;
-        $old_nb_queries_executed    = $nb_queries_executed;
-        $old_MODE_SQL_PROCESS_LOURD = $MODE_SQL_PROCESS_LOURD;
-        $MODE_SQL_PROCESS_LOURD     = true;
+        UfwQueryAnalyzer::startProcessLourdMode();
 
         if (! $normal_class) {
             $normal_class = 'vert';
@@ -63,8 +60,7 @@ class EtlObject extends AfwMomkenObject
 
         }
 
-        $MODE_SQL_PROCESS_LOURD = $old_MODE_SQL_PROCESS_LOURD;
-        $nb_queries_executed    = $old_nb_queries_executed;
+        UfwQueryAnalyzer::stopProcessLourdMode();
 
         // die( "$objective, $value, $value_class, $objective_red, $objective_orange" );
         return [$objective, $value, $value_class, $objective_red, $objective_orange];
