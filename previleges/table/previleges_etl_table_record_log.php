@@ -1,26 +1,26 @@
 <?php
 
-	$tbf_info['mapping_col_transformation'] = array (
-  'id' => '13976',
+	$tbf_info['record_log'] = array (
+  'id' => '13980',
   'display' => 
   array (
-    'id' => '104702',
+    'id' => '104732',
   ),
   'search' => 
   array (
-    'id' => '104703',
+    'id' => '104733',
   ),
   'qsearch' => 
   array (
-    'id' => '104704',
+    'id' => '104734',
   ),
   'edit' => 
   array (
-    'id' => '104705',
+    'id' => '104729',
   ),
   'qedit' => 
   array (
-    'id' => '104706',
+    'id' => '104730',
   ),
   'crossed' => 
   array (
@@ -28,7 +28,7 @@
   ),
   'stats' => 
   array (
-    'id' => '104707',
+    'id' => -1,
   ),
   'ddb' => 
   array (
@@ -40,12 +40,12 @@
   ),
   'delete' => 
   array (
-    'id' => '104708',
+    'id' => '104731',
   ),
 );
 
 
-	$tab_info[13976] = array (
-  'name' => 'mapping_col_transformation',
+	$tab_info[13980] = array (
+  'name' => 'record_log',
 );
 

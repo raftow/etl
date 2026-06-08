@@ -1,0 +1,571 @@
+<?php
+
+	$role_info[382] = array (
+  'code' => 'goal-ETL-SETTINGS',
+  'name' => 
+  array (
+    'ar' => 'إدارة ترحيل البيانات',
+    'en' => 'Data migration management',
+  ),
+  'menu' => 
+  array (
+    'need_admin' => false,
+    'id' => '382',
+    'menu_name_' => 'إدارة ترحيل البيانات',
+    'menu_name_ar' => 'إدارة ترحيل البيانات',
+    'menu_name_en' => 'Data migration management',
+    'page' => 'main.php?Main_Page=fm.php&a=1286&r=382',
+    'css' => 'info',
+    'icon' => ' icon-382',
+    'showme' => true,
+    'items' => 
+    array (
+      104676 => 
+      array (
+        'id' => '104676',
+        'code' => 'f2-a-data_api/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'خدمات بيانات',
+        'menu_name_en' => 'Data apis',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=DataApi&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104676 bfc-',
+      ),
+      104690 => 
+      array (
+        'id' => '104690',
+        'code' => 'f2-a-end_point/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'نقاط نهاية',
+        'menu_name_en' => 'End points',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=EndPoint&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104690 bfc-',
+      ),
+      104711 => 
+      array (
+        'id' => '104711',
+        'code' => 'f2-a-mapping_job/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'مهمات التقابل',
+        'menu_name_en' => 'Mapping jobs',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=MappingJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104711 bfc-',
+      ),
+      104697 => 
+      array (
+        'id' => '104697',
+        'code' => 'f2-a-mapping_col/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'حقول التقابل',
+        'menu_name_en' => 'mapping columns',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=MappingCol&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104697 bfc-',
+      ),
+      104663 => 
+      array (
+        'id' => '104663',
+        'code' => 'f2-a-auto_job/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'مهام آلية',
+        'menu_name_en' => 'automatic jobs',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=AutoJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104663 bfc-',
+      ),
+      104704 => 
+      array (
+        'id' => '104704',
+        'code' => 'f2-a-mapping_col_transformation/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'تحويلات الحقول',
+        'menu_name_en' => 'mapping column transformations',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=MappingColTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104704 bfc-',
+      ),
+      104672 => 
+      array (
+        'id' => '104672',
+        'code' => 'f2-a-collection/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة المجموعات',
+        'menu_name_en' => 'Collections administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=Collection&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104672 bfc-',
+      ),
+    ),
+    'otherbfs' => 
+    array (
+      104665 => 
+      array (
+        'id' => '104665',
+        'code' => 'f2-a-auto_job/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة مهام آلية',
+        'menu_name_en' => 'automatic jobs administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=AutoJob&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104665 bfc-',
+      ),
+      104667 => 
+      array (
+        'id' => '104667',
+        'code' => 'f2-a-auto_job/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح',
+        'menu_name_en' => 'delete automatic job',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=AutoJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104667 bfc-',
+      ),
+      104661 => 
+      array (
+        'id' => '104661',
+        'code' => 'f2-a-auto_job/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل',
+        'menu_name_en' => 'display details of automatic job',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=AutoJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104661 bfc-',
+      ),
+      104662 => 
+      array (
+        'id' => '104662',
+        'code' => 'f2-a-auto_job/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في مهام آلية',
+        'menu_name_en' => 'automatic jobs search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=AutoJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104662 bfc-',
+      ),
+      104663 => 
+      array (
+        'id' => '104663',
+        'code' => 'f2-a-auto_job/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'مهام آلية',
+        'menu_name_en' => 'automatic jobs',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=AutoJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104663 bfc-',
+      ),
+      104671 => 
+      array (
+        'id' => '104671',
+        'code' => 'f2-a-collection/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء مجموعة',
+        'menu_name_en' => 'create Collection',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=Collection&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104671 bfc-',
+      ),
+      104672 => 
+      array (
+        'id' => '104672',
+        'code' => 'f2-a-collection/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة المجموعات',
+        'menu_name_en' => 'Collections administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=Collection&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104672 bfc-',
+      ),
+      104673 => 
+      array (
+        'id' => '104673',
+        'code' => 'f2-a-collection/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح مجموعة',
+        'menu_name_en' => 'delete Collection',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=Collection&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104673 bfc-',
+      ),
+      104668 => 
+      array (
+        'id' => '104668',
+        'code' => 'f2-a-collection/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل مجموعة',
+        'menu_name_en' => 'display details of Collection',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=Collection&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104668 bfc-',
+      ),
+      104669 => 
+      array (
+        'id' => '104669',
+        'code' => 'f2-a-collection/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في المجموعات',
+        'menu_name_en' => 'Collections search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=Collection&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104669 bfc-',
+      ),
+      104670 => 
+      array (
+        'id' => '104670',
+        'code' => 'f2-a-collection/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'المجموعات',
+        'menu_name_en' => 'Collections',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Collection&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104670 bfc-',
+      ),
+      104677 => 
+      array (
+        'id' => '104677',
+        'code' => 'f2-a-data_api/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء خدمة بيانات',
+        'menu_name_en' => 'create Data api',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=DataApi&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104677 bfc-',
+      ),
+      104678 => 
+      array (
+        'id' => '104678',
+        'code' => 'f2-a-data_api/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة خدمات بيانات',
+        'menu_name_en' => 'Data apis administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=DataApi&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104678 bfc-',
+      ),
+      104680 => 
+      array (
+        'id' => '104680',
+        'code' => 'f2-a-data_api/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح خدمة بيانات',
+        'menu_name_en' => 'delete Data api',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=DataApi&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104680 bfc-',
+      ),
+      104674 => 
+      array (
+        'id' => '104674',
+        'code' => 'f2-a-data_api/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل خدمة بيانات',
+        'menu_name_en' => 'display details of Data api',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=DataApi&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104674 bfc-',
+      ),
+      104675 => 
+      array (
+        'id' => '104675',
+        'code' => 'f2-a-data_api/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في خدمات بيانات',
+        'menu_name_en' => 'Data apis search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=DataApi&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104675 bfc-',
+      ),
+      104676 => 
+      array (
+        'id' => '104676',
+        'code' => 'f2-a-data_api/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'خدمات بيانات',
+        'menu_name_en' => 'Data apis',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=DataApi&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104676 bfc-',
+      ),
+      104691 => 
+      array (
+        'id' => '104691',
+        'code' => 'f2-a-end_point/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء نقطة نهاية',
+        'menu_name_en' => 'create End point',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=EndPoint&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104691 bfc-',
+      ),
+      104692 => 
+      array (
+        'id' => '104692',
+        'code' => 'f2-a-end_point/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة نقاط نهاية',
+        'menu_name_en' => 'End points administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=EndPoint&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104692 bfc-',
+      ),
+      104694 => 
+      array (
+        'id' => '104694',
+        'code' => 'f2-a-end_point/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح نقطة نهاية',
+        'menu_name_en' => 'delete End point',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=EndPoint&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104694 bfc-',
+      ),
+      104688 => 
+      array (
+        'id' => '104688',
+        'code' => 'f2-a-end_point/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل نقطة نهاية',
+        'menu_name_en' => 'display details of End point',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=EndPoint&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104688 bfc-',
+      ),
+      104689 => 
+      array (
+        'id' => '104689',
+        'code' => 'f2-a-end_point/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في نقاط نهاية',
+        'menu_name_en' => 'End points search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=EndPoint&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104689 bfc-',
+      ),
+      104690 => 
+      array (
+        'id' => '104690',
+        'code' => 'f2-a-end_point/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'نقاط نهاية',
+        'menu_name_en' => 'End points',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=EndPoint&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104690 bfc-',
+      ),
+      104698 => 
+      array (
+        'id' => '104698',
+        'code' => 'f2-a-mapping_col/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء mapping column',
+        'menu_name_en' => 'create mapping column',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=MappingCol&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104698 bfc-',
+      ),
+      104699 => 
+      array (
+        'id' => '104699',
+        'code' => 'f2-a-mapping_col/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة حقول التقابل',
+        'menu_name_en' => 'mapping columns administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=MappingCol&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104699 bfc-',
+      ),
+      104701 => 
+      array (
+        'id' => '104701',
+        'code' => 'f2-a-mapping_col/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح mapping column',
+        'menu_name_en' => 'delete mapping column',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=MappingCol&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104701 bfc-',
+      ),
+      104695 => 
+      array (
+        'id' => '104695',
+        'code' => 'f2-a-mapping_col/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل mapping column',
+        'menu_name_en' => 'display details of mapping column',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=MappingCol&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104695 bfc-',
+      ),
+      104696 => 
+      array (
+        'id' => '104696',
+        'code' => 'f2-a-mapping_col/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في حقول التقابل',
+        'menu_name_en' => 'mapping columns search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=MappingCol&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104696 bfc-',
+      ),
+      104697 => 
+      array (
+        'id' => '104697',
+        'code' => 'f2-a-mapping_col/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'حقول التقابل',
+        'menu_name_en' => 'mapping columns',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=MappingCol&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104697 bfc-',
+      ),
+      104705 => 
+      array (
+        'id' => '104705',
+        'code' => 'f2-a-mapping_col_transformation/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء',
+        'menu_name_en' => 'create mapping column transformation',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=MappingColTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104705 bfc-',
+      ),
+      104706 => 
+      array (
+        'id' => '104706',
+        'code' => 'f2-a-mapping_col_transformation/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة تحويلات الحقول',
+        'menu_name_en' => 'mapping column transformations administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=MappingColTransformation&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104706 bfc-',
+      ),
+      104708 => 
+      array (
+        'id' => '104708',
+        'code' => 'f2-a-mapping_col_transformation/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح',
+        'menu_name_en' => 'delete mapping column transformation',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=MappingColTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104708 bfc-',
+      ),
+      104702 => 
+      array (
+        'id' => '104702',
+        'code' => 'f2-a-mapping_col_transformation/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل',
+        'menu_name_en' => 'display details of mapping column transformation',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=MappingColTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104702 bfc-',
+      ),
+      104703 => 
+      array (
+        'id' => '104703',
+        'code' => 'f2-a-mapping_col_transformation/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في تحويلات الحقول',
+        'menu_name_en' => 'mapping column transformations search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=MappingColTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104703 bfc-',
+      ),
+      104704 => 
+      array (
+        'id' => '104704',
+        'code' => 'f2-a-mapping_col_transformation/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'تحويلات الحقول',
+        'menu_name_en' => 'mapping column transformations',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=MappingColTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104704 bfc-',
+      ),
+      104712 => 
+      array (
+        'id' => '104712',
+        'code' => 'f2-a-mapping_job/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء مهمة تقابل',
+        'menu_name_en' => 'create Mapping job',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=MappingJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104712 bfc-',
+      ),
+      104713 => 
+      array (
+        'id' => '104713',
+        'code' => 'f2-a-mapping_job/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة مهمات التقابل',
+        'menu_name_en' => 'Mapping jobs administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=MappingJob&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104713 bfc-',
+      ),
+      104715 => 
+      array (
+        'id' => '104715',
+        'code' => 'f2-a-mapping_job/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح مهمة تقابل',
+        'menu_name_en' => 'delete Mapping job',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=MappingJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104715 bfc-',
+      ),
+      104709 => 
+      array (
+        'id' => '104709',
+        'code' => 'f2-a-mapping_job/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل مهمة تقابل',
+        'menu_name_en' => 'display details of Mapping job',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=MappingJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104709 bfc-',
+      ),
+      104710 => 
+      array (
+        'id' => '104710',
+        'code' => 'f2-a-mapping_job/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في مهمات التقابل',
+        'menu_name_en' => 'Mapping jobs search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=MappingJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104710 bfc-',
+      ),
+      104711 => 
+      array (
+        'id' => '104711',
+        'code' => 'f2-a-mapping_job/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'مهمات التقابل',
+        'menu_name_en' => 'Mapping jobs',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=MappingJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104711 bfc-',
+      ),
+      104664 => 
+      array (
+        'id' => '104664',
+        'code' => 'f2-a-auto_job/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء',
+        'menu_name_en' => 'create automatic job',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=AutoJob&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104664 bfc-',
+      ),
+    ),
+    'sub-folders' => 
+    array (
+    ),
+  ),
+);
+	include "previleges_workflow_role382_special.php";
