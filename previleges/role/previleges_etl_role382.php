@@ -11,7 +11,6 @@
   array (
     'need_admin' => false,
     'id' => '382',
-    'menu_name_' => 'إدارة ترحيل البيانات',
     'menu_name_ar' => 'إدارة ترحيل البيانات',
     'menu_name_en' => 'Data migration management',
     'page' => 'main.php?Main_Page=fm.php&a=1286&r=382',
@@ -75,6 +74,17 @@
         'css' => 'bf',
         'icon' => 'bficon-104663 bfc-',
       ),
+      104685 => 
+      array (
+        'id' => '104685',
+        'code' => 'f2-a-data_transformation/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة التحويلات',
+        'menu_name_en' => 'Transformations administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=DataTransformation&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104685 bfc-',
+      ),
       104704 => 
       array (
         'id' => '104704',
@@ -86,16 +96,16 @@
         'css' => 'bf',
         'icon' => 'bficon-104704 bfc-',
       ),
-      104672 => 
+      104670 => 
       array (
-        'id' => '104672',
-        'code' => 'f2-a-collection/qedit',
+        'id' => '104670',
+        'code' => 'f2-a-collection/qsearch',
         'level' => '1',
-        'menu_name_ar' => 'إدارة المجموعات',
-        'menu_name_en' => 'Collections administration',
-        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=Collection&currmod=etl&ids=all&newo=3',
+        'menu_name_ar' => 'المجموعات',
+        'menu_name_en' => 'Collections',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Collection&currmod=etl',
         'css' => 'bf',
-        'icon' => 'bficon-104672 bfc-',
+        'icon' => 'bficon-104670 bfc-',
       ),
     ),
     'otherbfs' => 
@@ -154,6 +164,72 @@
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=AutoJob&currmod=etl',
         'css' => 'bf',
         'icon' => 'bficon-104663 bfc-',
+      ),
+      104684 => 
+      array (
+        'id' => '104684',
+        'code' => 'f2-a-data_transformation/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء تحويلة',
+        'menu_name_en' => 'create Transformation',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=DataTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104684 bfc-',
+      ),
+      104685 => 
+      array (
+        'id' => '104685',
+        'code' => 'f2-a-data_transformation/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة التحويلات',
+        'menu_name_en' => 'Transformations administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=DataTransformation&currmod=etl&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104685 bfc-',
+      ),
+      104687 => 
+      array (
+        'id' => '104687',
+        'code' => 'f2-a-data_transformation/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح تحويلة',
+        'menu_name_en' => 'delete Transformation',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=DataTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104687 bfc-',
+      ),
+      104681 => 
+      array (
+        'id' => '104681',
+        'code' => 'f2-a-data_transformation/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل تحويلة',
+        'menu_name_en' => 'display details of Transformation',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=DataTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104681 bfc-',
+      ),
+      104682 => 
+      array (
+        'id' => '104682',
+        'code' => 'f2-a-data_transformation/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في التحويلات',
+        'menu_name_en' => 'Transformations search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=DataTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104682 bfc-',
+      ),
+      104683 => 
+      array (
+        'id' => '104683',
+        'code' => 'f2-a-data_transformation/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'التحويلات',
+        'menu_name_en' => 'Transformations',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=DataTransformation&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104683 bfc-',
       ),
       104671 => 
       array (
@@ -568,4 +644,4 @@
     ),
   ),
 );
-	include "previleges_workflow_role382_special.php";
+	include "previleges_etl_role382_special.php";

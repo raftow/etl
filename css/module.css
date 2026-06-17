@@ -4716,3 +4716,15 @@ p.log.alt {
 .aeoutputtitle {
     font-weight: bold;
 }
+
+div#pipeline {
+    margin-top: 7%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width:80%
+}
+
+
+div#pipeline>img {
+    width: 100%;
+}

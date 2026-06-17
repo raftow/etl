@@ -1,4 +1,3 @@
-<?php
 
 	$tbf_info['mapping_col'] = array (
   'id' => '13968',

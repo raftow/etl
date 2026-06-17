@@ -1,4 +1,3 @@
-<?php
 
 	$tbf_info['end_point'] = array (
   'id' => '13965',

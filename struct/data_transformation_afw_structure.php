@@ -12,6 +12,7 @@ class EtlDataTransformationAfwStructure
 
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
                         $obj->ORDER_BY_FIELDS = "";
+                        $obj->IS_LOOKUP = true;
 
                         // $obj->UNIQUE_KEY = array('XXX', 'YYY');
                         $obj->editByStep = false;

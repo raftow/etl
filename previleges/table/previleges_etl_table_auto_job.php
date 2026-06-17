@@ -1,4 +1,3 @@
-<?php
 
 	$tbf_info['auto_job'] = array (
   'id' => '13969',

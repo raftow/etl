@@ -1,4 +1,3 @@
-<?php
 
 	$tbf_info['execution_log'] = array (
   'id' => '13978',

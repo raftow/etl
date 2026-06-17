@@ -11,7 +11,6 @@
   array (
     'need_admin' => false,
     'id' => '386',
-    'menu_name_' => 'نتائج التنفيذ',
     'menu_name_ar' => 'نتائج التنفيذ',
     'menu_name_en' => 'run results',
     'page' => 'main.php?Main_Page=fm.php&a=1286&r=386',
@@ -293,4 +292,4 @@
     ),
   ),
 );
-	include "previleges_workflow_role386_special.php";
+	include "previleges_etl_role386_special.php";

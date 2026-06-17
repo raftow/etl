@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" width="560" height="230">
+
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&amp;display=swap');
+    </style>
+    <linearGradient id="pipeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#0077B6"/>
+      <stop offset="50%"  stop-color="#88C9B5"/>
+      <stop offset="100%" stop-color="#2AB4B2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="560" height="230" fill="#ffffff" rx="16"/>
+
+  <!-- ════════════════════════════════════
+       EXTRACT node — rightmost
+       ════════════════════════════════════ -->
+  <g font-family="'Cairo', 'Segoe UI', 'Tahoma', sans-serif">
+    <polygon points="485,14 522,35 522,77 485,98 448,77 448,35" fill="#2AB4B2"/>
+    <polygon points="485,22 516,40 516,72 485,90 454,72 454,40" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+    <text x="485" y="64" text-anchor="middle" fill="#ffffff" font-size="30" font-weight="900">ا</text>
+    <text x="485" y="122" text-anchor="middle" fill="#0077B6" font-size="13" font-weight="700">استخرج</text>
+  </g>
+
+  <!-- Arrow Extract → Transform (pointing left) -->
+  <g>
+    <line x1="445" y1="56" x2="375" y2="56" stroke="#88C9B5" stroke-width="2" stroke-dasharray="5,4"/>
+    <circle cx="430" cy="56" r="3.5" fill="#2AB4B2" opacity="0.9"/>
+    <circle cx="412" cy="56" r="3.5" fill="#2AB4B2" opacity="0.6"/>
+    <circle cx="394" cy="56" r="3.5" fill="#2AB4B2" opacity="0.35"/>
+    <polygon points="375,56 384,51 384,61" fill="#88C9B5"/>
+  </g>
+
+  <!-- ════════════════════════════════════
+       TRANSFORM node — center
+       ════════════════════════════════════ -->
+  <g font-family="'Cairo', 'Segoe UI', 'Tahoma', sans-serif">
+    <circle cx="308" cy="56" r="46" fill="#88C9B5"/>
+    <circle cx="308" cy="56" r="36" fill="#2AB4B2"/>
+    <circle cx="308" cy="56" r="26" fill="#0077B6"/>
+    <text x="308" y="64" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="900">ت</text>
+    <text x="308" y="122" text-anchor="middle" fill="#0077B6" font-size="13" font-weight="700">تحويل</text>
+  </g>
+
+  <!-- Arrow Transform → Load (pointing left) -->
+  <g>
+    <line x1="260" y1="56" x2="190" y2="56" stroke="#88C9B5" stroke-width="2" stroke-dasharray="5,4"/>
+    <circle cx="245" cy="56" r="3.5" fill="#2AB4B2" opacity="0.35"/>
+    <circle cx="227" cy="56" r="3.5" fill="#2AB4B2" opacity="0.6"/>
+    <circle cx="209" cy="56" r="3.5" fill="#2AB4B2" opacity="0.9"/>
+    <polygon points="190,56 199,51 199,61" fill="#88C9B5"/>
+  </g>
+
+  <!-- ════════════════════════════════════
+       LOAD node — leftmost
+       ════════════════════════════════════ -->
+  <g font-family="'Cairo', 'Segoe UI', 'Tahoma', sans-serif">
+    <rect x="113" y="34" width="72" height="44" rx="4" fill="#0077B6"/>
+    <ellipse cx="149" cy="34" rx="36" ry="12" fill="#2AB4B2"/>
+    <ellipse cx="149" cy="34" rx="26" ry="7" fill="#88C9B5" opacity="0.45"/>
+    <ellipse cx="149" cy="78" rx="36" ry="12" fill="#005f92" opacity="0.85"/>
+    <line x1="113" y1="50" x2="185" y2="50" stroke="#2AB4B2" stroke-width="1" opacity="0.3"/>
+    <line x1="113" y1="62" x2="185" y2="62" stroke="#2AB4B2" stroke-width="1" opacity="0.3"/>
+    <text x="149" y="61" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="900">ح</text>
+    <text x="149" y="122" text-anchor="middle" fill="#0077B6" font-size="13" font-weight="700">حمل</text>
+  </g>
+
+  <!-- Gradient pipeline bar -->
+  <rect x="113" y="137" width="409" height="3.5" rx="2" fill="url(#pipeGrad)"/>
+
+  <!-- Wordmark -->
+  <text x="308" y="188" text-anchor="middle" fill="#0077B6" font-size="30" font-weight="900" letter-spacing="6"
+        font-family="'Cairo', 'Segoe UI', 'Tahoma', sans-serif">أتح</text>
+  <text x="308" y="213" text-anchor="middle" fill="#2AB4B2" font-size="13" font-weight="600"
+        font-family="'Cairo', 'Segoe UI', 'Tahoma', sans-serif">خط سير البيانات</text>
+
+</svg>

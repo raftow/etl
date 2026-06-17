@@ -1,4 +1,3 @@
-<?php
 
 	$tbf_info['data_api'] = array (
   'id' => '13964',

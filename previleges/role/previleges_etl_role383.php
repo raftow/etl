@@ -11,7 +11,6 @@
   array (
     'need_admin' => false,
     'id' => '383',
-    'menu_name_' => 'اتح',
     'menu_name_ar' => 'اتح',
     'menu_name_en' => 'ETL',
     'page' => 'main.php?Main_Page=fm.php&a=1286&r=383',
@@ -74,6 +73,17 @@
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=MappingColTransformation&currmod=etl',
         'css' => 'bf',
         'icon' => 'bficon-104704 bfc-',
+      ),
+      104670 => 
+      array (
+        'id' => '104670',
+        'code' => 'f2-a-collection/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'المجموعات',
+        'menu_name_en' => 'Collections',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Collection&currmod=etl',
+        'css' => 'bf',
+        'icon' => 'bficon-104670 bfc-',
       ),
     ),
     'otherbfs' => 
@@ -414,4 +424,4 @@
     ),
   ),
 );
-	include "previleges_workflow_role383_special.php";
+	include "previleges_etl_role383_special.php";

@@ -2,9 +2,6 @@
 	$tbf_info = array();
 	$tab_info = array();
 	$role_info = array();
-	
-	
-
 	include('previleges/table/previleges_etl_table_api_execution.php');
 	include('previleges/table/previleges_etl_table_auto_job.php');
 	include('previleges/table/previleges_etl_table_collection.php');

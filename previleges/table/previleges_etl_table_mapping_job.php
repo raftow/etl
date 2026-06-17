@@ -1,4 +1,3 @@
-<?php
 
 	$tbf_info['mapping_job'] = array (
   'id' => '13967',

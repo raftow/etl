@@ -13,6 +13,9 @@ $arr_sql_conds[] = "me.active='Y'";
 $objme = AfwSession::getUserConnected();
 $myEmplId = $objme->getEmployeeId();
 
+
+$out_scr .= "<div id='pipeline' class='pipeline'><img src='pic/pipeline-ar.svg'></div>";
+
 /*
 $crm_active_period = AfwSession::config("crm_active_period", 365);
 $oldest_date = AfwDateHelper::shiftGregDate("", -$crm_active_period);
@@ -47,9 +50,7 @@ $reqList = Request::loadRecords($where_old_still_not_assigned, $limit="5", $orde
 
 $header_trad = array("missed"=>"عدد الطلبات", "name" => 'الادارة - المشرف');
 */
-if(!$lang) $lang = AfwLanguageHelper::getGlobalLanguage();
-if(!$lang) $lang = "ar";
-// $out_scr .= Page::showPage("etl", "main-page", $lang);
+$lang = AfwLanguageHelper::getGlobalLanguage();
 
 
 

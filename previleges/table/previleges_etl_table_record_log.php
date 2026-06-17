@@ -1,4 +1,3 @@
-<?php
 
 	$tbf_info['record_log'] = array (
   'id' => '13980',
