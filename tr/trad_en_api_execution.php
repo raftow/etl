@@ -25,7 +25,7 @@ class ApiExecutionEnTranslator{
 		$trad["api_execution"]["input"] = "Input";
 		$trad["api_execution"]["output"] = "Output";
 
-		$trad["api_execution"]["mapping_job_id"] = "mapping job";
+		$trad["api_execution"]["mapping_job_id"] = "ETL job";
 		$trad["api_execution"]["data_api_id"] = "Data api";
 		$trad["api_execution"]["run_date"] = "Run Date";
 		$trad["api_execution"]["output_title"] = "Output Title";

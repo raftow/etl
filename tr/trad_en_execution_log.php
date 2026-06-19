@@ -18,7 +18,7 @@ class ExecutionLogEnTranslator{
 		$trad["execution_log"]["output"] = "Output";
 		$trad["execution_log"]["inputOutputHtml"] = "Input & Output";
 
-		$trad["execution_log"]["mapping_job_id"] = "mapping job";
+		$trad["execution_log"]["mapping_job_id"] = "ETL job";
 		$trad["execution_log"]["data_api_id"] = "Data api";
 		$trad["execution_log"]["run_date"] = "Run Date";
 		$trad["execution_log"]["output_title"] = "Output Title";

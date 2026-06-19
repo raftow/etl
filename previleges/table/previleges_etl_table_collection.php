@@ -1,3 +1,4 @@
+<?php
 
 	$tbf_info['collection'] = array (
   'id' => '13979',

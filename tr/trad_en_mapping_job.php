@@ -12,13 +12,13 @@ class MappingJobEnTranslator{
 		$trad["mapping_job"]["apiExecutionList"] = "Execution Records";
 
 
-		$trad["mapping_job"]["mappingjob.single"] = "mapping job";
+		$trad["mapping_job"]["mappingjob.single"] = "ETL job";
 		$trad["mapping_job"]["mappingjob.new"] = "new";
-		$trad["mapping_job"]["mapping_job"] = "mapping jobs";
-		$trad["mapping_job"]["name_ar"] = "Arabic Mapping job name";
-		$trad["mapping_job"]["desc_ar"] = "Arabic Mapping job description";
-		$trad["mapping_job"]["name_en"] = "English Mapping job name";
-		$trad["mapping_job"]["desc_en"] = "English Mapping job description";
+		$trad["mapping_job"]["mapping_job"] = "ETL jobs";
+		$trad["mapping_job"]["name_ar"] = "Arabic job name";
+		$trad["mapping_job"]["desc_ar"] = "Arabic job description";
+		$trad["mapping_job"]["name_en"] = "English job name";
+		$trad["mapping_job"]["desc_en"] = "English job description";
 		$trad["mapping_job"]["end_point_id"] = "end point";
 		$trad["mapping_job"]["lookup_code"] = "Lookup code";
 		$trad["mapping_job"]["data_api_id"] = "data api";

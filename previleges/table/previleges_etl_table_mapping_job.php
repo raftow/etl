@@ -1,5 +1,6 @@
 
-	$tbf_info['mapping_job'] = array (
+	<?php
+$tbf_info['mapping_job'] = array (
   'id' => '13967',
   'display' => 
   array (
