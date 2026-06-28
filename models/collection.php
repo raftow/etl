@@ -70,10 +70,12 @@ class Collection extends EtlObject
         {
             unset($link);
             $link = array();
-            $title = "إضافة مهمة ترحيل جديد";
-            $title_detailed = $title ."لـ : ". $displ;
+            $title_en = "Add a new migration task";
+            $title_ar = $this->tm($title_en,"ar");
+            
             $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=MappingJob&currmod=etl&sel_collection_id=$my_id";
-            $link["TITLE"] = $title;
+            $link["TITLE_AR"] = $title_ar;
+            $link["TITLE_EN"] = $title_en;
             $link["UGROUPS"] = array();
             $otherLinksArray[] = $link;
         }
