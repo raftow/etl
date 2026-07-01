@@ -15,8 +15,8 @@ class EtlDataTransformationAfwStructure
                         $obj->IS_LOOKUP = true;
 
                         // $obj->UNIQUE_KEY = array('XXX', 'YYY');
-                        $obj->editByStep = false;
-                        $obj->editNbSteps = 0;
+                        $obj->editByStep = true;
+                        $obj->editNbSteps = 2;
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
@@ -53,24 +53,6 @@ class EtlDataTransformationAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                'desc_ar' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => false,
-                        'SIZE' => 'AREA',
-                        'MAXLENGTH' => 32,
-                        'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'UTF8' => true,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_100',
-                ),
-
                 'name_en' => array(
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -90,6 +72,26 @@ class EtlDataTransformationAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
+                'desc_ar' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 'AREA',
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+
+
                 'desc_en' => array(
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -105,7 +107,7 @@ class EtlDataTransformationAfwStructure
                         'UTF8' => false,
                         'TYPE' => 'TEXT',
                         'READONLY' => false,
-                        'CSS' => 'width_pct_100',
+                        'CSS' => 'width_pct_50',
                 ),
 
                 'lookup_code' => array(
@@ -140,13 +142,103 @@ class EtlDataTransformationAfwStructure
                         'MAXLENGTH' => 64,
                         'MIN-SIZE' => 1,
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'MANDATORY' => true,
+                        'MANDATORY' => false,
                         'UTF8' => true,
                         'TYPE' => 'TEXT',
                         'READONLY' => false,
                         'DNA' => true,
                         'CSS' => 'width_pct_50',
                 ),
+
+                'similar_transformations_mfk' => array(
+                        'SHORTNAME' => 'transformation',
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'MFK',
+                        'ANSWER' => 'data_transformation',
+                        'ANSMODULE' => 'etl',
+                        'WHERE' => "id != '§id§'",
+                        'READONLY' => false,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_100',
+                ),
+
+                'test_input' => array(
+                        'STEP' => 2,
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 'AREA',
+                        'ROWS' => 8,
+                        'COLS' => 33,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'test_output' => array(
+                        'STEP' => 2,
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 'AREA',
+                        'ROWS' => 8,
+                        'COLS' => 33,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'similar_methods' => array(
+                        'STEP' => 2,
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 'AREA',
+                        'ROWS' => 8,
+                        'COLS' => 33,
+                        'FORMAT' => "HTML",
+                        'MANDATORY' => false,
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'CATEGORY' => "FORMULA",
+                        'READONLY' => true,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_100',
+                ),
+
+                
 
 
                 'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),

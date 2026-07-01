@@ -7,8 +7,8 @@ class ApiExecutionEnTranslator{
 
 		$trad["api_execution"]["step1"] = "Execution";
 		$trad["api_execution"]["step99"] = "Results";
-		$trad["api_execution"]["step2"] = "Show Table";
-		$trad["api_execution"]["showHtml"] = "Show Table";
+		$trad["api_execution"]["step2"] = "Filtered records";
+		$trad["api_execution"]["showHtml"] = "Filtered records";
 		$trad["api_execution"]["step3"] = "Execution Log";
 		$trad["api_execution"]["executionLogList"] = "Execution Log";
 		$trad["api_execution"]["step5"] = "Errors";
@@ -25,7 +25,7 @@ class ApiExecutionEnTranslator{
 		$trad["api_execution"]["input"] = "Input";
 		$trad["api_execution"]["output"] = "Output";
 
-		$trad["api_execution"]["mapping_job_id"] = "ETL job";
+		$trad["api_execution"]["mapping_job_id"] = "Individual Job";
 		$trad["api_execution"]["data_api_id"] = "Data api";
 		$trad["api_execution"]["run_date"] = "Run Date";
 		$trad["api_execution"]["output_title"] = "Output Title";

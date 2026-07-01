@@ -132,6 +132,7 @@ class ApiExecution extends AFWObject
             $result_json_decoded = json_decode($record_json);
             if (is_object($result_json_decoded)) {
                 $row = (array) $result_json_decoded;
+                //$row = json_decode($record_json, true);
             } else {
                 $row = $result_json_decoded;
                 if(!$row) $row = $record_json;
@@ -324,7 +325,10 @@ class ApiExecution extends AFWObject
         }
     }
 
-    public function getAttributeLabel($attribute, $lang = 'ar', $short = false)
+    /**
+     * @param string $attribute
+     */
+    public function getAttributeLabel($attribute, $lang = 'ar', $short = false, $AIT = true)
     {
         $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short);
         if ($attribute == "showHtml") {

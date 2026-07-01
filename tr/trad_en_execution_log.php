@@ -7,8 +7,8 @@ class ExecutionLogEnTranslator{
 
 		$trad["execution_log"]["step1"] = "Execution";
 		$trad["execution_log"]["step2"] = "Results";
-		$trad["execution_log"]["step3"] = "Show Table";
-		$trad["execution_log"]["showHtml"] = "Show Table";
+		$trad["execution_log"]["step3"] = "Pretty output";
+		$trad["execution_log"]["showHtml"] = "Pretty output";
 
 		$trad["execution_log"]["executionlog.single"] = "API Execution log";
 		$trad["execution_log"]["executionlog.new"] = "new";
@@ -18,7 +18,7 @@ class ExecutionLogEnTranslator{
 		$trad["execution_log"]["output"] = "Output";
 		$trad["execution_log"]["inputOutputHtml"] = "Input & Output";
 
-		$trad["execution_log"]["mapping_job_id"] = "ETL job";
+		$trad["execution_log"]["mapping_job_id"] = "Individual Job";
 		$trad["execution_log"]["data_api_id"] = "Data api";
 		$trad["execution_log"]["run_date"] = "Run Date";
 		$trad["execution_log"]["output_title"] = "Output Title";

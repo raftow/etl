@@ -7,7 +7,7 @@ class EtlCollectionAfwStructure
     {
         if ($obj instanceof Collection) {
             $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
-            $obj->DISPLAY_FIELD_BY_LANG                 = ['ar' => 'name_ar', 'en' => 'name_en'];
+            $obj->DISPLAY_FIELD_BY_LANG = ['ar' => 'name_ar', 'en' => 'name_en'];
 
             $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS = '';
@@ -153,7 +153,7 @@ class EtlCollectionAfwStructure
         ),
 
         'settings'            => [
-            'STEP' => 3,
+            'STEP' => 99,
             'SEARCH' => true,
             'QSEARCH'     => true,
             'SHOW'   => true,
@@ -175,7 +175,7 @@ class EtlCollectionAfwStructure
         ],
 
         'errorInSettings'            => [
-            'STEP' => 3,
+            'STEP' => 99,
             'SEARCH' => true,
             'QSEARCH'     => true,
             'SHOW'   => true,

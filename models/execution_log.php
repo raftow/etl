@@ -123,16 +123,20 @@ class ExecutionLog extends AFWObject{
 
             $defaultPattern = $mappingJobObj->getDefaultPattern("output");
             $outputPattern = AfwSettingsHelper::readSettingValue($dataApiObj,"output", $defaultPattern);
+            // die(AfwExportHelper::afwExport(["defaultPattern"=>$defaultPattern,"outputPattern"=>$outputPattern], "outputPattern.json"));
+            
             $outputPatternData = $outputPattern["data"];
             $dataPath = $outputPatternData["path"];
             $outputPatternExp = var_export($outputPatternData, true);
             
             $output = $this->getVal("output");
+            die("calcShowHtml() : output = ".var_export($output,true)." <br> outputPatternData = ".var_export($outputPatternData,true)." <br> dataPath = ".var_export($dataPath,true));
             $result_json_decoded = json_decode($output);
 
             if(is_object($result_json_decoded))
             {
                 $result_arr = (array) $result_json_decoded;
+                // $result_arr = json_decode($output, true);
             }
             else
             {
@@ -143,7 +147,19 @@ class ExecutionLog extends AFWObject{
             if(is_array($result_arr))
             {
                 //die("rafik will do AfwFormatHelper::extractDataFromArray(result_arr, $dataPath, ...) with result_arr = ".var_export($result_arr,true)." ... ");
-                list($header_row,$data_rows, $log) = AfwFormatHelper::extractDataFromArray($result_arr, $dataPath, $outputPatternData["record"]);
+                list($header_row, $data_rows, $log) = AfwFormatHelper::extractDataFromArray($result_arr, $dataPath, $outputPatternData["record"]);
+
+                die("AfwFormatHelper::extractDataFromArray(result_arr, dataPath, recordPattern) <br>
+                       with result_arr = ".var_export($result_arr,true)." <br> 
+                       with dataPath = ".var_export($dataPath,true)." <br>
+                       with recordPattern = ".var_export($outputPatternData["record"],true)." <br>
+                    Has returned : <br>
+                        header_row = ".var_export($header_row,true)."<br>
+                        data_rows = ".var_export($data_rows,true)."<br>
+                            log = ".var_export($log,true)."<br>
+                       "
+                       
+                       );
             }
             else throw new AfwRuntimeException("Strange output response can't be decoded as array");
             

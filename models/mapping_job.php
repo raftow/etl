@@ -77,12 +77,22 @@ class MappingJob extends EtlObject
     }
 
 
+    /**
+     * @param string $pattern_type
+     * @return array
+     */
+
     public function getDefaultPattern($pattern_type)
     {
         $default = ['data'=>["path"=>"data"]];
         $collectionObj = Collection::loadById($this->get("collection_id"));
-        if($collectionObj) $default = AfwSettingsHelper::readSettingValue($collectionObj,$pattern_type, $default);
-        return AfwSettingsHelper::readSettingValue($this,$pattern_type, $default);
+        if($collectionObj) $default = AfwSettingsHelper::readSettingValue($collectionObj, $pattern_type, $default);
+        
+        $return = AfwSettingsHelper::readSettingValue($this, $pattern_type, $default);
+
+        // die("getDefaultPattern($pattern_type) : " . var_export($return, true));
+
+        return $return;
     }
 
     public function getScenarioItemId($currstep)
@@ -191,26 +201,75 @@ class MappingJob extends EtlObject
         list($apiExecutionObj,) = $this->getRelation("apiExecutionList")->getFirst();
         $nb = "...";
         $link = "#";
-        if(!$apiExecutionObj) $status = "off";
+        if(!$apiExecutionObj) {
+            $status_label = "Not executed yet";
+            $status = "off";
+        }
         else {
             if($apiExecutionObj->calc("erroned_count")>0) {
+                $status_label = "Some errors";
                 $aeid = $apiExecutionObj->id;
                 $nb = $apiExecutionObj->calc("erroned_count");
                 $status = "red";
                 $link = "main.php?Main_Page=afw_mode_edit.php&cl=ApiExecution&id=$aeid&currmod=etl&currstep=4";
             } 
             elseif($apiExecutionObj->calc("ignored_count")>0) {
+                $status_label = "Some warnings";
                 $aeid = $apiExecutionObj->id;
                 $nb = $apiExecutionObj->calc("ignored_count");
                 $status = "yellow";
                 $link = "main.php?Main_Page=afw_mode_edit.php&cl=ApiExecution&id=$aeid&currmod=etl&currstep=4";
             }
-            else  {                
+            else  {
+                $status_label = "Sucessfull";                
                 $status = "green";
             }
         }
 
-        return "<div class='run-status $status'><a href='$link'>$nb</a></div>";
+        return "<div class='run-status-label $status'>$status_label</div><div class='run-status $status'><a href='$link'>$nb</a></div>";
+    }
+
+    /**
+     * @param string $attribute
+     */
+    public function attributeIsApplicable($attribute)
+    {
+         
+        if (($attribute == "end_point_id") or ($attribute == "data_api_id")) 
+        {
+            $data_source_type_enum = $this->getVal("data_source_type_enum");
+            return ($data_source_type_enum==1);
+        }
+
+        if ($attribute == "excel_file_id")
+        {
+            $data_source_type_enum = $this->getVal("data_source_type_enum");
+            return ($data_source_type_enum==2);
+        }
+
+        if ($attribute == "db_source_settings")
+        {
+            $data_source_type_enum = $this->getVal("data_source_type_enum");
+            return ($data_source_type_enum==3);
+        }
+
+        if (($attribute == "target_end_point_id") or ($attribute == "target_data_api_id")) 
+        {
+            $data_load_type_enum = $this->getVal("data_load_type_enum");
+            return ($data_load_type_enum==2);
+        }
+
+
+        if ($attribute == "db_target_settings")
+        {
+            $data_load_type_enum = $this->getVal("data_load_type_enum");
+            return ($data_load_type_enum==1);
+        }
+
+        
+
+
+        return true;
     }
 
 }

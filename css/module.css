@@ -3371,30 +3371,25 @@ td.end.calculated>div, td.end.calculated>label {
 }
 
 .icon-383:before {
-    content: "\f133";
-    font-weight: normal;
+    content: "\f0c2";
 }
 
 .icon-384:before {
     content: "\f024";
-    font-weight: normal;
 }
 
 .icon-386:before {
     content: "\f007";
-    font-weight: normal;
 }
 
 
 .icon-387:before {
     content: "\f1ad";
-    font-weight: normal;
 }
 
 
 .icon-388:before {
     content: "\f2bd";
-    font-weight: normal;
 }
 
 .icon-397:before {
@@ -3496,7 +3491,7 @@ td.end.calculated>div, td.end.calculated>label {
 
 .bficon-104680:before,
 .bficon-104685:before {
-    content: "\f133";
+    content: "\f1c0";
 }
 
 .bficon-104694:before,
@@ -4645,18 +4640,21 @@ input.fa.wizardbtn.disabled {
 /**************** PBM special buttons end ************************/
 
 textarea#settings {
-    background-color: #b1dbff9e;
-    min-height: 400px !important;
-    height: 400px !important;
+    background-color : #b1dbff9e;
+    min-height: 600px !important;
+    height: 600px !important;
     background-image: url(../../lib/images/carres.png);
-    font-family: arial;
-    font-size: 18px;
-    padding-top: 2px !important;
-    line-height: 20px;
+    background-size: 88px;
+    font-size: 24px;
+    padding-top: 6px !important;
+    line-height: 44px;
+    
+    font-family: revert;
+    overflow-y: auto;
 }
 
 div#form-control-div-settings {
-    min-height: 410px;
+    min-height: 610px;
 }
 
 

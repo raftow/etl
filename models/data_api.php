@@ -30,36 +30,30 @@ class DataApi extends EtlObject
         } else {
             return null;
         }
-
     }
 
-    public static function loadByMainIndex($end_point_id, $relative_url,$create_obj_if_not_found=false)
+    public static function loadByMainIndex($end_point_id, $relative_url, $create_obj_if_not_found = false)
     {
-        if(!$end_point_id) throw new AfwRuntimeException("loadByMainIndex : end_point_id is mandatory field");
-        if(!$relative_url) throw new AfwRuntimeException("loadByMainIndex : relative_url is mandatory field");
+        if (!$end_point_id) throw new AfwRuntimeException("loadByMainIndex : end_point_id is mandatory field");
+        if (!$relative_url) throw new AfwRuntimeException("loadByMainIndex : relative_url is mandatory field");
 
 
         $obj = new DataApi();
-        $obj->select("end_point_id",$end_point_id);
-        $obj->select("relative_url",$relative_url);
+        $obj->select("end_point_id", $end_point_id);
+        $obj->select("relative_url", $relative_url);
 
-        if($obj->load())
-        {
-            if($create_obj_if_not_found) $obj->activate();
+        if ($obj->load()) {
+            if ($create_obj_if_not_found) $obj->activate();
             return $obj;
-        }
-        elseif($create_obj_if_not_found)
-        {
-            $obj->set("end_point_id",$end_point_id);
-            $obj->set("relative_url",$relative_url);
+        } elseif ($create_obj_if_not_found) {
+            $obj->set("end_point_id", $end_point_id);
+            $obj->set("relative_url", $relative_url);
 
             $obj->insertNew();
-            if(!$obj->id) return null; // means beforeInsert rejected insert operation
+            if (!$obj->id) return null; // means beforeInsert rejected insert operation
             $obj->is_new = true;
             return $obj;
-        }
-        else return null;
-        
+        } else return null;
     }
 
     public function getScenarioItemId($currstep)
@@ -93,17 +87,19 @@ class DataApi extends EtlObject
         $title_en   = "Execute API on Production";
         $help_ar   = "تنفيذ الخدمة الإلكترونية على البيئة الفعلية";
         $help_en   = "Execute Electronic Service on Production environment";
-        
+
         $methodName = "runAPIProd";
-        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
-                "COLOR"=>$color, 
-                "LABEL_AR"=>$title_ar, 
-                "HELP_EN"=>$help_en,
-                "HELP_AR"=>$help_ar, 
-                "LABEL_EN"=>$title_en, 
-                "ADMIN-ONLY"=>true, 
-                "ICON"=>"execute", 
-                'STEP' =>$this->stepOfAttribute("output"));
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+            "METHOD" => $methodName,
+            "COLOR" => $color,
+            "LABEL_AR" => $title_ar,
+            "HELP_EN" => $help_en,
+            "HELP_AR" => $help_ar,
+            "LABEL_EN" => $title_en,
+            "ADMIN-ONLY" => true,
+            "ICON" => "execute",
+            'STEP' => $this->stepOfAttribute("output")
+        );
 
         $color      = "black";
         $title_ar   = "تنفيذ تجريبي للخدمة";
@@ -111,28 +107,32 @@ class DataApi extends EtlObject
         $help_ar   = "تنفيذ الخدمة الإلكترونية على البيئة التجريبية";
         $help_en   = "Execute Electronic Service on Test environment";
         $methodName = "runAPI";
-        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
-                "COLOR"=>$color, 
-                "LABEL_AR"=>$title_ar, 
-                "LABEL_EN"=>$title_en, 
-                "HELP_EN"=>$help_en,
-                "HELP_AR"=>$help_ar, 
-                "ADMIN-ONLY"=>true, 
-                "ICON"=>"link", 
-                'STEP' =>$this->stepOfAttribute("output"));           
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+            "METHOD" => $methodName,
+            "COLOR" => $color,
+            "LABEL_AR" => $title_ar,
+            "LABEL_EN" => $title_en,
+            "HELP_EN" => $help_en,
+            "HELP_AR" => $help_ar,
+            "ADMIN-ONLY" => true,
+            "ICON" => "link",
+            'STEP' => $this->stepOfAttribute("output")
+        );
 
-                
+
         $color      = "orange";
         $title_ar   = "كود من بوستمان";
         $title_en   = "Code From Postman";
         $methodName = "runFromPostman";
-        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName, 
-                "COLOR"=>$color, 
-                "LABEL_AR"=>$title_ar, 
-                "LABEL_EN"=>$title_en, 
-                "ADMIN-ONLY"=>true, 
-                "ICON"=>"generate", 
-                'STEP' =>$this->stepOfAttribute("output"));       
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+            "METHOD" => $methodName,
+            "COLOR" => $color,
+            "LABEL_AR" => $title_ar,
+            "LABEL_EN" => $title_en,
+            "ADMIN-ONLY" => true,
+            "ICON" => "generate",
+            'STEP' => $this->stepOfAttribute("output")
+        );
         /*                
         $color      = "blue";
         $title_ar   = "تنفيذ الخدمة الإلكترونية";
@@ -164,19 +164,19 @@ class DataApi extends EtlObject
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://pt-gw.ttc.gov.sa/v1/NationalDataBankAPI/cities/?from_date=2024-01-01%2000%3A00%3A00&to_date=2029-12-31%2023%3A59%3A59&page=1&limit=1',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
-        CURLOPT_HTTPHEADER => array(
-            'accept: application/json',
-            'Content-Type: application/json',
-            'ApiKey: eyJ4NXQjUzI1NiI6Ik5XUXdPVFJrTWpBNU9XRmpObVUyTnpCbE5UTTNaRFV3T0RVellqWXdabUpsWlROa1pEQTRPRFU0WlRVd1pHSXdObVV5TW1abVpUTmhaRGt5TmpRMlpBPT0iLCJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ==.eyJzdWIiOiJhZG1pbkBjYXJib24uc3VwZXIiLCJhcHBsaWNhdGlvbiI6eyJpZCI6NiwidXVpZCI6IjA2NWM2YmUwLTRiNTgtNDAwNi05ZDNmLTE0YTc2OWE0ZTA2YSJ9LCJpc3MiOiJodHRwczpcL1wvcHJkLXR2dGMtY29uc29sZS50YW1rZWVuLmNsb3VkOjQ0M1wvb2F1dGgyXC90b2tlbiIsImtleXR5cGUiOiJQUk9EVUNUSU9OIiwicGVybWl0dGVkUmVmZXJlciI6IiIsInRva2VuX3R5cGUiOiJhcGlLZXkiLCJwZXJtaXR0ZWRJUCI6IiIsImlhdCI6MTc0ODUxMTk0NiwianRpIjoiZTEzNGJmYzMtNTMxYS00MzUxLTlkMGQtNjVjNzIzOGMxYzMyIn0=.gKEw5Gcc5ensresVwwyw3_PF9AHllvq3faS2Su9iE1G8mcQMef0OBDVdBtVlLYHANhp4EyUWUXtFuZRFR_l-YTbtZEyxCkPMjIApL1I_zMmEtSFRBb6otarBEBAmhNkTTxGJBtBl_pRvejQH0GrdIpRG9kkzo_N6UJUNTWDZiZQ7HS_53MlBSALgQ-tcYhCNdJoTJZLxC60yjx8M7YH3U29tAZ_EuEUG0ut5Egw6BOP43HWY091r8lxqK1-UUWG71JMayaMxECavSuWHlkb4V2NvJBi-2RoV97wg-433i94u081AEbb-eZqxL0DyvUap3myfVpyVdq4rOAb5iJ1Tlw=='
-        ),
+            CURLOPT_URL => 'https://pt-gw.ttc.gov.sa/v1/NationalDataBankAPI/cities/?from_date=2024-01-01%2000%3A00%3A00&to_date=2029-12-31%2023%3A59%3A59&page=1&limit=1',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'accept: application/json',
+                'Content-Type: application/json',
+                'ApiKey: eyJ4NXQjUzI1NiI6Ik5XUXdPVFJrTWpBNU9XRmpObVUyTnpCbE5UTTNaRFV3T0RVellqWXdabUpsWlROa1pEQTRPRFU0WlRVd1pHSXdObVV5TW1abVpUTmhaRGt5TmpRMlpBPT0iLCJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ==.eyJzdWIiOiJhZG1pbkBjYXJib24uc3VwZXIiLCJhcHBsaWNhdGlvbiI6eyJpZCI6NiwidXVpZCI6IjA2NWM2YmUwLTRiNTgtNDAwNi05ZDNmLTE0YTc2OWE0ZTA2YSJ9LCJpc3MiOiJodHRwczpcL1wvcHJkLXR2dGMtY29uc29sZS50YW1rZWVuLmNsb3VkOjQ0M1wvb2F1dGgyXC90b2tlbiIsImtleXR5cGUiOiJQUk9EVUNUSU9OIiwicGVybWl0dGVkUmVmZXJlciI6IiIsInRva2VuX3R5cGUiOiJhcGlLZXkiLCJwZXJtaXR0ZWRJUCI6IiIsImlhdCI6MTc0ODUxMTk0NiwianRpIjoiZTEzNGJmYzMtNTMxYS00MzUxLTlkMGQtNjVjNzIzOGMxYzMyIn0=.gKEw5Gcc5ensresVwwyw3_PF9AHllvq3faS2Su9iE1G8mcQMef0OBDVdBtVlLYHANhp4EyUWUXtFuZRFR_l-YTbtZEyxCkPMjIApL1I_zMmEtSFRBb6otarBEBAmhNkTTxGJBtBl_pRvejQH0GrdIpRG9kkzo_N6UJUNTWDZiZQ7HS_53MlBSALgQ-tcYhCNdJoTJZLxC60yjx8M7YH3U29tAZ_EuEUG0ut5Egw6BOP43HWY091r8lxqK1-UUWG71JMayaMxECavSuWHlkb4V2NvJBi-2RoV97wg-433i94u081AEbb-eZqxL0DyvUap3myfVpyVdq4rOAb5iJ1Tlw=='
+            ),
         ));
 
         $response = curl_exec($curl);
@@ -185,83 +185,71 @@ class DataApi extends EtlObject
         $this->commit();
 
         return [null, "done"];
-
     }
 
     public function runAPIProd($lang = "ar")
     {
-        return $this->runAPI($lang, $test=false);
+        return $this->runAPI($lang, $test = false);
     }
 
-    public function runAPI($lang = "ar", $test=true)
+    public function runAPI($lang = "ar", $test = true)
     {
-        if($test) $epObj = $this->get('test_end_point_id');
+        if ($test) $epObj = $this->get('test_end_point_id');
         else $epObj = $this->get('end_point_id');
-        if(!$epObj)
-        {
+        if (!$epObj) {
             $error_message = $this->tm("No end point defined for this API", $lang);
-            return[$error_message, ""];
+            return [$error_message, ""];
         }
         $url = rtrim($epObj->getVal("url"), "/") . "/" . ltrim($this->getVal('relative_url'), "/");
         $res = AfwApiConsumeHelper::runAPI($url, $this, $lang);
 
-        $outputPattern = AfwSettingsHelper::readSettingValue($this,"output", ['data'=>["path"=>"data"]]);
+        $outputPattern = AfwSettingsHelper::readSettingValue($this, "output", ['data' => ["path" => "data"]]);
         $outputPatternData = $outputPattern["data"];
 
-        $log = "CURL Commands : \n". implode("\n", $res['commands']);
+        $log = "CURL Commands : \n" . implode("\n", $res['commands']);
         $this->set("log", $log);
         $html = "";
-        if($res['success'])
-        {
+        if ($res['success']) {
             $success_message = $res['url'] . " executed successfully";
-            $output = $success_message . " with response : " . $res['response']."\n";            
-            $this->set("output", $output); 
+            $output = $success_message . " with response : " . $res['response'] . "\n";
+            $this->set("output", $output);
             $dataPath = $outputPatternData["path"];
             $outputPatternExp = var_export($outputPatternData, true);
-            if(is_object($res['result']))
-            {
+            if (is_object($res['result'])) {
                 $result_arr = (array) $res['result'];
-            }
-            else {
-                
+            } else {
+
                 $result_arr = $res['result'];
             }
-            
-            if(is_array($result_arr))
-            {
-                //die("rafik will do AfwFormatHelper::extractDataFromArray(result_arr, $dataPath, ...) with result_arr = ".var_export($result_arr,true)." ... ");
-                list($header_row,$data_rows, $log) = AfwFormatHelper::extractDataFromArray($result_arr, $dataPath, $outputPatternData["record"]);
-            }
-            else throw new AfwRuntimeException("Strange result array from API : ".var_export($res['result'], true));
-            
 
-            if($header_row and $data_rows)
-            {
+            if (is_array($result_arr)) {
+                //die("rafik will do AfwFormatHelper::extractDataFromArray(result_arr, $dataPath, ...) with result_arr = ".var_export($result_arr,true)." ... ");
+                list($header_row, $data_rows, $log) = AfwFormatHelper::extractDataFromArray($result_arr, $dataPath, $outputPatternData["record"]);
+            } else throw new AfwRuntimeException("Strange result array from API : " . var_export($res['result'], true));
+
+
+            if ($header_row and $data_rows) {
                 $html = AfwHtmlHelper::tableToHtml($data_rows, null);
-            }
-            else $html = "<b>Json parsed not muching pattern :</b>
+            } else $html = "<b>Json parsed not muching pattern :</b>
                     <br>$log
                     <br>dataPath=$dataPath
                     <br>outputPattern=$outputPatternExp
-                    <br><pre class='code php'>".var_export($res['result'], true)."</pre>";
+                    <br><pre class='code php'>" . var_export($res['result'], true) . "</pre>";
             $this->set("html", $html);
             $this->commit();
             return [null, $success_message];
-        }
-        else
-        {
-            $error_message = "Error while consuming the API : " . $res['message']."\n";
-            $output = $error_message . " with response : " . $res['response']."\n";
+        } else {
+            $error_message = "Error while consuming the API : " . $res['message'] . "\n";
+            $output = $error_message . " with response : " . $res['response'] . "\n";
             $this->set("output", $output);
             $this->set("html", $html);
             $this->commit();
-            return[$error_message, null];
+            return [$error_message, null];
         }
-        
     }
 
 
-    public function calcShowHtml($what="value")
+    public function calcShowHtml($what = "value")
     {
         return $this->getVal("html");
     }
@@ -269,12 +257,10 @@ class DataApi extends EtlObject
     public function beforeMaj($id, $fields_updated)
     {
 
-        if($fields_updated['settings'])
-        {
+        if ($fields_updated['settings']) {
             $input_arr = AfwSettingsHelper::readParamsArray($this, "input");
-            $input_settings_arr = AfwSettingsHelper::readSettingValue($this,"input");
-            foreach($input_settings_arr as $input_param => $input_param_props_arr)
-            {
+            $input_settings_arr = AfwSettingsHelper::readSettingValue($this, "input");
+            foreach ($input_settings_arr as $input_param => $input_param_props_arr) {
                 $input_arr = AfwSettingsHelper::repareParamsArray($input_arr, $input_param, $input_param_props_arr);
             }
 
@@ -337,6 +323,30 @@ class DataApi extends EtlObject
         }
     }
 
+    /**
+     * @param int $current_step
+     */
+    public function canSaveOnly($current_step)
+    {
+        if ($current_step == $this->stepOfAttribute("settings")) return "Syntax";
+        return false;
+    }
+
+    /**
+     * @param string $attribute
+     */
+    public function attributeIsApplicable($attribute)
+    {
+        if ($attribute == "settings") {
+            $settings_template_id = $this->getVal("settings_template_id");
+            return (!$settings_template_id);
+        }
+
+
+        return true;
+    }
+
+    
 }
 
 // errors 

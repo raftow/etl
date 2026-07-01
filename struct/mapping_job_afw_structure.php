@@ -75,6 +75,48 @@ class EtlMappingJobAfwStructure
             'CSS'                                  => 'width_pct_50'
         ],
 
+        'data_source_type_enum' => array(
+            'SHORTNAME' => 'type',
+            'SEARCH' => true,
+            'QSEARCH' => false,
+            'SHOW' => true,
+            'AUDIT' => false,
+            'RETRIEVE' => true,
+            'EDIT' => true,
+            'QEDIT' => true,
+            'SIZE' => 32,
+            'MAXLENGTH' => 32,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+            'UTF8' => false,
+            'TYPE' => 'ENUM',
+            'ANSWER' => 'FUNCTION',
+            'READONLY' => false,
+            'MANDATORY' => true,
+            'CSS' => 'width_pct_50',
+        ),
+
+        'data_load_type_enum' => array(
+            'SHORTNAME' => 'type',
+            'SEARCH' => true,
+            'QSEARCH' => false,
+            'SHOW' => true,
+            'AUDIT' => false,
+            'RETRIEVE' => true,
+            'EDIT' => true,
+            'QEDIT' => true,
+            'SIZE' => 32,
+            'MAXLENGTH' => 32,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+            'UTF8' => false,
+            'TYPE' => 'ENUM',
+            'ANSWER' => 'FUNCTION',
+            'READONLY' => false,
+            'MANDATORY' => true,
+            'CSS' => 'width_pct_50',
+        ),
+
 
         'name_ar'            => [
             'STEP' => 2,
@@ -187,7 +229,7 @@ class EtlMappingJobAfwStructure
             'QSEARCH'         => false,
             'SHOW'      => true,
             'AUDIT'                   => false,
-            'RETRIEVE' => true,
+            'RETRIEVE' => false,
             'EDIT'                                    => true,
             'QEDIT'           => true,
             'SIZE'                                    => 32,
@@ -200,11 +242,116 @@ class EtlMappingJobAfwStructure
             'ANSWER'          => 'data_api',
             'ANSMODULE' => 'etl',
             'WHERE' => "end_point_id = §end_point_id§ or test_end_point_id = §end_point_id§",
-            'RELATION'                                => 'ManyToOne',
+            'RELATION' => 'OneToOneU',
             'READONLY' => false,
             'DNA'            => true,
             'CSS'                                     => 'width_pct_50'
         ],
+
+        'db_source_settings'            => [
+            'STEP' => 2,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'SPELLCHECK' => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MAXLENGTH' => 3333,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => false,
+            'MANDATORY' => true,
+            'COLS' => 100,
+            'ROWS' => 12,
+            'CSS'                                  => 'width_pct_100'
+        ],
+
+        'target_end_point_id'       => [
+            'STEP' => 2,
+            'SHORTNAME' => 'endpoint',
+            'SEARCH'       => true,
+            'QSEARCH'          => false,
+            'SHOW'      => true,
+            'AUDIT'                   => false,
+            'RETRIEVE' => false,
+            'EDIT'                                    => true,
+            'QEDIT'           => true,
+            'SIZE'                                    => 32,
+            'MAXLENGTH'         => 32,
+            'MIN-SIZE'           => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8'      => false,
+            'TYPE'                                    => 'FK',
+            'ANSWER'          => 'end_point',
+            'ANSMODULE' => 'etl',
+            'RELATION'                                => 'ManyToOne',
+            'READONLY' => false,
+            'DNA'             => true,
+            'CSS'                                     => 'width_pct_50'
+        ],
+
+
+        'target_data_api_id'        => [
+            'STEP' => 2,
+            'SHORTNAME' => 'api',
+            'SEARCH'         => true,
+            'QSEARCH'         => false,
+            'SHOW'      => true,
+            'AUDIT'                   => false,
+            'RETRIEVE' => false,
+            'EDIT'                                    => true,
+            'QEDIT'           => true,
+            'SIZE'                                    => 32,
+            'MAXLENGTH'         => 32,
+            'MIN-SIZE'          => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8'      => false,
+            'TYPE'                                    => 'FK',
+            'ANSWER'          => 'data_api',
+            'ANSMODULE' => 'etl',
+            'WHERE' => "end_point_id = §end_point_id§ or test_end_point_id = §end_point_id§",
+            'RELATION' => 'OneToOneU',
+            'READONLY' => false,
+            'DNA'            => true,
+            'CSS'                                     => 'width_pct_50'
+        ],
+
+        
+
+        
+
+
+        'db_target_settings'            => [
+            'STEP' => 2,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'SPELLCHECK' => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MAXLENGTH' => 3333,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => false,
+            'MANDATORY' => true,
+            'COLS' => 100,
+            'ROWS' => 12,
+            'CSS'                                  => 'width_pct_100'
+        ],
+
+        
 
         'atable_name'        => [
             'STEP' => 3,
@@ -212,7 +359,7 @@ class EtlMappingJobAfwStructure
             'QSEARCH'    => false,
             'SHOW'  => true,
             'AUDIT'      => false,
-            'RETRIEVE'               => true,
+            'RETRIEVE'               => false,
             'EDIT'                                 => true,
             'QEDIT'      => true,
             'SIZE'                                 => 48,
@@ -332,7 +479,7 @@ class EtlMappingJobAfwStructure
             'TYPE'                                 => 'TEXT',
             'READONLY'  => true,
             'FORMAT' => 'HTML',
-            'CSS'                                  => 'width_pct_25'
+            'CSS'                                  => 'width_pct_100'
         ],
 
 

@@ -176,4 +176,50 @@ class EtlObject extends AfwMomkenObject
 
         return $pbms;
     }
+
+    public static function list_of_data_source_type_enum()
+    {
+        $lang = AfwLanguageHelper::getGlobalLanguage();
+        return self::data_source_type()[$lang];
+    }
+
+    public static function data_source_type()
+    {
+        $arr_list_of_data_source_type = array();
+
+        $arr_list_of_data_source_type['en'][1] = 'Api Extract';
+        $arr_list_of_data_source_type['ar'][1] = 'خدمة الكترونية تكاملية';
+        $arr_list_of_data_source_type['code'][1] = 'ApiExtract';
+
+        $arr_list_of_data_source_type['en'][2] = 'Excel Extract';
+        $arr_list_of_data_source_type['ar'][2] = 'ملف اكسل';
+        $arr_list_of_data_source_type['code'][2] = 'ExcelExtract';
+
+        $arr_list_of_data_source_type['en'][3] = 'Source DB Directly Extract';
+        $arr_list_of_data_source_type['ar'][3] = 'مباشرة من قاعدة البيانات المصدر';
+        $arr_list_of_data_source_type['code'][3] = 'DBExtract';
+
+        return $arr_list_of_data_source_type;
+    }
+
+    public static function list_of_data_load_type_enum()
+    {
+        $lang = AfwLanguageHelper::getGlobalLanguage();
+        return self::data_load_type()[$lang];
+    }
+
+    public static function data_load_type()
+    {
+        $arr_list_of_data_load_type = array();
+
+        $arr_list_of_data_load_type['en'][1] = 'Target DB Direct Load';
+        $arr_list_of_data_load_type['ar'][1] = 'مباشرة على قاعدة البيانات المستهدفة';
+        $arr_list_of_data_load_type['code'][1] = 'DBLoad';
+
+        $arr_list_of_data_load_type['en'][2] = 'Api Push method';
+        $arr_list_of_data_load_type['ar'][2] = 'خدمة الكترونية تكاملية';
+        $arr_list_of_data_load_type['code'][2] = 'ApiLoad';
+
+        return $arr_list_of_data_load_type;
+    }
 }

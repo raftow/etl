@@ -6,15 +6,16 @@ class EtlDataApiAfwStructure
     public static function initInstance(&$obj)
     {
         if ($obj instanceof DataApi) {
+            $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
             $obj->DISPLAY_FIELD_BY_LANG                 = ['ar' => 'name_ar', 'en' => 'name_en'];
 
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
-            $obj->ORDER_BY_FIELDS = '';
+            $obj->ORDER_BY_FIELDS = 'collection_id, end_point_id';
 
-            $obj->UNIQUE_KEY = array( 'end_point_id', 'relative_url' );
+            $obj->UNIQUE_KEY = array('end_point_id', 'relative_url');
             $obj->editByStep = true;
-			$obj->editNbSteps = 5;
+            $obj->editNbSteps = 5;
             $obj->showQeditErrors      = true;
             $obj->showRetrieveErrors   = true;
             $obj->general_check_errors = true;
@@ -30,118 +31,393 @@ class EtlDataApiAfwStructure
     [
         'id'                 => ['STEP' => 1, 'SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'],
 
-        'end_point_id'       => ['STEP' => 1, 'SHORTNAME' => 'point', 'SEARCH'       => true, 'QSEARCH'          => false, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => false,
-            'EDIT'                                    => true, 'QEDIT'           => true,
-            'SIZE'                                    => 32, 'MAXLENGTH'         => 32, 'MIN-SIZE'           => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
-            'TYPE'                                    => 'FK', 'ANSWER'          => 'end_point', 'ANSMODULE' => 'etl',
-            'WHERE'                                   => "production = 'Y'",
-            'RELATION'                                => 'OneToMany', 'READONLY' => false, 'DNA'             => true,
-            'CSS'                                     => 'width_pct_50'],
+        'collection_id' => array(
+            'STEP' => 2,
+            'SHORTNAME' => 'collection',
+            'SEARCH' => true,
+            'QSEARCH' => true,
+            'SHOW' => true,
+            'AUDIT' => false,
+            'RETRIEVE' => true,
+            'EDIT' => true,
+            'QEDIT' => true,
+            'SIZE' => 32,
+            'MAXLENGTH' => 32,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+            'UTF8' => false,
+            'TYPE' => 'FK',
+            'ANSWER' => 'collection',
+            'ANSMODULE' => 'etl',
+            'DEFAULT' => 0,
+            'RELATION' => 'OneToMany',
+            'READONLY' => false,
+            'DNA' => true,
+            'CSS' => 'width_pct_50',
+        ),
 
-        'relative_url'       => ['STEP' => 1, 'SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE'               => true,
-            'EDIT'                            => true, 'QEDIT'      => true,
-            'SIZE'                            => 128, 'MAXLENGTH'   => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8' => false,
-            'TYPE'                            => 'TEXT', 'READONLY' => false,
-            'CSS'                             => 'width_pct_100'],
+        'end_point_id'       => [
+            'STEP' => 1,
+            'SHORTNAME' => 'point',
+            'SEARCH'       => true,
+            'QSEARCH'          => false,
+            'SHOW'      => true,
+            'AUDIT'                   => false,
+            'RETRIEVE' => true,
+            'EDIT'                                    => true,
+            'QEDIT'           => true,
+            'SIZE'                                    => 32,
+            'MAXLENGTH'         => 32,
+            'MIN-SIZE'           => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8'      => false,
+            'TYPE'                                    => 'FK',
+            'ANSWER'          => 'end_point',
+            'ANSMODULE' => 'etl',
+            'WHERE' => "(§collection_id§='0' or collection_id = '0' or collection_id = §collection_id§) and production = 'Y'",
+            'RELATION'                                => 'OneToMany',
+            'READONLY' => false,
+            'DNA'             => true,
+            'CSS'                                     => 'width_pct_50'
+        ],
 
-
-        'name_ar'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE-AR'                 => true,
-            'EDIT'                                 => true, 'QEDIT'      => true,
-            'SIZE'                                 => 128, 'MAXLENGTH'   => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE', 'MANDATORY' => true, 'UTF8' => true,
-            'TYPE'                                 => 'TEXT', 'READONLY' => false,
-            'CSS'                                  => 'width_pct_50'],
-
-        'name_en'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'    => true, 'SHOW'    => true, 'AUDIT'      => false, 'RETRIEVE-EN'               => true,
-            'EDIT'                                 => true, 'QEDIT'      => true,
-            'SIZE'                                 => 128, 'MAXLENGTH'   => 128, 'MIN-SIZE' => 5, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY' => false,
-            'CSS'                                  => 'width_pct_50'],
-
-        'desc_ar'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 32, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => true,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => false,
-            'CSS'                                  => 'width_pct_50'],
-
-        'desc_en'            => ['STEP' => 2, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 32, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => false,
-            'CSS'                                  => 'width_pct_50'],
-
-        'test_end_point_id'  => ['STEP' => 2, 'SHORTNAME' => 'point', 'SEARCH'       => true, 'QSEARCH'          => false, 'SHOW'      => true, 'AUDIT'                   => false, 'RETRIEVE' => false,
-            'EDIT'                                    => true, 'QEDIT'           => true,
-            'SIZE'                                    => 32, 'MAXLENGTH'         => 32, 'MIN-SIZE'           => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'MANDATORY' => true, 'UTF8'      => false,
-            'TYPE'                                    => 'FK', 'ANSWER'          => 'end_point', 'ANSMODULE' => 'etl',
-            'WHERE'                                   => "production = 'N'",
-            'RELATION'                                => 'OneToMany', 'READONLY' => false, 'DNA'             => true,
-            'CSS'                                     => 'width_pct_50'],
-
-
-        'settings'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MAXLENGTH' => 3333, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => false, 'MANDATORY' => true,
-            'COLS' => 100, 'ROWS' => 20,
-            'CSS'                                  => 'width_pct_100'],
-
-        'errorInSettings'            => ['STEP' => 3, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 256, 'MAXLENGTH' => 256, 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'CATEGORY' => 'FORMULA', 'TYPE' => 'TEXT', 'READONLY'  => true, 'NO-LABEL'           => true,
-            'CSS'                                  => 'width_pct_100'],
-
-
-        'input'            => ['STEP' => 4, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => false, 
-            'COLS' => 80, 'ROWS' => 8,
-            'CSS'                                  => 'width_pct_100'],
+        'relative_url'       => [
+            'STEP' => 1,
+            'SEARCH' => true,
+            'QSEARCH'    => true,
+            'SHOW'    => true,
+            'AUDIT'      => false,
+            'RETRIEVE'               => true,
+            'EDIT'                            => true,
+            'QEDIT'      => true,
+            'SIZE'                            => 128,
+            'MAXLENGTH'   => 128,
+            'MIN-SIZE' => 3,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8' => false,
+            'TYPE'                            => 'TEXT',
+            'READONLY' => false,
+            'CSS'                             => 'width_pct_100'
+        ],
 
         
 
 
-        'html'            => ['STEP' => 4, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => false, 
-            'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => false, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'FORMAT' => 'HTML',
-            'CSS'                                  => 'width_pct_100'],
+        'name_ar'            => [
+            'STEP' => 2,
+            'SEARCH' => true,
+            'QSEARCH'    => true,
+            'SHOW'    => true,
+            'AUDIT'      => false,
+            'RETRIEVE-AR'                 => true,
+            'EDIT'                                 => true,
+            'QEDIT'      => true,
+            'SIZE'                                 => 128,
+            'MAXLENGTH'   => 128,
+            'MIN-SIZE' => 5,
+            'CHAR_TEMPLATE' => 'ARABIC-CHARS,SPACE',
+            'MANDATORY' => true,
+            'UTF8' => true,
+            'TYPE'                                 => 'TEXT',
+            'READONLY' => false,
+            'CSS'                                  => 'width_pct_50'
+        ],
 
-        'showHtml'            => ['STEP' => 4, 'CATEGORY' => 'FORMULA',
-            'SHOW'   => true,  'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => true,  'FORMAT' => 'HTML',
-            'CSS'                                  => 'width_pct_100'],            
+        'name_en'            => [
+            'STEP' => 2,
+            'SEARCH' => true,
+            'QSEARCH'    => true,
+            'SHOW'    => true,
+            'AUDIT'      => false,
+            'RETRIEVE-EN'               => true,
+            'EDIT'                                 => true,
+            'QEDIT'      => true,
+            'SIZE'                                 => 128,
+            'MAXLENGTH'   => 128,
+            'MIN-SIZE' => 5,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY' => false,
+            'CSS'                                  => 'width_pct_50'
+        ],
+
+        'desc_ar'            => [
+            'STEP' => 2,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MAXLENGTH' => 32,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => true,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => false,
+            'CSS'                                  => 'width_pct_50'
+        ],
+
+        'desc_en'            => [
+            'STEP' => 2,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MAXLENGTH' => 32,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => false,
+            'CSS'                                  => 'width_pct_50'
+        ],
+
+        'test_end_point_id'  => [
+            'STEP' => 2,
+            'SHORTNAME' => 'point',
+            'SEARCH'       => true,
+            'QSEARCH'          => false,
+            'SHOW'      => true,
+            'AUDIT'                   => false,
+            'RETRIEVE' => false,
+            'EDIT'                                    => true,
+            'QEDIT'           => true,
+            'SIZE'                                    => 32,
+            'MAXLENGTH'         => 32,
+            'MIN-SIZE'           => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => true,
+            'UTF8'      => false,
+            'TYPE'                                    => 'FK',
+            'ANSWER'          => 'end_point',
+            'ANSMODULE' => 'etl',
+            'WHERE'                                   => "production = 'N'",
+            'RELATION'                                => 'OneToMany',
+            'READONLY' => false,
+            'DNA'             => true,
+            'CSS'                                     => 'width_pct_50'
+        ],
+
+        /*
+        'settings_template_id'  => [
+            'STEP' => 2,
+            'SHORTNAME' => 'point',
+            'SEARCH'       => true,
+            'QSEARCH'          => false,
+            'SHOW'      => true,
+            'AUDIT'                   => false,
+            'RETRIEVE' => false,
+            'EDIT'                                    => true,
+            'QEDIT'           => true,
+            'SIZE'                                    => 32,
+            'MAXLENGTH'         => 32,
+            'MIN-SIZE'           => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'MANDATORY' => false,
+            'UTF8'      => false,
+            'TYPE'                                    => 'FK',
+            'ANSWER'          => 'data_api',
+            'ANSMODULE' => 'etl',
+            'WHERE'                                   => "id != §id§ and length(settings) > 20",
+            'RELATION'                                => 'OneToMany',
+            'READONLY' => false,
+            'DNA'             => true,
+            'CSS'                                     => 'width_pct_50'
+        ],*/
 
 
-        'output'            => ['STEP' => 4, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => true, 
-            'COLS' => 80, 'ROWS' => 8, 'PRE' => true,
-            'CSS'                                  => 'width_pct_100'],
+        'settings'            => [
+            'STEP' => 3,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'SPELLCHECK' => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MAXLENGTH' => 3333,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => false,
+            'MANDATORY' => true,
+            'COLS' => 100,
+            'ROWS' => 33,
+            'CSS'                                  => 'width_pct_100'
+        ],
 
-            
+        'errorInSettings'            => [
+            'STEP' => 3,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 256,
+            'MAXLENGTH' => 256,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'CATEGORY' => 'FORMULA',
+            'TYPE' => 'TEXT',
+            'READONLY'  => true,
+            'NO-LABEL'           => true,
+            'CSS'                                  => 'width_pct_100'
+        ],
 
-        'log'            => ['STEP' => 4, 'SEARCH' => true, 'QSEARCH'     => true, 'SHOW'   => true, 'AUDIT'      => false, 'RETRIEVE'          => false,
-            'EDIT'                                 => true, 'QEDIT'       => false,
-            'SIZE'                                 => 'AREA', 'MIN-SIZE' => 1, 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE', 'UTF8' => false,
-            'TYPE'                                 => 'TEXT', 'READONLY'  => true, 
-            'COLS' => 80, 'ROWS' => 8, 'PRE' => true,
-            'CSS'                                  => 'width_pct_100'],
 
-        'apiExecutionList' => array('STEP' => 5, 'SHORTNAME' => 'executionLogs',  'SHOW' => true,  'FORMAT' => 'retrieve',  'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
-				'EDIT' => false,  'QEDIT' => false,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
-				'TYPE' => 'FK',  
-				'CATEGORY' => 'ITEMS',  'ANSWER' => 'api_execution',  'ANSMODULE' => 'etl',  'ITEM' => 'data_api_id',  'READONLY' => true,  'CAN-BE-SETTED' => true, 
-				'CSS' => 'width_pct_100', ),
+        'input'            => [
+            'STEP' => 4,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => false,
+            'COLS' => 80,
+            'ROWS' => 8,
+            'CSS'                                  => 'width_pct_100'
+        ],
 
-            
-    
+
+
+
+        'html'            => [
+            'STEP' => 4,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => false,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => false,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'FORMAT' => 'HTML',
+            'CSS'                                  => 'width_pct_100'
+        ],
+
+        'showHtml'            => [
+            'STEP' => 4,
+            'CATEGORY' => 'FORMULA',
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => true,
+            'FORMAT' => 'HTML',
+            'CSS'                                  => 'width_pct_100'
+        ],
+
+
+        'output'            => [
+            'STEP' => 4,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => true,
+            'COLS' => 80,
+            'ROWS' => 8,
+            'PRE' => true,
+            'CSS'                                  => 'width_pct_100'
+        ],
+
+
+
+        'log'            => [
+            'STEP' => 4,
+            'SEARCH' => true,
+            'QSEARCH'     => true,
+            'SHOW'   => true,
+            'AUDIT'      => false,
+            'RETRIEVE'          => false,
+            'EDIT'                                 => true,
+            'QEDIT'       => false,
+            'SIZE'                                 => 'AREA',
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+            'UTF8' => false,
+            'TYPE'                                 => 'TEXT',
+            'READONLY'  => true,
+            'COLS' => 80,
+            'ROWS' => 8,
+            'PRE' => true,
+            'CSS'                                  => 'width_pct_100'
+        ],
+
+        'apiExecutionList' => array(
+            'STEP' => 5,
+            'SHORTNAME' => 'executionLogs',
+            'SHOW' => true,
+            'FORMAT' => 'retrieve',
+            'ICONS' => true,
+            'DELETE-ICON' => true,
+            'BUTTONS' => true,
+            'SEARCH' => false,
+            'QSEARCH' => false,
+            'AUDIT' => false,
+            'RETRIEVE' => false,
+            'EDIT' => false,
+            'QEDIT' => false,
+            'SIZE' => 32,
+            'MAXLENGTH' => 32,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+            'MANDATORY' => false,
+            'UTF8' => false,
+            'TYPE' => 'FK',
+            'CATEGORY' => 'ITEMS',
+            'ANSWER' => 'api_execution',
+            'ANSMODULE' => 'etl',
+            'ITEM' => 'data_api_id',
+            'READONLY' => true,
+            'CAN-BE-SETTED' => true,
+            'CSS' => 'width_pct_100',
+        ),
+
+
+
 
         'created_by'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'],
         'created_at'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'],
@@ -158,7 +434,6 @@ class EtlDataApiAfwStructure
         'sci_id'             => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'scenario_item', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'],
         'tech_notes'         => ['STEP' => 99, 'HIDE_IF_NEW' => true, 'TYPE' => 'TEXT', 'CATEGORY' => 'FORMULA', 'SHOW-ADMIN' => true, 'TOKEN_SEP' => '§', 'READONLY' => true, 'NO-ERROR-CHECK' => true, 'FGROUP' => 'tech_fields'],
     ];
-
 }
 
 // errors

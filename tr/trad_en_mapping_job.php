@@ -12,9 +12,9 @@ class MappingJobEnTranslator{
 		$trad["mapping_job"]["apiExecutionList"] = "Execution Records";
 
 
-		$trad["mapping_job"]["mappingjob.single"] = "ETL job";
+		$trad["mapping_job"]["mappingjob.single"] = "Individual Job";
 		$trad["mapping_job"]["mappingjob.new"] = "new";
-		$trad["mapping_job"]["mapping_job"] = "ETL jobs";
+		$trad["mapping_job"]["mapping_job"] = "Individual Jobs";
 		$trad["mapping_job"]["name_ar"] = "Arabic job name";
 		$trad["mapping_job"]["desc_ar"] = "Arabic job description";
 		$trad["mapping_job"]["name_en"] = "English job name";
@@ -22,11 +22,15 @@ class MappingJobEnTranslator{
 		$trad["mapping_job"]["end_point_id"] = "end point";
 		$trad["mapping_job"]["lookup_code"] = "Lookup code";
 		$trad["mapping_job"]["data_api_id"] = "data api";
-		$trad["mapping_job"]["pk_cols"] = "Primary Key columns";
-		$trad["mapping_job"]["atable_name"] = "Table code";
+		$trad["mapping_job"]["pk_cols"] = "Target table primary key columns";
+		$trad["mapping_job"]["atable_name"] = "Target table name";
 		$trad["mapping_job"]["mappingColList"] = "columns mapping";
 		$trad["mapping_job"]["collection_id"] = "Collection";
-		$trad["mapping_job"]["statusHtml"] = "status";
+		$trad["mapping_job"]["statusHtml"] = "ُRun status";
+		$trad["mapping_job"]["data_load_type_enum"] = "Load type";
+		$trad["mapping_job"]["data_source_type_enum"] = "Extract type";
+		
+        
         // steps
         return $trad;
     }

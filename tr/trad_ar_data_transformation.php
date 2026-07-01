@@ -5,6 +5,9 @@ class DataTransformationArTranslator{
     {
         $trad = [];
 
+		$trad["data_transformation"]["step1"] = "التعريف";
+		$trad["data_transformation"]["step2"] = "التنفيذ";
+		
 		$trad["data_transformation"]["datatransformation.single"] = "تحويلة";
 		$trad["data_transformation"]["datatransformation.new"] = "جديد(ة)";
 		$trad["data_transformation"]["data_transformation"] = "التحويلات";

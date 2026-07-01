@@ -25,7 +25,9 @@ class MappingJobArTranslator{
 		$trad["mapping_job"]["pk_cols"] = "حقول المفتاح الوحيد";
 		$trad["mapping_job"]["mappingColList"] = "تقابل الحقول";
 		$trad["mapping_job"]["collection_id"] = "المجموعة";
-		$trad["mapping_job"]["statusHtml"] = "الحالة";
+		$trad["mapping_job"]["statusHtml"] = "حالة التنفيذ";
+		$trad["mapping_job"]["data_load_type_enum"] = "نوع التحيل";
+		$trad["mapping_job"]["data_source_type_enum"] = "نوع الاستخراج";
 		
 
 	

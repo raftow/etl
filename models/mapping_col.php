@@ -23,7 +23,7 @@ class MappingCol extends EtlObject
     // مسح mapping column 
     public static $BF_DELETE_MAPPING_COL = 105077;
 
-    public static $DATABASE = "ttc_etl";
+    public static $DATABASE = "";
     public static $MODULE   = "etl";
     public static $TABLE    = "mapping_col";
 

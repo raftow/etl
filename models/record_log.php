@@ -129,6 +129,7 @@ class RecordLog extends AFWObject
 
         if (is_object($result_json_decoded)) {
             $row = (array) $result_json_decoded;
+            // $row = json_decode($record_json, true);
         } else {
             $row = $result_json_decoded;
         }
